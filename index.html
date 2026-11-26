@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -158,7 +158,7 @@
               CASE #1
             </span>
           </div>
-          <span id="header-sub-badge" class="text-[11px] font-mono text-indigo-200 block mt-0.5">Daily Edition • Mystery Vault</span>
+          <span id="header-sub-badge" class="text-[11px] font-mono text-indigo-200 block mt-0.5">Daily Brain Game</span>
         </div>
       </button>
 
@@ -189,10 +189,10 @@
       <!-- Top Rainbow Neon Accent Strip -->
       <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cosmic-pink via-cosmic-gold to-cosmic-cyan"></div>
 
-      <!-- Case #1 Daily Edition Badge Row -->
+      <!-- Case #1 Daily Brain Game Badge Row -->
       <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-4 border-b border-cosmic-border/70">
-        <span class="inline-flex items-center gap-1.5 font-mono text-xs font-extrabold uppercase tracking-wider text-indigo-950 bg-gradient-to-r from-cosmic-gold to-amber-300 px-3.5 py-1 rounded-full shadow-md shadow-amber-400/20">
-          <span>🔮</span> CASE #1 • DAILY EDITION
+        <span id="home-case-badge" class="inline-flex items-center gap-1.5 font-mono text-xs font-extrabold uppercase tracking-wider text-indigo-950 bg-gradient-to-r from-cosmic-gold to-amber-300 px-3.5 py-1 rounded-full shadow-md shadow-amber-400/20">
+          <span>🔮</span> CASE #1 • DAILY BRAIN GAME
         </span>
         <span class="font-mono text-xs font-semibold text-cyan-300 bg-cosmic-bg/80 border border-cosmic-border px-3 py-1 rounded-full">
           1 Play Per Mode Daily
@@ -205,7 +205,7 @@
           CHOOSE YOUR DAILY CHALLENGE
         </h1>
         <p class="text-indigo-100 text-xs sm:text-sm max-w-md mx-auto mt-1.5 leading-relaxed">
-          Guess earlier to score bigger: <span class="text-emerald-300 font-mono font-bold">1,000</span> → <span class="text-cyan-300 font-mono font-bold">800</span> → <span class="text-amber-300 font-mono font-bold">600</span> → <span class="text-orange-300 font-mono font-bold">400</span> → <span class="text-pink-300 font-mono font-bold">200</span> pts (<span class="text-rose-400 font-mono font-bold">-200</span> if missed).
+          Guess earlier to earn higher titles: <span class="text-emerald-300 font-mono font-bold">Genius (1,000)</span> → <span class="text-cyan-300 font-mono font-bold">Sharp (800)</span> → <span class="text-amber-300 font-mono font-bold">Clever (600)</span> → <span class="text-orange-300 font-mono font-bold">Solid (400)</span> → <span class="text-pink-300 font-mono font-bold">Clutch (200)</span>.
         </p>
       </div>
 
@@ -266,15 +266,15 @@
         </div>
       </div>
 
-      <!-- Compact Point Breakdown Bar -->
+      <!-- Compact Point Breakdown Bar with Rank Words -->
       <div class="bg-cosmic-bg/75 border border-cosmic-border rounded-2xl px-3.5 py-2.5 mb-4 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
-        <span class="text-indigo-300 font-bold uppercase">Clue Values:</span>
+        <span class="text-indigo-300 font-bold uppercase">Clue Ranks:</span>
         <div class="flex flex-wrap items-center gap-1.5 font-extrabold">
-          <span class="px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">C1: 1,000</span>
-          <span class="px-2 py-0.5 rounded bg-cyan-400/20 text-cyan-300">C2: 800</span>
-          <span class="px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">C3: 600</span>
-          <span class="px-2 py-0.5 rounded bg-orange-400/20 text-orange-300">C4: 400</span>
-          <span class="px-2 py-0.5 rounded bg-pink-400/20 text-pink-300">C5: 200</span>
+          <span class="px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">Genius: 1,000</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-400/20 text-cyan-300">Sharp: 800</span>
+          <span class="px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">Clever: 600</span>
+          <span class="px-2 py-0.5 rounded bg-orange-400/20 text-orange-300">Solid: 400</span>
+          <span class="px-2 py-0.5 rounded bg-pink-400/20 text-pink-300">Clutch: 200</span>
           <span class="px-2 py-0.5 rounded bg-rose-500/25 text-rose-300">Miss: -200</span>
         </div>
       </div>
@@ -430,55 +430,51 @@
           </button>
         </div>
       </section>
-
     </div>
-
   </main>
 
-  <!-- ==================== VIEW 3: CASE FINALE & EMOJI SCORECARD ==================== -->
-  <main id="recap-screen" class="hidden flex-grow max-w-2xl w-full mx-auto px-4 py-5 flex flex-col justify-center">
-    <div class="animate-pop bg-cosmic-surface/95 border-2 border-cosmic-border rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
-      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cosmic-cyan via-cosmic-pink to-cosmic-gold"></div>
+  <!-- ==================== VIEW 3: DAILY CASE SCORECARD RECAP ==================== -->
+  <main id="recap-screen" class="hidden flex-grow max-w-2xl w-full mx-auto px-4 py-4 flex flex-col justify-center">
+    <div class="bg-cosmic-surface/95 border-2 border-cosmic-border rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cosmic-cyan via-cosmic-gold to-cosmic-pink"></div>
 
-      <!-- Rank & Final Score Header -->
-      <div class="text-center border-b border-cosmic-border pb-4 mb-4">
-        <span id="recap-rank-badge" class="inline-block font-mono text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50 mb-2">
-          RANK: LEGENDARY DETECTIVE
+      <div class="text-center mb-4">
+        <span id="recap-rank-badge" class="inline-block font-mono text-xs font-extrabold uppercase tracking-wider text-indigo-950 bg-cosmic-gold px-3.5 py-1 rounded-full mb-2">
+          RANK: GRAND ARCHIVIST
         </span>
         <h2 id="recap-title" class="font-display text-2xl sm:text-3xl font-bold text-white">
           CASE #1 COMPLETE!
         </h2>
         <div class="mt-2 flex items-baseline justify-center gap-2">
-          <span id="recap-final-score" class="font-mono text-3xl sm:text-4xl font-extrabold text-cosmic-gold">6,000</span>
+          <span id="recap-final-score" class="font-mono text-4xl sm:text-5xl font-extrabold text-cosmic-cyan">0</span>
           <span class="font-mono text-sm text-indigo-300">/ 7,000 PTS</span>
         </div>
-        <p id="recap-subtitle" class="text-xs sm:text-sm font-mono text-indigo-200 mt-1">
-          0 Solved • 0 Missed (-200 each)
+        <p id="recap-subtitle" class="text-xs font-mono text-indigo-200 mt-1">
+          0/7 Solved • 0 Missed
         </p>
       </div>
 
-      <!-- 7-Mystery Recap Breakdown List -->
-      <div id="recap-rows-list" class="space-y-2 max-h-64 overflow-y-auto pr-1 mb-4">
-        <!-- Recap rows injected dynamically -->
+      <!-- 7-Row Summary List -->
+      <div id="recap-rows-list" class="flex flex-col gap-2 max-h-64 overflow-y-auto pr-1 mb-4">
+        <!-- Injected dynamically -->
       </div>
 
-      <!-- Share & Back Home Actions -->
-      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+      <!-- Share & Back Buttons -->
+      <div class="flex flex-col sm:flex-row gap-2.5 mb-4">
         <button 
           id="btn-share-all" 
-          class="flex-[2] py-3.5 px-5 rounded-2xl bg-gradient-to-r from-cosmic-cyan to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-base transition shadow-lg shadow-cyan-400/25 flex items-center justify-center gap-2 active:scale-[0.98]">
-          <span>📋 Copy Case Scorecard</span>
+          class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-cyan via-teal-300 to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base transition shadow-lg shadow-cyan-400/25 active:scale-[0.98]">
+          📋 COPY CASE SCORECARD
         </button>
-
         <button 
           id="btn-recap-home" 
-          class="flex-1 py-3.5 px-4 rounded-2xl bg-cosmic-panel hover:bg-cosmic-hover border-2 border-cosmic-violet/60 text-white font-bold text-sm transition active:scale-[0.98]">
-          🏠 Back to Vault
+          class="py-3 px-4 rounded-xl bg-cosmic-panel hover:bg-cosmic-hover border border-cosmic-border text-white font-display font-bold text-sm sm:text-base transition active:scale-[0.98]">
+          ← ALL MODES
         </button>
       </div>
 
-      <!-- Next Daily Reset Countdown Timer at Bottom of Recap -->
-      <div class="bg-cosmic-bg/95 border border-cosmic-border rounded-2xl px-4 py-2.5 flex items-center justify-between gap-2">
+      <!-- Next Reset Countdown -->
+      <div class="bg-cosmic-bg/95 border border-cosmic-border/90 rounded-2xl px-4 py-2.5 flex items-center justify-between gap-2">
         <div class="flex items-center gap-2">
           <span class="text-base">⏳</span>
           <span class="text-xs font-mono font-bold text-indigo-200 uppercase tracking-wide">Next Daily Vault Unlocks In</span>
@@ -490,457 +486,1699 @@
     </div>
   </main>
 
-  <!-- ==================== HOW TO PLAY MODAL ==================== -->
-  <div id="help-modal" class="fixed inset-0 bg-indigo-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-cosmic-surface border-2 border-cosmic-cyan/50 rounded-3xl max-w-md w-full p-6 shadow-2xl animate-pop">
+  <!-- ==================== RULES MODAL ==================== -->
+  <div id="help-modal" class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm items-center justify-center p-4">
+    <div class="bg-cosmic-surface border-2 border-cosmic-border rounded-3xl max-w-md w-full p-6 shadow-2xl animate-pop">
       <div class="flex items-center justify-between mb-3">
-        <h3 class="font-display text-xl font-bold text-cosmic-cyan">HOW TO PLAY ARCHIVIST</h3>
-        <button id="btn-close-help" class="p-1.5 rounded-xl hover:bg-cosmic-hover text-indigo-300 hover:text-white">✕</button>
+        <h3 class="font-display text-xl font-bold text-white flex items-center gap-2">
+          <span>🔮</span> How to Play ARCHIVIST
+        </h3>
+        <button id="btn-close-help" class="w-8 h-8 rounded-full bg-cosmic-bg text-indigo-200 hover:text-white font-bold">✕</button>
       </div>
-      <ul class="space-y-3 text-sm text-indigo-100 leading-relaxed mb-5">
-        <li class="flex gap-2.5">
-          <span class="font-mono text-cosmic-gold font-extrabold">01</span>
-          <span><strong>Two Daily Modes (1 Play Each/Day):</strong> Play <em>Classic Daily</em> (untimed) and <em>25s Blitz Daily</em> (25 seconds per clue) once every day!</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="font-mono text-emerald-300 font-extrabold">02</span>
-          <span><strong>Speed & Clue Scoring:</strong> Clue 1 = <strong>1,000 pts</strong> • Clue 2 = <strong>800 pts</strong> • Clue 3 = <strong>600 pts</strong> • Clue 4 = <strong>400 pts</strong> • Clue 5 = <strong>200 pts</strong>.</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="font-mono text-pink-400 font-extrabold">03</span>
-          <span><strong>-200 PTS Miss Penalty:</strong> Missing all 5 clues deducts <strong>200 points</strong>. In Blitz Mode, running out of time on a clue counts as a missed guess!</span>
-        </li>
-        <li class="flex gap-2.5">
-          <span class="font-mono text-cosmic-cyan font-extrabold">04</span>
-          <span><strong>Smart Typo Autocorrect:</strong> Minor misspellings automatically fix when you submit.</span>
-        </li>
+      <ul class="space-y-2.5 text-xs sm:text-sm text-indigo-100 leading-relaxed mb-5">
+        <li>• Each Daily Case features <strong class="text-white">7 mysteries</strong> with up to <strong class="text-cyan-300">5 progressive clues</strong> each.</li>
+        <li>• Solve on Clue #1 (<strong class="text-emerald-300">Genius</strong>) for <strong class="text-emerald-300">+1,000 PTS</strong>, Clue #2 (<strong class="text-cyan-300">Sharp</strong>) for <strong class="text-cyan-300">+800 PTS</strong>, Clue #3 (<strong class="text-amber-300">Clever</strong>) for <strong class="text-amber-300">+600 PTS</strong>, Clue #4 (<strong class="text-orange-300">Solid</strong>) for <strong class="text-orange-300">+400 PTS</strong>, or Clue #5 (<strong class="text-pink-300">Clutch</strong>) for <strong class="text-pink-300">+200 PTS</strong>.</li>
+        <li>• Missing all 5 clues costs <strong class="text-rose-400">-200 PTS</strong>.</li>
+        <li>• <strong class="text-pink-300">⚡ 25s Blitz Daily:</strong> You get 25 seconds per clue before it automatically advances!</li>
+        <li>• Each mode is playable <strong class="text-cosmic-gold">once per day</strong>, with brand-new mysteries unlocking at midnight!</li>
       </ul>
-      <button id="btn-got-it" class="w-full py-3 rounded-2xl bg-gradient-to-r from-cosmic-cyan to-emerald-300 text-indigo-950 font-display font-bold text-base transition">
-        Let's Go!
+      <button id="btn-got-it" class="w-full py-3 rounded-xl bg-gradient-to-r from-cosmic-cyan to-emerald-300 text-indigo-950 font-display font-bold text-base">
+        GOT IT!
       </button>
     </div>
   </div>
 
-  <!-- ==================== TOAST NOTIFICATION ==================== -->
-  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-cosmic-gold text-indigo-950 font-mono font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50">
-    Scorecard copied to clipboard!
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 bg-cosmic-cyan text-indigo-950 font-mono font-extrabold text-xs px-4 py-2.5 rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300">
+    Copied!
   </div>
 
-  <!-- ==================== JAVASCRIPT GAME ENGINE ==================== -->
   <script>
     /**
-     * 1. TEEN-FRIENDLY MYSTERY CASES (Case #1 Launch Edition + Practice Cases)
+     * 1. LAUNCH DATE & 14-CASE (98-MYSTERY) VAULT
      */
+    const LAUNCH_DATE = new Date(2026, 10, 26); // Nov 26, 2026 -> Case #1
+
     const CASE_SETS = [
-      // CASE #1: LAUNCH EDITION (7 Fun Pop-Culture, Gaming, Space & Weird Animal Mysteries)
+      // CASE #1 (Day 1): Gaming, Space, Animals & Pop Culture
       [
         {
           id: 101,
-          category: "Gaming Legends",
+          category: "Gaming Icons",
           badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
           answer: "Minecraft Creeper",
-          accepted: ["creeper", "minecraft creeper", "creepers"],
+          accepted: ["creeper", "minecraft creeper"],
           clues: [
-            "I was created completely by accident in 2009 when a developer messed up the height and length code for a pig.",
-            "I am famous for sneaking up behind players completely silently before making a terrifying hissing sound.",
-            "If I get struck by lightning, I become 'Charged' and my explosion radius doubles.",
-            "I am green, pixelated, have four short legs, and zero arms.",
-            "I am Minecraft's iconic exploding mascot monster."
+            "I was born in 2009 from a coding mistake when Markus 'Notch' Persson accidentally swapped the height and length of a pig model.",
+            "My blotchy green camouflage texture was sampled directly from Minecraft's original leaf blocks.",
+            "Unlike zombies and skeletons, I do not burn up in bright daylight.",
+            "I sneak up silently behind players before letting out a terrifying 'tssss...' fuse sound.",
+            "I am Minecraft's iconic exploding green four-legged monster."
           ],
-          fact: "Notch accidentally swapped the X and Y dimensions when modeling a pig—creating the vertical body of the Creeper!"
+          fact: "When struck by lightning in Minecraft, a Creeper becomes a 'Charged Creeper' with an electric blue aura and double the blast power!"
         },
         {
           id: 102,
-          category: "Weird Animals",
-          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
-          answer: "Axolotl",
-          accepted: ["axolotl", "axolotls", "mexican walking fish"],
+          category: "Extreme Space",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Black Hole",
+          accepted: ["black hole", "black holes"],
           clues: [
-            "Unlike other salamanders, I stay in my aquatic larval form my entire life—a trait called neoteny.",
-            "I can regenerate lost limbs, parts of my heart, and even sections of my brain without scarring.",
-            "My wild population is native to just one lake complex near Mexico City.",
-            "I became a massive internet and Minecraft sensation thanks to my permanent smile and feathery pink gills.",
-            "I am a cute, smiling aquatic salamander often called the 'Mexican walking fish'."
+            "Albert Einstein's equations predicted my existence in 1916, though he doubted I was real.",
+            "My outer boundary is called the 'event horizon'—the point of no return.",
+            "Near me, gravity is so intense that time literally slows down compared to Earth.",
+            "In 2019, the Event Horizon Telescope captured the first-ever image of my glowing orange ring.",
+            "I am a region of spacetime where gravity is so strong that not even light can escape."
           ],
-          fact: "Axolotls are over 1,000 times more resistant to cancer than mammals, making them heavily studied by scientists!"
+          fact: "The supermassive black hole at the center of our Milky Way galaxy, Sagittarius A*, has the mass of 4 million Suns!"
         },
         {
           id: 103,
-          category: "Handheld Tech",
+          category: "Ocean Geniuses",
           badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
-          answer: "Nintendo Switch",
-          accepted: ["nintendo switch", "switch"],
+          answer: "Octopus",
+          accepted: ["octopus", "octopuses", "octopi"],
           clues: [
-            "My 2017 launch title, Breath of the Wild, actually sold more copies than I did during my first month.",
-            "My detachable controllers feature 'HD Rumble' and an infrared motion camera.",
-            "I can transform instantly from a home TV console into a portable handheld.",
-            "My signature neon red and neon blue Joy-Con controllers slide onto my sides with a crisp click.",
-            "I am Nintendo's wildly popular hybrid console that powers Mario Kart 8 Deluxe and Animal Crossing."
+            "I have three hearts—two pump blood to my gills, and the third stops beating whenever I swim.",
+            "My blood is bright blue because it uses copper-based hemocyanin instead of iron.",
+            "Two-thirds of my neurons are located inside my arms rather than my central brain.",
+            "I have zero bones, allowing me to squeeze through any gap larger than my beak.",
+            "I am the eight-armed sea creature famous for shooting ink and changing color."
           ],
-          fact: "The Nintendo Switch has sold over 146 million units worldwide, making it one of the top 3 best-selling consoles ever!"
+          fact: "Octopuses have been observed unscrewing childproof pill bottles from the inside and carrying coconut shells as portable armor!"
         },
         {
           id: 104,
-          category: "Cosmic Wonders",
-          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
-          answer: "Saturn",
-          accepted: ["saturn"],
-          clues: [
-            "My average density is lower than water—if you had a giant ocean, I would actually float.",
-            "A giant, mysterious six-sided hexagon storm swirls continuously over my north pole.",
-            "I have over 140 moons, including Titan, which has lakes of liquid methane.",
-            "My famous rings are made of billions of chunks of ice and rock—some as tiny as dust, others as big as houses.",
-            "I am the sixth planet from the Sun, famous for my huge, dazzling ring system."
-          ],
-          fact: "Even though Saturn's rings stretch 175,000 miles wide, they are amazingly thin—averaging only about 30 feet thick!"
-        },
-        {
-          id: 105,
           category: "Superheroes",
           badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
           answer: "Spider-Man",
-          accepted: ["spiderman", "spider-man", "spider man", "peter parker", "miles morales"],
+          accepted: ["spiderman", "spider-man", "spider man", "peter parker"],
           clues: [
-            "My comic debut in Amazing Fantasy #15 (1962) almost didn't happen because editors thought teens hated bugs.",
-            "I can lift roughly 10 tons and cling to solid walls using electrostatic attraction.",
-            "An internal buzzing alarm warns me seconds before danger strikes.",
-            "I swing across New York City skyscrapers using wrist-mounted web-shooters.",
-            "I am the friendly neighborhood Marvel hero alter-ego of Peter Parker and Miles Morales."
+            "Stan Lee and Steve Ditko created me in 1962 as a teenage hero who had to worry about homework and rent.",
+            "My publisher originally rejected me because he thought people hated bugs.",
+            "I invented my own wrist-mounted web-shooters in high school chemistry class.",
+            "My 'Spider-Sense' tingles at the base of my skull moments before danger strikes.",
+            "I am Queens teenager Peter Parker, your friendly neighborhood wall-crawler."
           ],
-          fact: "Stan Lee wanted a teenage hero who wasn't just a sidekick—and had everyday problems like homework and rent!"
+          fact: "Spider-Man's webbing dissolves automatically after about two hours so New York City doesn't stay covered in sticky webs!"
+        },
+        {
+          id: 105,
+          category: "Weird Science",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Lightning",
+          accepted: ["lightning", "lightning bolt"],
+          clues: [
+            "A single bolt of me heats the surrounding air to 50,000°F—five times hotter than the surface of the Sun.",
+            "That sudden superheating makes air explode outward, creating the shockwave you hear as thunder.",
+            "I strike Earth roughly 100 times every single second.",
+            "Benjamin Franklin famously tested my electrical nature using a kite and a metal key.",
+            "I am the jagged bolt of electricity flashing across the sky during a thunderstorm."
+          ],
+          fact: "Because light travels nearly a million times faster than sound, counting seconds between lightning and thunder lets you estimate distance (5 seconds ≈ 1 mile)!"
         },
         {
           id: 106,
-          category: "Viral Drinks",
-          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
-          answer: "Bubble Tea",
-          accepted: ["bubble tea", "boba", "boba tea", "pearl milk tea"],
+          category: "Sandbox Worlds",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Roblox",
+          accepted: ["roblox"],
           clues: [
-            "I was invented in Taiwan in the 1980s when a tea shop owner dumped sweet tapioca pudding into iced tea.",
-            "I am always served with an extra-wide straw so you can slurp up my toppings.",
-            "My chewy black pearls are made from cassava root starch and brown sugar.",
-            "Popular flavors of me include taro, matcha, brown sugar tiger, and Thai milk.",
-            "I am the sweet iced tea drink packed with chewy 'boba' tapioca pearls."
+            "I launched in 2006 under the beta name 'DynaBlocks' before adopting my current name.",
+            "Creators build worlds on my platform using a programming language called Luau.",
+            "My classic blocky characters used to say a famous 'Oof!' sound effect when resetting.",
+            "Hit experiences on my platform include Adopt Me!, Brookhaven, and Blox Fruits.",
+            "I am the massive online game creation platform where players earn Robux."
           ],
-          fact: "The 'bubbles' in bubble tea originally referred to the frothy foam created by shaking the tea—not the tapioca pearls!"
+          fact: "Over half of all kids and teens under 16 in the United States play Roblox every month!"
         },
         {
           id: 107,
-          category: "Extreme Micro-Animals",
-          badgeColor: "bg-teal-400/20 text-teal-200 border-teal-400/50",
-          answer: "Tardigrade",
-          accepted: ["tardigrade", "tardigrades", "water bear", "water bears", "moss piglet"],
+          category: "Prehistoric Beasts",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Tyrannosaurus Rex",
+          accepted: ["t-rex", "trex", "t rex", "tyrannosaurus", "tyrannosaurus rex"],
           clues: [
-            "I am less than 1 millimeter long, yet I have eight chubby legs with tiny claws.",
-            "I can survive temperatures from -328°F up to 300°F, plus crushing deep-ocean pressures.",
-            "In 2007, I became the first animal known to survive exposure to the vacuum of outer space.",
-            "When dried out, I curl into a 'tun' state and pause my metabolism for decades.",
-            "I am a microscopic, virtually indestructible eight-legged creature nicknamed the 'water bear'."
+            "My name translates from Greek and Latin to 'tyrant lizard king'.",
+            "I had the strongest bite force of any land animal ever—over 12,800 pounds, enough to crush a car.",
+            "My teeth were the size and shape of thick bananas with serrated edges.",
+            "Despite my 40-foot length, my tiny two-fingered arms were only about three feet long.",
+            "I am the king of the Cretaceous dinosaurs featured in Jurassic Park."
           ],
-          fact: "Tardigrades produce a special glass-like protein shield that protects their DNA when they dry out!"
+          fact: "Scientists estimate T. rex had a sense of smell even sharper than a bloodhound's, helping it sniff out prey miles away!"
         }
       ],
 
-      // CASE #2: PRACTICE VAULT (7 More Fun Mysteries)
+      // CASE #2 (Day 2): Console Legends, Wild Animals, Tech & Space
       [
         {
           id: 201,
+          category: "Gaming Legends",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Super Mario",
+          accepted: ["mario", "super mario"],
+          clues: [
+            "In my 1981 arcade debut Donkey Kong, I was originally called 'Jumpman' and worked as a carpenter.",
+            "My creator Shigeru Miyamoto gave me a mustache and cap because 8-bit pixels made hair and mouths too hard to draw.",
+            "My younger twin brother wears green and is taller and jumpier than me.",
+            "Eating a Super Mushroom makes me grow twice as tall.",
+            "I am Nintendo's red-capped Italian plumber who rescues Princess Peach."
+          ],
+          fact: "Mario was named after Mario Segale, the warehouse landlord of Nintendo of America's early office in Washington!"
+        },
+        {
+          id: 202,
+          category: "Solar System",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Saturn",
+          accepted: ["saturn"],
+          clues: [
+            "I am the least dense planet in our Solar System—if there were a bathtub big enough, I would float on water.",
+            "A giant six-sided hexagon storm spins continuously around my north pole.",
+            "My largest moon, Titan, has thick orange skies and lakes of liquid methane.",
+            "Astronomer Galileo Galilei first spotted my icy halo in 1610 through an early telescope.",
+            "I am the sixth planet from the Sun, famous for my dazzling system of icy rings."
+          ],
+          fact: "Saturn's main rings span over 175,000 miles wide, yet in most places they are only about 30 feet thick!"
+        },
+        {
+          id: 203,
+          category: "Super Animals",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Chameleon",
+          accepted: ["chameleon", "chameleons"],
+          clues: [
+            "My two eyes can swivel independently in completely different directions, giving me 360-degree vision.",
+            "My sticky tongue shoots out faster than a fighter jet accelerates—catching bugs in 0.07 seconds.",
+            "Nanocrystals in my skin shift spacing to reflect different wavelengths of light.",
+            "My tail is prehensile, curling tightly around tree branches like a fifth hand.",
+            "I am the tree-dwelling lizard famous for changing skin colors."
+          ],
+          fact: "Chameleons actually change color mostly to regulate body temperature and show their mood—not just to blend into backgrounds!"
+        },
+        {
+          id: 204,
+          category: "Next-Gen Tech",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "PlayStation 5",
+          accepted: ["ps5", "playstation 5", "playstation"],
+          clues: [
+            "Sony released me in November 2020 with a futuristic curved white-and-black tower shell.",
+            "My ultra-fast custom SSD cuts game loading screens down to nearly zero seconds.",
+            "My DualSense controller uses adaptive triggers that physically resist when you pull a bowstring.",
+            "Every unit comes pre-installed with Astro's Playroom to test its haptic vibrations.",
+            "I am Sony's fifth-generation home video game console."
+          ],
+          fact: "If you look closely under a magnifying glass, the grip texture on the PS5 DualSense controller is made of thousands of tiny PlayStation △ ○ ✕ □ symbols!"
+        },
+        {
+          id: 205,
+          category: "Earth Forces",
+          badgeColor: "bg-orange-400/20 text-orange-200 border-orange-400/50",
+          answer: "Volcano",
+          accepted: ["volcano", "volcanoes"],
+          clues: [
+            "Over 75% of my active locations on Earth sit along a horseshoe zone called the Pacific 'Ring of Fire'.",
+            "Before I erupt, molten rock beneath the surface is called magma; once it pours out, it becomes lava.",
+            "My tallest known cousin in the Solar System is Olympus Mons on Mars—three times taller than Mount Everest.",
+            "When I erupt underwater, cooled lava builds brand-new islands like Hawaii.",
+            "I am a mountain opening in Earth's crust that erupts lava, ash, and gas."
+          ],
+          fact: "Pumice—a volcanic rock full of trapped gas bubbles—is the only rock on Earth light enough to float on water!"
+        },
+        {
+          id: 206,
+          category: "Classic Strategy",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Chess",
+          accepted: ["chess"],
+          clues: [
+            "I originated in 6th-century India as a royal strategy game called 'Chaturanga'.",
+            "My 64 alternating light and dark squares host 32 pieces at the start of every match.",
+            "My Knight is the only piece allowed to jump over other pieces in an L-shape.",
+            "Trapping the opponent's most important piece with no legal escape is called 'Checkmate'.",
+            "I am the classic two-player board game of Kings, Queens, Rooks, Bishops, Knights, and Pawns."
+          ],
+          fact: "There are more possible unique games of chess than there are atoms in the observable universe!"
+        },
+        {
+          id: 207,
+          category: "Sweet Science",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Honey",
+          accepted: ["honey"],
+          clues: [
+            "Archaeologists have found 3,000-year-old jars of me inside ancient Egyptian tombs that were still safe to eat.",
+            "I never spoil because my low moisture and natural acidity stop bacteria from growing.",
+            "A single worker bee produces only about one-twelfth of a teaspoon of me in her entire lifetime.",
+            "Bees make me by fanning flower nectar with their wings inside wax hexagonal combs.",
+            "I am the golden, sticky sweet liquid made by honeybees."
+          ],
+          fact: "To make just one pound of honey, a colony of bees must visit around 2 million flowers!"
+        }
+      ],
+
+      // CASE #3 (Day 3): Speedsters, Tech Pioneers, Cosmic Rocks & Heroes
+      [
+        {
+          id: 301,
+          category: "Gaming Speedsters",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Sonic the Hedgehog",
+          accepted: ["sonic", "sonic the hedgehog"],
+          clues: [
+            "Sega created me in 1991 to rival Nintendo's Mario with high-speed blast processing.",
+            "My red-and-white sneakers were inspired by Michael Jackson's boots and Santa Claus.",
+            "Collecting 100 golden rings grants me an extra life, while getting hit scatters my rings everywhere.",
+            "My best friend Miles 'Tails' Prower flies using his two spinning tails.",
+            "I am Sega's supersonic blue hedgehog who battles Dr. Eggman."
+          ],
+          fact: "Sonic's designers originally sketched him as a rabbit who grabbed objects with his ears before turning him into a hedgehog!"
+        },
+        {
+          id: 302,
+          category: "Fastest on Land",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Cheetah",
+          accepted: ["cheetah", "cheetahs"],
+          clues: [
+            "Unlike lions and tigers, I cannot roar—instead I chirp, purr, and meow like a giant house cat.",
+            "Black 'tear tracks' running down my face help block harsh African sunlight glare.",
+            "My flexible spine acts like a coiled spring, letting me cover 23 feet in a single stride.",
+            "I can accelerate from 0 to 60 mph in just three seconds—faster than most sports cars.",
+            "I am the spotted big cat that holds the title of fastest land animal on Earth."
+          ],
+          fact: "A cheetah's long muscular tail acts like a boat rudder, helping it make razor-sharp turns at 70 mph!"
+        },
+        {
+          id: 303,
+          category: "Space Neighbors",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Mars",
+          accepted: ["mars"],
+          clues: [
+            "My surface looks rusty orange-red because my soil is packed with oxidized iron dust.",
+            "I have two tiny potato-shaped moons named Phobos and Deimos.",
+            "NASA rovers like Curiosity and Perseverance are currently exploring my ancient dry riverbeds.",
+            "A day on my surface lasts 24 hours and 37 minutes—almost identical to Earth.",
+            "I am the fourth planet from the Sun, famously nicknamed the Red Planet."
+          ],
+          fact: "Sunsets on Mars appear eerie dusty blue instead of red because of fine dust particles in the Martian sky!"
+        },
+        {
+          id: 304,
+          category: "Modern Gadgets",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Smartphone",
+          accepted: ["smartphone", "iphone", "cell phone", "phone"],
+          clues: [
+            "IBM built my earliest ancestor, 'Simon', in 1994—it weighed over a pound and had a green touch screen.",
+            "Inside me sits more computing power than the NASA computers that guided Apollo 11 to the Moon.",
+            "My capacitive glass screen detects the tiny electrical charge on your fingertips.",
+            "Built-in accelerometers know the instant you rotate me from portrait to landscape.",
+            "I am the pocket-sized touchscreen computer you use to text, game, and browse apps."
+          ],
+          fact: "The average smartphone user taps, swipes, or clicks their screen over 2,600 times every single day!"
+        },
+        {
+          id: 305,
+          category: "Ancient Wonders",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Great Pyramid of Giza",
+          accepted: ["pyramid", "pyramids", "great pyramid", "great pyramid of giza"],
+          clues: [
+            "Built around 2560 BCE for Pharaoh Khufu, I held the record as the world's tallest man-made structure for over 3,800 years.",
+            "I was originally covered in polished white limestone casing stones that gleamed like a mirror in the desert sun.",
+            "I am the only one of the Seven Wonders of the Ancient World still standing today.",
+            "Over 2.3 million massive stone blocks were stacked to build me near Cairo, Egypt.",
+            "I am the iconic triangular tomb guarded nearby by the Great Sphinx."
+          ],
+          fact: "Despite Egypt's scorching desert heat outside, the interior temperature inside the Great Pyramid stays a steady 68°F year-round!"
+        },
+        {
+          id: 306,
+          category: "Superheroes",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Batman",
+          accepted: ["batman", "bruce wayne"],
+          clues: [
+            "Unlike most Justice League members, I have zero biological superpowers.",
+            "My secret headquarters sits inside a network of subterranean caverns beneath Wayne Manor.",
+            "I carry smoke pellets, grappling hooks, and Batarangs inside my yellow utility belt.",
+            "Commissioner Gordon summons me into the night sky using a spotlight beam.",
+            "I am billionaire Bruce Wayne, the Dark Knight of Gotham City."
+          ],
+          fact: "Batman first appeared in Detective Comics #27 in May 1939—and his Batmobile was originally just a regular red sedan!"
+        },
+        {
+          id: 307,
+          category: "Ocean Giants",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Blue Whale",
+          accepted: ["blue whale", "whale"],
+          clues: [
+            "My heart alone is the size of a small golf cart and beats so loudly it can be detected two miles away.",
+            "Even though I can grow 100 feet long, I survive almost entirely on tiny shrimp-like krill.",
+            "My tongue alone weighs as much as an adult elephant.",
+            "I am larger than any dinosaur that ever walked the Earth.",
+            "I am the largest animal known to have ever lived on planet Earth."
+          ],
+          fact: "A newborn Blue Whale calf already weighs around 6,000 pounds—and gains roughly 200 pounds every single day!"
+        }
+      ],
+
+      // CASE #4 (Day 4): Anime, Cool Tech, Wild Weather & Legends
+      [
+        {
+          id: 401,
           category: "Anime & Gaming",
           badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
           answer: "Pikachu",
           accepted: ["pikachu"],
           clues: [
-            "My designer originally based my chubby cheeks on squirrels storing nuts rather than mice.",
-            "In Japan, my name combines the sound of electric sparks ('pika') and a mouse squeak ('chu').",
-            "I refuse to evolve with a Thunder Stone because I want to prove my own strength.",
-            "I have a lightning-bolt-shaped tail and bright red electric cheek pouches.",
-            "I am Ash Ketchum's iconic yellow Electric-type Pokémon partner."
+            "My name combines two Japanese onomatopoeia words: 'pikapika' (sparkle) and 'chūchū' (mouse squeak).",
+            "I store excess electricity inside the two bright red pouches on my cheeks.",
+            "I stubbornly refuse to stay inside my Poké Ball or evolve using a Thunder Stone.",
+            "My signature move is Thunderbolt, and I travel on Ash Ketchum's shoulder.",
+            "I am Pokémon's iconic yellow electric-mouse mascot."
           ],
-          fact: "Pikachu's original 1996 design was much rounder—artists slimmed it down over time so it was easier to animate!"
+          fact: "Pikachu was originally inspired by a squirrel rather than a mouse, which is why it loves eating berries and has a big tail!"
         },
         {
-          id: 202,
-          category: "Toy Engineering",
-          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
-          answer: "LEGO Brick",
-          accepted: ["lego", "legos", "lego brick", "lego bricks"],
-          clues: [
-            "My company name comes from the Danish words 'leg godt', meaning 'play well'.",
-            "Six of my standard 2x4 pieces can be combined in over 915 million different ways.",
-            "My plastic molds are accurate to within 0.002 millimeters so pieces from 1958 still fit today.",
-            "Stepping on me barefoot in the dark is universally recognized as maximum pain.",
-            "I am the world-famous interlocking plastic building brick from Denmark."
-          ],
-          fact: "LEGO is technically the world's largest tire manufacturer by unit count—producing over 300 million tiny tires a year!"
-        },
-        {
-          id: 203,
-          category: "Deep Space",
-          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
-          answer: "Black Hole",
-          accepted: ["black hole", "black holes"],
-          clues: [
-            "If you fell near me, my gravity would stretch you into a long thin strand—scientists literally call this 'spaghettification'.",
-            "My outer boundary is called the Event Horizon—the point of no return.",
-            "Albert Einstein's theory of general relativity predicted me decades before astronomers proved I existed.",
-            "My gravitational pull is so extreme that not even light can escape.",
-            "I am a super-dense region of spacetime formed when a massive star collapses."
-          ],
-          fact: "In 2019, the Event Horizon Telescope captured the very first image of a black hole's glowing shadow!"
-        },
-        {
-          id: 204,
-          category: "Rainforest Wildlife",
-          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
-          answer: "Sloth",
-          accepted: ["sloth", "sloths"],
-          clues: [
-            "My metabolism is so slow that it takes me up to a full month to digest a single leaf.",
-            "Algae grows right in my fur, giving me a greenish camouflage tint in rainforest trees.",
-            "I only climb down from the canopy once a week to go to the bathroom.",
-            "Despite moving at 0.15 mph on land, I am actually a surprisingly good swimmer.",
-            "I am the world's slowest mammal, famous for hanging upside down by long curved claws."
-          ],
-          fact: "Sloths have extra neck vertebrae that allow them to turn their heads nearly 270 degrees!"
-        },
-        {
-          id: 205,
-          category: "Retro Arcade",
+          id: 402,
+          category: "Cosmic Stations",
           badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
-          answer: "Pac-Man",
-          accepted: ["pacman", "pac-man", "pac man"],
+          answer: "International Space Station",
+          accepted: ["iss", "international space station", "space station"],
           clues: [
-            "My creator got the idea for my shape while looking at a pizza with one slice missing.",
-            "My four colorful enemies—Blinky, Pinky, Inky, and Clyde—each have unique chase AI.",
-            "Eating a flashing Power Pellet turns my enemies dark blue so I can chomp them.",
-            "I travel through a neon maze eating 240 glowing dots and bonus cherries.",
-            "I am the iconic yellow, pizza-shaped 1980 arcade hero who goes 'waka-waka-waka'."
+            "I orbit 250 miles above Earth at 17,500 mph—meaning astronauts aboard see 16 sunrises and sunsets every day.",
+            "Five space agencies—NASA, Roscosmos, JAXA, ESA, and CSA—built and operate me together.",
+            "Inside, I have as much livable room as a six-bedroom house with two bathrooms and a gym.",
+            "Humans have lived aboard me continuously without a break since November 2000.",
+            "I am the giant habitable science laboratory orbiting Earth."
           ],
-          fact: "Pac-Man was originally called 'Puck-Man' in Japan—until arcades worried vandals would scratch the 'P' into an 'F'!"
+          fact: "On a clear night, the International Space Station is often the third-brightest object in the sky after the Sun and Moon!"
         },
         {
-          id: 206,
-          category: "Island Predators",
-          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
-          answer: "Komodo Dragon",
-          accepted: ["komodo dragon", "komodo"],
-          clues: [
-            "I can smell carrion from up to 6 miles away using my forked yellow tongue.",
-            "I live exclusively on a handful of volcanic islands in Indonesia.",
-            "I deliver a venomous bite that prevents blood clotting and sends prey into shock.",
-            "Growing up to 10 feet long and 200 pounds, I am the heavyweight champion of reptiles.",
-            "I am the largest living species of lizard on Earth."
-          ],
-          fact: "Young Komodo dragons roll in mud and climb trees to avoid being eaten by giant adult Komodo dragons!"
-        },
-        {
-          id: 207,
-          category: "Sci-Fi Gadgets",
+          id: 403,
+          category: "Arctic Bird",
           badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
-          answer: "Hoverboard",
-          accepted: ["hoverboard", "hoverboards", "hover board"],
+          answer: "Penguin",
+          accepted: ["penguin", "penguins", "emperor penguin"],
           clues: [
-            "I was popularized in the 1989 movie Back to the Future Part II, set in the year 2015.",
-            "In the movie, Marty McFly rides a hot-pink Mattel version of me across a town square.",
-            "Real-world versions with two wheels were actually self-balancing scooters that touched the ground.",
-            "In sci-fi, I float inches above pavement using magnetic levitation.",
-            "I am a futuristic levitating skateboard with no wheels."
+            "My black-and-white coloring acts as camouflage called 'countershading'—hiding me from predators above and below in the ocean.",
+            "Special glands above my eyes filter salt out of seawater so I can safely drink from the ocean.",
+            "Instead of flying through the air, my stiff flipper wings 'fly' underwater at up to 22 mph.",
+            "Almost all wild species of me live exclusively in the Southern Hemisphere, especially Antarctica.",
+            "I am the flightless tuxedo-wearing seabird that waddles on ice."
           ],
-          fact: "Lexus actually built a real liquid-nitrogen-cooled magnetic hoverboard in 2015—though it only worked over a hidden copper track!"
+          fact: "Emperor penguins can dive deeper than 1,800 feet and hold their breath underwater for more than 20 minutes!"
+        },
+        {
+          id: 404,
+          category: "Everyday Tech",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "GPS",
+          accepted: ["gps", "global positioning system"],
+          clues: [
+            "I rely on a constellation of at least 24 satellites orbiting 12,500 miles above Earth.",
+            "My satellites carry ultra-precise atomic clocks that must adjust for Einstein's relativity so maps stay accurate.",
+            "Your phone calculates your exact spot by measuring nanosecond radio delays from four satellites at once.",
+            "Originally built by the U.S. military, I became free for civilian navigation worldwide in the 1980s.",
+            "I am the satellite navigation system powering Google Maps and Apple Maps."
+          ],
+          fact: "Without adjusting satellite atomic clocks for Einstein's theory of relativity, GPS locations would drift off by 6 miles every single day!"
+        },
+        {
+          id: 405,
+          category: "Extreme Weather",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Tornado",
+          accepted: ["tornado", "twister"],
+          clues: [
+            "Meteorologists rate my wind damage on the Enhanced Fujita (EF) scale from EF0 up to EF5.",
+            "I form inside powerful rotating thunderstorms called supercells when warm moist air collides with cold dry air.",
+            "My swirling funnel winds can exceed 300 mph—the fastest winds on Earth.",
+            "The central United States has a famous nickname for my frequent appearances: 'Tornado Alley'.",
+            "I am the violently rotating funnel cloud touching down from storm clouds to the ground."
+          ],
+          fact: "When tornado funnels form over lakes or oceans, they are called 'waterspouts'!"
+        },
+        {
+          id: 406,
+          category: "Marvel Tech",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Iron Man",
+          accepted: ["iron man", "ironman", "tony stark"],
+          clues: [
+            "I built my very first bulky gray armor inside a cave using scrap missile parts and a car battery.",
+            "A glowing triangular or circular Arc Reactor embedded in my chest powers my suits.",
+            "My AI assistants J.A.R.V.I.S. and F.R.I.D.A.Y. run diagnostics inside my helmet HUD.",
+            "My iconic red-and-gold Mark III armor can fly at supersonic speeds and fire repulsor blasts.",
+            "I am genius billionaire inventor Tony Stark."
+          ],
+          fact: "Stan Lee created Tony Stark in 1963 as a challenge to make readers fall in love with a wealthy weapons manufacturer!"
+        },
+        {
+          id: 407,
+          category: "Snack Origins",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Potato Chips",
+          accepted: ["potato chips", "chips", "crisps"],
+          clues: [
+            "Legend says chef George Crum invented me in 1853 in Saratoga Springs, New York, to annoy a picky customer.",
+            "When a diner complained his fried potatoes were too thick and soggy, the chef sliced them paper-thin and fried them crisp.",
+            "In the United Kingdom, people call me 'crisps' instead of my American name.",
+            "Bags of me are filled with nitrogen gas—not regular air—to keep me crunchy and prevent crushing.",
+            "I am the salty, crunchy thin-sliced potato snack sold in foil bags."
+          ],
+          fact: "That 'air' inside a chip bag is actually pure nitrogen gas, which stops oxygen from making the chips go stale!"
+        }
+      ],
+
+      // CASE #5 (Day 5): Sandbox Gems, Space Rocks, Cool Birds & Gaming
+      [
+        {
+          id: 501,
+          category: "Gaming Treasures",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Minecraft Diamond",
+          accepted: ["diamond", "minecraft diamond", "diamonds"],
+          clues: [
+            "In modern Minecraft versions, you find my ore deepest underground around Y-level -59.",
+            "You must mine my ore using at least an Iron Pickaxe, or my gem will shatter and drop nothing.",
+            "Combining me with Obsidian and a Book lets you craft an Enchanting Table.",
+            "Upgrade me at a Smithing Table with a Netherite Ingot to forge the strongest gear in the game.",
+            "I am Minecraft's iconic sparkling cyan gem used to craft blue armor and swords."
+          ],
+          fact: "In real life, natural diamonds form 100 miles underground under extreme heat and pressure over billions of years!"
+        },
+        {
+          id: 502,
+          category: "Tiny Marvels",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Hummingbird",
+          accepted: ["hummingbird", "hummingbirds"],
+          clues: [
+            "I am the only bird in the world capable of flying straight backward and upside down.",
+            "My wings beat up to 80 times per second in a figure-eight pattern, producing my signature hum.",
+            "At night, I enter a mini-hibernation called 'torpor' to slow my heart from 1,200 beats per minute down to 50.",
+            "My Bee species is the smallest bird on Earth—weighing less than a penny.",
+            "I am the tiny iridescent bird that hovers mid-air to sip flower nectar."
+          ],
+          fact: "Because they burn energy so fast, hummingbirds have to eat roughly half their body weight in nectar and tiny bugs every day!"
+        },
+        {
+          id: 503,
+          category: "Moon Mysteries",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "The Moon",
+          accepted: ["moon", "the moon"],
+          clues: [
+            "Scientists believe I formed 4.5 billion years ago when a Mars-sized planet named Theia slammed into young Earth.",
+            "I am 'tidally locked' to Earth, meaning the exact same face of me always points toward your backyard.",
+            "My gravitational pull creates the daily rise and fall of Earth's ocean tides.",
+            "Only 12 human beings have ever walked across my dusty gray craters.",
+            "I am Earth's only natural satellite shining in the night sky."
+          ],
+          fact: "The Moon is slowly drifting away from Earth at a rate of about 1.5 inches (3.8 cm) every year—roughly as fast as fingernails grow!"
+        },
+        {
+          id: 504,
+          category: "Coding & Web",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Emoji",
+          accepted: ["emoji", "emojis"],
+          clues: [
+            "Japanese designer Shigetaka Kurita created the first set of 176 of me in 1999 on a tiny 12x12 pixel grid.",
+            "My name comes from the Japanese words 'e' (picture) and 'moji' (character)—not from the English word 'emotion'.",
+            "Every year, the Unicode Consortium approves new additions to my worldwide keyboard.",
+            "The 'Face with Tears of Joy' 😂 has been my most-used symbol for over a decade.",
+            "I am the colorful little digital picture icons you send in texts and chats."
+          ],
+          fact: "World Emoji Day is celebrated every year on July 17 because that's the date shown on the Calendar emoji 📅!"
+        },
+        {
+          id: 505,
+          category: "DC Heroes",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "The Flash",
+          accepted: ["flash", "the flash", "barry allen"],
+          clues: [
+            "A freak accident involving a lightning bolt and a shelf of lab chemicals connected me to the Speed Force.",
+            "I vibrate my molecules so fast that I can phase straight through solid brick walls.",
+            "Running faster than light allows me to travel back in time—creating alternate timelines like Flashpoint.",
+            "I wear a sleek crimson suit with golden lightning-bolt ear wings.",
+            "I am forensic scientist Barry Allen, the Fastest Man Alive."
+          ],
+          fact: "Because of his hyper-accelerated metabolism, The Flash has to eat roughly 10,000 calories a day just to stay energized!"
+        },
+        {
+          id: 506,
+          category: "Deep Earth",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Earthquake",
+          accepted: ["earthquake", "earthquakes"],
+          clues: [
+            "I occur when giant underground tectonic plates suddenly slip past each other along a fault line.",
+            "Seismographs record my shockwaves, which travel outward as P-waves and S-waves.",
+            "My underwater versions can push massive walls of ocean water upward to trigger tsunamis.",
+            "California's San Andreas Fault is one of the most famous places where I happen.",
+            "I am the sudden shaking of the ground caused by shifting rock beneath Earth's crust."
+          ],
+          fact: "The Moon experiences its own tremors—called 'moonquakes'—which can last up to an hour because the Moon is dry and rigid!"
+        },
+        {
+          id: 507,
+          category: "Toy Bricks",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "LEGO",
+          accepted: ["lego", "legos"],
+          clues: [
+            "Danish carpenter Ole Kirk Christiansen founded my company in 1932—starting out making wooden toys.",
+            "My name comes from the Danish phrase 'leg godt', which means 'play well'.",
+            "My plastic studs and tubes are molded to within 0.002 millimeters so bricks from 1958 still snap onto bricks made today.",
+            "Six of my standard 2x4 bricks can be combined in over 915 million different ways.",
+            "I am the world's most famous interlocking plastic building-brick toy."
+          ],
+          fact: "LEGO is technically the largest tire manufacturer in the world by sheer unit count—producing over 300 million tiny rubber tires every year!"
+        }
+      ],
+
+      // CASE #6 (Day 6): Nintendo Switches, Smart Apes, Tech & Space
+      [
+        {
+          id: 601,
+          category: "Hybrid Consoles",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Nintendo Switch",
+          accepted: ["nintendo switch", "switch"],
+          clues: [
+            "Released in March 2017, I launched alongside The Legend of Zelda: Breath of the Wild.",
+            "My detachable Joy-Con controllers feature HD Rumble and built-in motion gyroscopes.",
+            "Sliding me into my TV dock instantly boosts my screen output from handheld 720p to 1080p.",
+            "Mario Kart 8 Deluxe is my best-selling game with over 60 million copies sold.",
+            "I am Nintendo's hybrid console that transforms from a TV system into a portable handheld."
+          ],
+          fact: "Nintendo Switch game cartridges are coated with denatonium benzoate—the bitterest non-toxic chemical known—so toddlers and pets spit them out immediately!"
+        },
+        {
+          id: 602,
+          category: "Jungle Brainiacs",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Chimpanzee",
+          accepted: ["chimpanzee", "chimp", "chimpanzees"],
+          clues: [
+            "Humans share roughly 98.8% of our DNA sequence with me—making me your closest living animal relative.",
+            "Scientist Jane Goodall shocked the world in 1960 when she saw me stripping twigs to fish for termites.",
+            "In the wild, I craft wooden spears to hunt and use heavy stones as nutcrackers.",
+            "I live in complex social troops in the rainforests and savannas of Central and West Africa.",
+            "I am the highly intelligent great ape famous for using tools."
+          ],
+          fact: "In memory tests at Kyoto University, young chimpanzees beat human college students at recalling flashing numbers on a touchscreen!"
+        },
+        {
+          id: 603,
+          category: "Ice Giants",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Neptune",
+          accepted: ["neptune"],
+          clues: [
+            "I was the first planet ever discovered using pure math calculations before anyone saw me through a telescope in 1846.",
+            "Supersonic storms whip across my deep azure atmosphere at over 1,200 mph.",
+            "One orbit around the Sun takes me 165 Earth years—I finished my first full orbit since discovery in 2011.",
+            "Methane gas in my upper atmosphere absorbs red light, giving me my vivid royal-blue color.",
+            "I am the eighth and farthest major planet from the Sun."
+          ],
+          fact: "Scientists believe extreme pressure deep inside Neptune squeezes carbon atoms into solid diamonds that rain downward toward its core!"
+        },
+        {
+          id: 604,
+          category: "Smart Cameras",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "QR Code",
+          accepted: ["qr code", "qr"],
+          clues: [
+            "Engineer Masahiro Hara invented me in 1994 to track auto parts faster—taking inspiration from the black-and-white board game Go.",
+            "My name stands for 'Quick Response'.",
+            "The three big squares in my corners tell phone cameras which direction I'm facing, even upside down.",
+            "Thanks to built-in error correction, I can still scan even if up to 30% of my pattern is smudged or covered.",
+            "I am the square black-and-white pixel matrix you scan with your phone camera to open links or menus."
+          ],
+          fact: "A single standard QR code can store over 4,000 text characters—enough to hold an entire short story!"
+        },
+        {
+          id: 605,
+          category: "Frozen Giants",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Iceberg",
+          accepted: ["iceberg", "icebergs"],
+          clues: [
+            "I am made of pure frozen freshwater that broke off ('calved') from a coastal glacier.",
+            "Because ice is about 90% as dense as seawater, nearly 90% of my massive bulk hides underwater.",
+            "The famous phrase 'just the tip of the...' comes directly from my hidden underwater size.",
+            "One of my drifting North Atlantic giants famously sank the RMS Titanic in April 1912.",
+            "I am a huge floating mountain of glacier ice drifting in the open ocean."
+          ],
+          fact: "Some giant Antarctic icebergs are bigger than entire U.S. states—and hold enough freshwater to supply millions of people for years!"
+        },
+        {
+          id: 606,
+          category: "Music & Tech",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Electric Guitar",
+          accepted: ["electric guitar", "guitar"],
+          clues: [
+            "Unlike acoustic instruments, I don't need a hollow wooden soundbox to be loud.",
+            "Magnetic coils called 'pickups' beneath my steel strings convert string vibrations into electrical signals.",
+            "Legends like Jimi Hendrix and Eddie Van Halen used distortion pedals and amplifiers to bend my sound.",
+            "I typically have six steel strings stretched across a fretted neck.",
+            "I am the plugged-in rock-and-roll stringed instrument."
+          ],
+          fact: "The first commercially successful electric guitar, nicknamed the 'Frying Pan', was made out of cast aluminum in 1932!"
+        },
+        {
+          id: 607,
+          category: "Cool Treats",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Bubble Tea",
+          accepted: ["bubble tea", "boba", "boba tea"],
+          clues: [
+            "I was invented in tea shops in Taichung, Taiwan, during the 1980s.",
+            "My signature chewy dark pearls are made from cassava root starch—also known as tapioca.",
+            "I am always served with an extra-wide angled straw so pearls shoot right up into your mouth.",
+            "Classic flavors include Brown Sugar Milk Tea, Taro, and Matcha.",
+            "I am the iced Taiwanese milk tea drink loaded with chewy boba pearls."
+          ],
+          fact: "The 'bubble' in bubble tea originally referred to the frothy foam bubbles created when bartenders shook the hot tea with ice—not just the tapioca pearls!"
+        }
+      ],
+
+      // CASE #7 (Day 7): Star Wars, Ocean Predators, Retro Games & Sky Wonders
+      [
+        {
+          id: 701,
+          category: "Sci-Fi Saga",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Lightsaber",
+          accepted: ["lightsaber", "light saber"],
+          clues: [
+            "My blade is powered by a Force-attuned Kyber crystal that chooses its wielder.",
+            "Sound designer Ben Burtt created my famous hum by blending an old film projector motor with TV tube interference.",
+            "Colors like blue, green, purple, and red reflect the alignment of the warrior holding me.",
+            "I can slice cleanly through blast doors and deflect incoming blaster bolts.",
+            "I am the iconic laser sword wielded by Jedi and Sith in Star Wars."
+          ],
+          fact: "Samuel L. Jackson specifically asked George Lucas for a purple lightsaber in Attack of the Clones so he could spot himself in giant battle scenes!"
+        },
+        {
+          id: 702,
+          category: "Ocean Apex",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Great White Shark",
+          accepted: ["great white shark", "great white", "shark"],
+          clues: [
+            "Special jelly-filled pores on my snout called Ampullae of Lorenzini let me sense the tiny electrical heartbeats of hidden prey.",
+            "I never run out of teeth—new rows constantly move forward like a conveyor belt throughout my life.",
+            "I can detect a single drop of blood in millions of gallons of ocean water.",
+            "I inspired Steven Spielberg's 1975 blockbuster thriller Jaws.",
+            "I am the ocean's most famous giant predatory shark."
+          ],
+          fact: "Great White Sharks can leap completely out of the water—a dramatic hunting move called 'breaching'—when ambushing seals!"
+        },
+        {
+          id: 703,
+          category: "Retro Arcade",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Tetris",
+          accepted: ["tetris"],
+          clues: [
+            "Soviet software engineer Alexey Pajitnov created me in 1984 while testing a new computer in Moscow.",
+            "Every single one of my falling geometric shapes is made of exactly four connected squares—called a tetromino.",
+            "Clearing four horizontal lines at once scores a massive bonus named after me.",
+            "My theme music is based on a 19th-century Russian folk song called 'Korobeiniki'.",
+            "I am the timeless falling-blocks puzzle video game."
+          ],
+          fact: "In 1993, Tetris became the very first video game ever played in outer space when a cosmonaut brought his Game Boy aboard the Mir space station!"
+        },
+        {
+          id: 704,
+          category: "Sky Wonders",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Northern Lights",
+          accepted: ["northern lights", "aurora borealis", "aurora"],
+          clues: [
+            "I happen when charged solar wind particles slam into Earth's upper atmosphere at up to 45 million mph.",
+            "Oxygen atoms glow eerie neon green and red, while nitrogen creates vivid purple and blue ripples.",
+            "In Latin, my scientific name is 'Aurora Borealis', named after the Roman goddess of dawn.",
+            "You have the best chance of spotting me near the Arctic Circle in Alaska, Iceland, Canada, and Norway.",
+            "I am the shimmering curtains of colorful light dancing across the night sky."
+          ],
+          fact: "Jupiter, Saturn, Uranus, and Neptune all have their own giant auroras—some even bigger than Earth itself!"
+        },
+        {
+          id: 705,
+          category: "Amazing Bugs",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Firefly",
+          accepted: ["firefly", "lightning bug", "fireflies"],
+          clues: [
+            "Scientifically, I am not actually a fly at all—I am a soft-bodied nocturnal beetle.",
+            "My glow is 'cold light' created by a chemical reaction called bioluminescence that wastes almost zero heat energy.",
+            "Each species flashes its own secret Morse-code-like light rhythm to find mates in the dark.",
+            "In many parts of North America, kids call me a 'lightning bug'.",
+            "I am the summer night insect with a glowing yellow-green lantern in my tail."
+          ],
+          fact: "Firefly light is nearly 100% efficient—compared to an old incandescent light bulb that wastes 90% of its energy as heat!"
+        },
+        {
+          id: 706,
+          category: "Everyday Tech",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Bluetooth",
+          accepted: ["bluetooth"],
+          clues: [
+            "I am named after a 10th-century Viking king, Harald Gormsson, who united Denmark and Norway—and supposedly had a dead, blue-tinted tooth.",
+            "My iconic rune-like symbol combines the Viking initials H (ᚼ) and B (ᛒ).",
+            "I use short-range ultra-high-frequency radio waves so your devices don't need cables.",
+            "I connect wireless headphones, game controllers, and speakers to your phone.",
+            "I am the short-range wireless pairing technology with a blue-and-white rune logo."
+          ],
+          fact: "Bluetooth was originally intended as a temporary code name in 1996, but engineers liked it so much it stuck forever!"
+        },
+        {
+          id: 707,
+          category: "Deep Space",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Comet",
+          accepted: ["comet", "comets", "halleys comet"],
+          clues: [
+            "Astronomers often call me a 'dirty snowball' because my core is packed with frozen water, dust, and rock.",
+            "Whenever I swoop close to the Sun, solar heat vaporizes my ice into a glowing coma and two giant tails.",
+            "Surprisingly, my tail always points directly away from the Sun—even when I'm flying away from it!",
+            "My most famous member, Halley's, visits Earth's skies roughly once every 75 to 76 years.",
+            "I am the icy space wanderer famous for streaming a glowing tail across the night sky."
+          ],
+          fact: "In 2014, the European Space Agency's Philae lander became the first spacecraft to touch down on a comet!"
+        }
+      ],
+
+      // CASE #8 (Day 8): Nintendo Worlds, Extreme Creatures, Cyber Tech & Snack Legends
+      [
+        {
+          id: 801,
+          category: "Nintendo Worlds",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "The Legend of Zelda",
+          accepted: ["zelda", "legend of zelda", "the legend of zelda", "link"],
+          clues: [
+            "My creator Shigeru Miyamoto based my sense of adventure on exploring caves and woods around Kyoto as a kid.",
+            "Players often mistake my green-tunic hero Link for the princess I am named after.",
+            "My ancient golden relic is split into three triangles representing Power, Wisdom, and Courage.",
+            "From Ocarina of Time to Tears of the Kingdom, my hero wields the Master Sword against Ganondorf.",
+            "I am Nintendo's iconic fantasy action-adventure series set in the kingdom of Hyrule."
+          ],
+          fact: "The original 1986 Legend of Zelda was the very first console game to include a built-in battery so players could save their progress!"
+        },
+        {
+          id: 802,
+          category: "Deep Sea Oddities",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Narwhal",
+          accepted: ["narwhal", "narwhals"],
+          clues: [
+            "Medieval sailors used to sell my ivory spiral to European kings as magical 'unicorn horns'.",
+            "My famous spiral isn't actually a horn at all—it is an overgrown left canine tooth packed with 10 million nerve endings.",
+            "I live year-round in the icy Arctic waters around Canada, Greenland, and Russia.",
+            "Males of my species sometimes gently tap their tusks together in a behavior called 'tusking'.",
+            "I am the Arctic whale famous for having a long, spiral unicorn-like tusk."
+          ],
+          fact: "A narwhal's spiral tusk can grow up to 10 feet long and has no hard enamel, allowing it to sense changes in ocean saltiness and temperature!"
+        },
+        {
+          id: 803,
+          category: "Space Tech",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "James Webb Space Telescope",
+          accepted: ["james webb", "jwst", "james webb space telescope", "webb telescope"],
+          clues: [
+            "My primary mirror is made of 18 hexagonal beryllium segments coated in a microscopic layer of pure 24-karat gold.",
+            "I orbit the Sun nearly 1 million miles away from Earth—four times farther than the Moon.",
+            "A five-layer sunshield the size of a tennis court keeps my infrared cameras at -388°F.",
+            "Launched on Christmas Day 2021, I succeeded the Hubble Space Telescope.",
+            "I am NASA's giant gold-mirrored space observatory peering back at the universe's earliest galaxies."
+          ],
+          fact: "Only about 48 grams of pure gold—roughly the weight of a golf ball—were used to coat all 18 of JWST's mirrors!"
+        },
+        {
+          id: 804,
+          category: "Internet History",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "YouTube",
+          accepted: ["youtube"],
+          clues: [
+            "My very first uploaded video, 'Me at the zoo', was 19 seconds long and filmed at the San Diego Zoo in April 2005.",
+            "Over 500 hours of new video are uploaded to my servers every single minute.",
+            "Creators earn Silver, Gold, and Diamond Play Buttons when they hit subscriber milestones.",
+            "My red rectangle logo features a white sideways triangle play button in the center.",
+            "I am the world's largest online video-sharing platform."
+          ],
+          fact: "YouTube was originally dreamed up by its three founders in 2005 as a video dating website before pivoting to general video sharing!"
+        },
+        {
+          id: 805,
+          category: "Superheroes",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Black Panther",
+          accepted: ["black panther", "tchalla", "t'challa"],
+          clues: [
+            "I debuted in Fantastic Four #52 in 1966 as mainstream comics' first superhero of African descent.",
+            "My high-tech suit is woven from Vibranium, absorbing kinetic energy and releasing it in purple shockwaves.",
+            "I rule a hidden, hyper-advanced East African nation that was never conquered.",
+            "My genius younger sister Shuri designs my gadgets and suits.",
+            "I am King T'Challa, protector of Wakanda."
+          ],
+          fact: "Vibranium in Marvel comics came from a giant meteorite that crashed into Wakanda thousands of years ago!"
+        },
+        {
+          id: 806,
+          category: "Weird Nature",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Venus Flytrap",
+          accepted: ["venus flytrap", "flytrap"],
+          clues: [
+            "In the wild, I grow naturally only in a tiny 75-mile radius of coastal bogs in North and South Carolina.",
+            "I evolved to eat bugs because the swampy soil I live in lacks nitrogen and nutrients.",
+            "Inside each of my hinged leaves are tiny trigger hairs—an insect must touch two hairs within 20 seconds to snap me shut.",
+            "Charles Darwin called me 'one of the most wonderful plants in the world'.",
+            "I am the famous carnivorous plant with toothed, jaw-like leaves that trap flies."
+          ],
+          fact: "A Venus flytrap can 'count' up to five touches on its trigger hairs so it doesn't waste energy closing on raindrops!"
+        },
+        {
+          id: 807,
+          category: "Classic Toys",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Rubik's Cube",
+          accepted: ["rubiks cube", "rubik's cube", "rubik cube"],
+          clues: [
+            "Hungarian architecture professor Ernő Rubik invented me in 1974 to help students understand 3D geometry.",
+            "It took my own inventor over a month to solve me for the very first time.",
+            "I have over 43 quintillion possible scrambled combinations—yet every scramble can be solved in 20 moves or fewer.",
+            "World-record speedcubers can solve my six colored faces in just over 3 seconds.",
+            "I am the iconic 3x3 twisting color-matching puzzle cube."
+          ],
+          fact: "If you had one Rubik's Cube for every possible scramble, they would cover Earth's entire surface 275 times!"
+        }
+      ],
+
+      // CASE #9 (Day 9): Blockbuster Movies, Cool Mammals, Optical Tech & Sports
+      [
+        {
+          id: 901,
+          category: "Battle Royale",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Fortnite",
+          accepted: ["fortnite"],
+          clues: [
+            "My original 2017 release was a cooperative zombie tower-defense game called 'Save the World' before my 100-player mode exploded.",
+            "Players leap out of a flying blue Battle Bus onto an ever-changing island.",
+            "You harvest wood, brick, and metal with a pickaxe to crank 90s and build instant ramps.",
+            "My Item Shop is famous for crossovers ranging from Goku and Spider-Man to Sabrina Carpenter and Darth Vader.",
+            "I am Epic Games' massive battle royale game famous for Victory Royales and emotes."
+          ],
+          fact: "Travis Scott's 2020 in-game Fortnite concert drew over 12.3 million concurrent live players!"
+        },
+        {
+          id: 902,
+          category: "Night Hunters",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Owl",
+          accepted: ["owl", "owls"],
+          clues: [
+            "My eyes aren't round eyeballs—they are fixed binocular tubes locked in my skull, which is why I rotate my neck 270 degrees.",
+            "Special comb-like fringes on my wing feathers break up air turbulence so I fly in near-total silence.",
+            "My asymmetrical ears—one higher than the other—let me pinpoint a mouse rustling under snow in pitch darkness.",
+            "A group of me is called a 'parliament'.",
+            "I am the nocturnal bird of prey famous for hooting and huge forward-facing eyes."
+          ],
+          fact: "Owls have three eyelids: one for blinking, one for sleeping, and one for keeping their eyes clean!"
+        },
+        {
+          id: 903,
+          category: "Planet Rings",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Jupiter",
+          accepted: ["jupiter"],
+          clues: [
+            "I am so massive that you could fit over 1,300 Earths inside me.",
+            "My 'Great Red Spot' is a colossal hurricane wider than Earth that has raged for centuries.",
+            "I spin faster than any other planet in our Solar System—completing a full day in under 10 hours.",
+            "My giant moon Europa hides a salty liquid ocean beneath its icy crust.",
+            "I am the fifth planet from the Sun and the largest gas giant in our Solar System."
+          ],
+          fact: "Jupiter acts like a cosmic vacuum cleaner, using its huge gravity to pull in or deflect comets that might otherwise hit Earth!"
+        },
+        {
+          id: 904,
+          category: "Cyber Worlds",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Virtual Reality Headset",
+          accepted: ["vr", "vr headset", "virtual reality", "virtual reality headset", "meta quest"],
+          clues: [
+            "Early prototypes in the 1960s were so heavy they had to be suspended from the ceiling—earning the nickname 'The Sword of Damocles'.",
+            "I use two slightly offset miniature screens—one for each eye—to trick your brain into seeing true 3D depth.",
+            "Built-in gyroscopes and tracking cameras update the digital world the millisecond you turn your head.",
+            "Games like Beat Saber and Gorilla Tag let you swing controllers in 360-degree space.",
+            "I am the wearable visor goggle that immerses you inside a 3D digital world."
+          ],
+          fact: "NASA astronauts use VR headsets on Earth to practice spacewalks outside a simulated International Space Station!"
+        },
+        {
+          id: 905,
+          category: "Dinosaurs",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Triceratops",
+          accepted: ["triceratops"],
+          clues: [
+            "My solid bone neck frill was over 6 feet wide and helped protect my neck from predators.",
+            "I had up to 800 teeth arranged in tightly packed batteries for slicing tough prehistoric plants.",
+            "My name literally translates from Greek to 'three-horned face'.",
+            "Fossils show healed bite marks proving I battled Tyrannosaurus rex head-to-head.",
+            "I am the famous plant-eating dinosaur with a giant bony frill and three facial horns."
+          ],
+          fact: "A Triceratops skull could reach nearly 10 feet long—one of the largest skulls of any land animal ever discovered!"
+        },
+        {
+          id: 906,
+          category: "Global Sports",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Basketball",
+          accepted: ["basketball"],
+          clues: [
+            "Dr. James Naismith invented me in December 1891 in Springfield, Massachusetts, to keep athletes active indoors during winter.",
+            "My very first goals were wooden peach baskets nailed to a gym balcony—someone had to climb a ladder to get the ball out after every score.",
+            "Players weren't allowed to dribble at all in my original 13 rules.",
+            "A standard hoop rim sits exactly 10 feet above the hardwood floor.",
+            "I am the fast-paced court sport where players dribble an orange ball and shoot three-pointers."
+          ],
+          fact: "Basketball was played with a brown soccer ball until the late 1950s, when coach Tony Hinkle introduced the bright orange ball so players and fans could see it better!"
+        },
+        {
+          id: 907,
+          category: "Sweet Creations",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Cotton Candy",
+          accepted: ["cotton candy", "candy floss"],
+          clues: [
+            "Believe it or not, I was co-invented in 1897 by a dentist named William Morrison!",
+            "A spinning heated head melts sugar crystals and flings microscopic threads thinner than human hair.",
+            "In the UK and Australia, I am known as 'candy floss', while in France I am called 'dad's beard'.",
+            "I am almost 100% air and pure sugar, dissolving instantly on your tongue.",
+            "I am the fluffy, cloud-like carnival treat spun onto a paper cone in pink and blue."
+          ],
+          fact: "When Cotton Candy debuted at the 1904 St. Louis World's Fair as 'Fairy Floss', it sold 68,655 boxes at 25 cents each!"
+        }
+      ],
+
+      // CASE #10 (Day 10): Anime Legends, Arctic Animals, Earth's Core & Cool Inventions
+      [
+        {
+          id: 1001,
+          category: "Anime Heroes",
+          badgeColor: "bg-orange-400/20 text-orange-200 border-orange-400/50",
+          answer: "Naruto Uzumaki",
+          accepted: ["naruto", "naruto uzumaki"],
+          clues: [
+            "My creator Masashi Kishimoto named me after the spiral fishcake topping found in bowls of ramen.",
+            "Sealed inside me at birth is Kurama, the giant Nine-Tailed Fox spirit.",
+            "My signature techniques include the Shadow Clone Jutsu and the spinning Rasengan sphere.",
+            "I wear an orange jumpsuit, a Hidden Leaf forehead protector, and dream of becoming Hokage.",
+            "I am the blonde anime ninja hero of Konohagakure."
+          ],
+          fact: "Naruto's famous 'hands-back' sprint style was drawn by animators because it saved time animating swinging arms—and looked super cool!"
+        },
+        {
+          id: 1002,
+          category: "Arctic Survivors",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Polar Bear",
+          accepted: ["polar bear", "polar bears"],
+          clues: [
+            "Beneath my thick coat, my skin is actually pitch black to soak up warmth from Arctic sunlight.",
+            "My fur isn't really white—each hair is a hollow, transparent tube that scatters visible light.",
+            "I can smell a seal breathing through three feet of solid sea ice from over a mile away.",
+            "I am classified as a marine mammal because I spend most of my life hunting on sea ice.",
+            "I am the giant white bear of the Arctic Circle."
+          ],
+          fact: "Polar bears have webbed front paws up to 12 inches wide that act like built-in paddles for swimming 60 miles without stopping!"
+        },
+        {
+          id: 1003,
+          category: "Secret Codes",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Morse Code",
+          accepted: ["morse code", "morse"],
+          clues: [
+            "Invented in the 1830s for telegraph wires, I assigned the shortest signal—a single dot—to the letter 'E'.",
+            "You can transmit me using sound beeps, flashing flashlights, radio pulses, or even blinking your eyes.",
+            "My most famous distress signal is three dots, three dashes, and three dots: ··· --- ··· (SOS).",
+            "I translate every letter of the alphabet into combinations of short 'dits' and long 'dahs'.",
+            "I am the classic communication system made of dots and dashes."
+          ],
+          fact: "SOS doesn't actually stand for 'Save Our Ships'—it was chosen simply because three dots, three dashes, three dots is unmistakable in Morse code!"
+        },
+        {
+          id: 1004,
+          category: "Pop Culture",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "SpongeBob SquarePants",
+          accepted: ["spongebob", "spongebob squarepants"],
+          clues: [
+            "My creator Stephen Hillenburg was a real marine biology teacher before becoming an animator.",
+            "I have failed my boating school driving test dozens of times under Mrs. Puff.",
+            "I work as the enthusiastic fry cook at the Krusty Krab flipping Krabby Patties.",
+            "My best friend is a pink starfish named Patrick, and my pet snail Gary meows like a cat.",
+            "I am the porous yellow sea sponge who lives in a pineapple under the sea in Bikini Bottom."
+          ],
+          fact: "SpongeBob was originally going to be named 'SpongeBoy' until creators discovered a mop brand already owned that trademark!"
+        },
+        {
+          id: 1005,
+          category: "Earth Wonders",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Grand Canyon",
+          accepted: ["grand canyon"],
+          clues: [
+            "Over 5 to 6 million years, the Colorado River carved me down through nearly 2 billion years of Earth's rock layers.",
+            "I stretch 277 miles long, up to 18 miles wide, and over a mile deep.",
+            "Because of my steep drop in elevation, temperatures at my sunny bottom can be 25°F hotter than at my rim.",
+            "I am located in northern Arizona and attract over 5 million visitors a year.",
+            "I am America's most famous giant red-rock canyon."
+          ],
+          fact: "The Grand Canyon is so huge that it creates its own localized weather patterns—it can be snowing on the rim while 80°F at the bottom!"
+        },
+        {
+          id: 1006,
+          category: "Everyday Science",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Magnet",
+          accepted: ["magnet", "magnets"],
+          clues: [
+            "Ancient Greeks discovered natural versions of me called 'lodestones' over 2,500 years ago.",
+            "If you saw me cleanly in half, you don't separate my poles—you get two smaller complete versions of me.",
+            "My opposite ends attract each other, while identical ends push each other apart.",
+            "High-speed Maglev trains float above tracks using super-powerful versions of me.",
+            "I am an object with a North and South pole that attracts iron and steel."
+          ],
+          fact: "Earth itself is a giant magnet—which is why a compass needle's north tip always points toward Earth's magnetic north!"
+        },
+        {
+          id: 1007,
+          category: "Movie Magic",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Popcorn",
+          accepted: ["popcorn"],
+          clues: [
+            "Archaeologists found 5,000-year-old popped kernels of me inside ancient caves in New Mexico.",
+            "Each kernel of me holds a tiny drop of water inside a hard shell; when heated to 356°F, steam explodes me inside out.",
+            "I was banned from early silent movie theaters because owners thought my crunching was too loud.",
+            "During the Great Depression, I became a cheap 5-cent luxury that saved struggling cinemas.",
+            "I am the fluffy, buttered snack served in striped buckets at movie theaters."
+          ],
+          fact: "A popped kernel of popcorn expands to roughly 40 to 50 times its original unpopped size!"
+        }
+      ],
+
+      // CASE #11 (Day 11): Indie Gaming, Fast Birds, Ocean Tech & Classic Monsters
+      [
+        {
+          id: 1101,
+          category: "Social Deduction",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Among Us",
+          accepted: ["among us"],
+          clues: [
+            "I launched quietly in 2018 with fewer than 50 players online before exploding into a global sensation in 2020.",
+            "Crewmates complete mini-tasks like swiping an admin card and fixing wiring aboard maps like The Skeld.",
+            "Hidden saboteurs can sneak through floor vents and call fake reactor meltdowns.",
+            "Hitting the Emergency Meeting button sparks heated debates over who is acting 'sus'.",
+            "I am the colorful spacesuit party game about finding the Impostor."
+          ],
+          fact: "Among Us was created by a tiny indie studio of just three developers—InnerSloth!"
+        },
+        {
+          id: 1102,
+          category: "Sky Speedsters",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Peregrine Falcon",
+          accepted: ["peregrine falcon", "falcon"],
+          clues: [
+            "Special bony baffles inside my nostrils prevent high-speed wind from bursting my lungs while diving.",
+            "I fold my pointed wings back into a teardrop shape during a hunting stoop.",
+            "I nest on cliff ledges—and nowadays on tall city skyscrapers where pigeons are plentiful.",
+            "In a high-altitude dive, I reach speeds over 240 mph.",
+            "I am the fastest bird—and fastest animal—on planet Earth."
+          ],
+          fact: "Engineers studied the Peregrine Falcon's nostrils when designing air intakes for supersonic jet engines!"
+        },
+        {
+          id: 1103,
+          category: "Lunar History",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Apollo 11",
+          accepted: ["apollo 11", "moon landing"],
+          clues: [
+            "My onboard guidance computer had less processing power than a modern pocket calculator.",
+            "My lunar module, nicknamed 'Eagle', landed with fewer than 30 seconds of fuel remaining.",
+            "Over 650 million people watched my grainy black-and-white TV broadcast on July 20, 1969.",
+            "Astronaut Neil Armstrong spoke the famous words 'One small step for man...' during my mission.",
+            "I am the historic NASA spaceflight that landed the first humans on the Moon."
+          ],
+          fact: "Because the Moon has no wind or rain, the bootprints left by Apollo 11 astronauts will stay preserved for millions of years!"
+        },
+        {
+          id: 1104,
+          category: "Ocean Engineering",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Submarine",
+          accepted: ["submarine", "submarines"],
+          clues: [
+            "I dive and surface by pumping water and compressed air in and out of special 'ballast tanks'.",
+            "When submerged, I navigate blind using Sonar—bouncing sound pings off the ocean floor.",
+            "Nuclear-powered versions of me can stay underwater for months without surfacing for air.",
+            "My extendable optical tube, the periscope, peeks above the waves while my hull stays hidden.",
+            "I am an underwater vessel built to travel deep beneath the ocean."
+          ],
+          fact: "The first military submarine, the 'Turtle', was a one-person wooden egg used during the American Revolution in 1776!"
+        },
+        {
+          id: 1105,
+          category: "Myth & Legends",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Phoenix",
+          accepted: ["phoenix"],
+          clues: [
+            "In ancient Greek and Egyptian mythology, only one of me exists in the world at any given time.",
+            "My tears were said to have miraculous healing powers—a detail borrowed in Harry Potter.",
+            "Every 500 years, I build a nest of cinnamon twigs and ignite into a blazing fire.",
+            "From my own glowing ashes, I am reborn brand-new and young again.",
+            "I am the legendary immortal firebird of rebirth."
+          ],
+          fact: "The city of Phoenix, Arizona, was named after the mythical bird because settlers built a new city atop ancient ruins!"
+        },
+        {
+          id: 1106,
+          category: "Brain Fuel",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Chocolate",
+          accepted: ["chocolate"],
+          clues: [
+            "Ancient Mayans and Aztecs drank me cold, frothy, and spiced with chili peppers—and used my beans as money.",
+            "I am harvested from colorful football-shaped pods growing on tropical Theobroma cacao trees.",
+            "My melting point is just below human body temperature, which is why I melt smoothly in your mouth.",
+            "I come in dark, milk, and white varieties.",
+            "I am the world's favorite sweet treat made from roasted cacao beans."
+          ],
+          fact: "The scientific name of the cacao tree, Theobroma cacao, literally translates from Greek to 'Food of the Gods'!"
+        },
+        {
+          id: 1107,
+          category: "Sports Tech",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Skateboard",
+          accepted: ["skateboard"],
+          clues: [
+            "My wooden deck is usually made from 7 thin layers of Canadian maple glued under high pressure.",
+            "Sandpaper-like grip tape covers my top surface so riders' shoes stick during flips.",
+            "Two T-shaped metal axles called 'trucks' let me carve left and right when you lean.",
+            "Four urethane wheels with precision ABEC bearings spin smoothly over concrete.",
+            "I am the four-wheeled wooden board used for kickflips, grinds, and half-pipes."
+          ],
+          fact: "Modern skateboards have curved noses and tails on both ends—called 'popsicle decks'—invented in the early 1990s so skaters could ride switch!"
+        }
+      ],
+
+      // CASE #12 (Day 12): Star Wars Droids, Deep Earth, Cool Reptiles & Music
+      [
+        {
+          id: 1201,
+          category: "Galaxy Far Away",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "R2-D2",
+          accepted: ["r2d2", "r2-d2", "r2 d2"],
+          clues: [
+            "My voice was created by sound designer Ben Burtt blending baby coos with electronic synthesizer tones.",
+            "I am one of the only characters to appear in all nine main Skywalker Saga films.",
+            "Hidden inside my rotating silver-and-blue dome are a hologram projector, a buzzsaw, and a fire extinguisher.",
+            "I communicate exclusively through expressive whistles, chirps, and beeps.",
+            "I am Luke Skywalker's brave little astromech droid and C-3PO's best friend."
+          ],
+          fact: "George Lucas came up with the name R2-D2 while editing American Graffiti when a sound editor asked for 'Reel 2, Dialog Track 2'!"
+        },
+        {
+          id: 1202,
+          category: "Amazing Amphibians",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Poison Dart Frog",
+          accepted: ["poison dart frog", "dart frog", "tree frog"],
+          clues: [
+            "I get my toxic skin chemicals from eating wild rainforest ants and mites—captive-bred versions of me are completely harmless!",
+            "Indigenous tribes in Colombia historically tipped their blowgun darts with secretions from my Golden species.",
+            "My neon-bright blues, yellows, and oranges act as 'aposematic' warning colors to predators.",
+            "I am tiny—usually less than 2 inches long—and live in Central and South American rainforests.",
+            "I am the tiny, jewel-colored toxic rainforest frog."
+          ],
+          fact: "A single Golden Poison Dart Frog carries enough natural toxin to take down 10 adult humans!"
+        },
+        {
+          id: 1203,
+          category: "Weather Phenomena",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Rainbow",
+          accepted: ["rainbow", "rainbows"],
+          clues: [
+            "I am not a physical object you can walk to—I am an optical illusion caused by sunlight refracting inside millions of water droplets.",
+            "From an airplane, you can actually see that my true shape is a complete 360-degree circle.",
+            "In a rare double version of me, the outer arc has its colors reversed in reverse order.",
+            "Isaac Newton divided my spectrum into seven classic colors: ROYGBIV.",
+            "I am the colorful arch of red, orange, yellow, green, blue, indigo, and violet that appears after rain."
+          ],
+          fact: "No two people ever see the exact same rainbow—because each person's eyes receive light refracted from slightly different raindrops!"
+        },
+        {
+          id: 1204,
+          category: "Gaming Hardware",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Game Boy",
+          accepted: ["game boy", "gameboy"],
+          clues: [
+            "Engineer Gunpei Yokoi designed me using cheap, power-sipping calculator LCD tech so four AA batteries would last 30 hours.",
+            "My 1989 launch bundle included Tetris, turning me into an instant cultural phenomenon.",
+            "A customized version of me survived a Gulf War tent fire and still plays Tetris on display in New York.",
+            "My original screen displayed four shades of pea-soup green with zero backlight.",
+            "I am Nintendo's legendary 1989 brick-shaped handheld game console."
+          ],
+          fact: "The Game Boy and Game Boy Color combined sold over 118 million units worldwide!"
+        },
+        {
+          id: 1205,
+          category: "Musical Greats",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Piano",
+          accepted: ["piano", "grand piano"],
+          clues: [
+            "My original Italian name, 'pianoforte', literally means 'soft-loud' because I could play both quiet and booming notes.",
+            "Inside my wooden body, felt-covered hammers strike over 200 tightly stretched steel strings.",
+            "My strings exert nearly 20 tons of tension—requiring a heavy cast-iron frame inside me.",
+            "I have 52 white keys and 36 black keys—88 keys in total.",
+            "I am the classic 88-key percussion-stringed keyboard instrument."
+          ],
+          fact: "Because pianos have both strings and hammers that strike them, musicians classify the piano as both a stringed and a percussion instrument!"
+        },
+        {
+          id: 1206,
+          category: "Desert Plants",
+          badgeColor: "bg-teal-400/20 text-teal-200 border-teal-400/50",
+          answer: "Cactus",
+          accepted: ["cactus", "cacti"],
+          clues: [
+            "My sharp spines are actually modified leaves that shade my stem and stop thirsty animals from eating me.",
+            "My pleated accordion-like skin expands outward like a sponge whenever rare desert rain falls.",
+            "Giant Saguaro species of me can live over 150 years and grow 40 feet tall.",
+            "I perform photosynthesis right through my thick green waxy stem.",
+            "I am the spiky, water-storing desert plant."
+          ],
+          fact: "A fully hydrated giant Saguaro cactus can weigh up to 4,800 pounds—more than a pickup truck!"
+        },
+        {
+          id: 1207,
+          category: "Kitchen Chemistry",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Ice Cream",
+          accepted: ["ice cream"],
+          clues: [
+            "Ancient Roman emperors sent runners to mountain peaks to bring back snow flavored with honey and fruit.",
+            "Up to 50% of my volume is actually tiny whipped air bubbles—without air, I'd be as hard as an ice cube.",
+            "Churning me while freezing keeps ice crystals microscopic so I taste smooth and creamy.",
+            "Popular scoops include vanilla bean, mint chocolate chip, and cookies and cream.",
+            "I am the frozen dairy dessert served in waffle cones and sundaes."
+          ],
+          fact: "It takes about 12 pounds of milk to produce just one single gallon of ice cream!"
+        }
+      ],
+
+      // CASE #13 (Day 13): Marvel Heroes, Ocean Mysteries, Ancient History & Tech
+      [
+        {
+          id: 1301,
+          category: "Asgardian Heroes",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Thor",
+          accepted: ["thor"],
+          clues: [
+            "I am directly inspired by the Norse god of thunder after whom Thursday ('Thor's Day') is named.",
+            "My enchanted hammer Mjolnir was forged inside the heart of a dying neutron star.",
+            "Only someone deemed 'worthy' can lift my hammer—including Captain America in Avengers: Endgame.",
+            "My adopted brother Loki is the god of mischief.",
+            "I am Marvel's hammer-wielding God of Thunder and Prince of Asgard."
+          ],
+          fact: "In Norse mythology, Thor rode across the sky in a chariot pulled by two magical goats named Tanngrisnir and Tanngnjóstr!"
+        },
+        {
+          id: 1302,
+          category: "Deepest Earth",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Mariana Trench",
+          accepted: ["mariana trench"],
+          clues: [
+            "I was formed where the massive Pacific tectonic plate dives beneath the Philippine plate.",
+            "Water pressure at my bottom exceeds 15,750 pounds per square inch—over 1,000 times surface pressure.",
+            "If you dropped Mount Everest into my deepest point, Challenger Deep, its peak would still be over a mile underwater.",
+            "Located in the western Pacific Ocean, I plunge nearly 36,000 feet deep.",
+            "I am the deepest oceanic trench on planet Earth."
+          ],
+          fact: "More humans have walked on the surface of the Moon (12) than have descended to the very bottom of the Mariana Trench!"
+        },
+        {
+          id: 1303,
+          category: "Smart Mammals",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Dolphin",
+          accepted: ["dolphin", "dolphins"],
+          clues: [
+            "I sleep with only half of my brain at a time so the other half remembers to swim up and breathe.",
+            "I use built-in biological sonar called echolocation—clicking and listening for echoes to 'see' underwater.",
+            "Every individual of my species invents a unique 'signature whistle' that works just like a name.",
+            "I am closely related to whales and porpoises.",
+            "I am the playful, acrobatic marine mammal famous for clicking and leaping out of waves."
+          ],
+          fact: "Dolphins can recognize themselves in mirrors—a rare sign of self-awareness shared by only a few species on Earth!"
+        },
+        {
+          id: 1304,
+          category: "Ancient Engineering",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Great Wall of China",
+          accepted: ["great wall", "great wall of china"],
+          clues: [
+            "During the Ming Dynasty, workers mixed sticky rice flour into the mortar to make my bricks ultra-strong.",
+            "Despite a popular urban legend, astronauts say I am actually too narrow to see from space with the naked eye.",
+            "Built over centuries by millions of workers, I wind across mountains, deserts, and grasslands.",
+            "Including all branches and trenches, I stretch over 13,000 miles long.",
+            "I am the colossal ancient stone fortification built across northern China."
+          ],
+          fact: "Sticky rice mortar used in the Great Wall was so strong that weeds still can't grow between many of its bricks today!"
+        },
+        {
+          id: 1305,
+          category: "Everyday Tech",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Wi-Fi",
+          accepted: ["wifi", "wi-fi", "wi fi"],
+          clues: [
+            "Contrary to popular rumor, my name does NOT stand for 'Wireless Fidelity'—a branding firm invented it as a catchy pun on Hi-Fi.",
+            "My core frequency-hopping wireless technology was partly pioneered by 1940s Hollywood actress Hedy Lamarr.",
+            "I transmit internet data through your house using invisible 2.4 GHz and 5 GHz radio waves.",
+            "My icon looks like three curved signal waves radiating upward from a dot.",
+            "I am the wireless internet technology that connects your phone and laptop to a router."
+          ],
+          fact: "Hedy Lamarr invented frequency-hopping radio signals during WWII to stop enemies from jamming torpedoes—laying groundwork for Wi-Fi and Bluetooth!"
+        },
+        {
+          id: 1306,
+          category: "Board Game Classics",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Monopoly",
+          accepted: ["monopoly"],
+          clues: [
+            "My earliest 1904 version, 'The Landlord's Game', was invented by Elizabeth Magie to warn against greedy landlords.",
+            "My classic American street names—including Boardwalk and Park Place—come from Atlantic City, New Jersey.",
+            "Players choose metal tokens like a Scottie dog, top hat, racecar, or battleship.",
+            "Landing on 'Go to Jail' sends you straight behind bars without collecting $200.",
+            "I am the famous real-estate property-trading board game where players buy houses and hotels."
+          ],
+          fact: "During WWII, British intelligence secretly hid real silk escape maps, compasses, and real money inside Monopoly sets sent to prisoners of war!"
+        },
+        {
+          id: 1307,
+          category: "Sweet Classics",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Pizza",
+          accepted: ["pizza"],
+          clues: [
+            "Modern flatbreads topped with tomatoes originated in Naples, Italy, in the 1700s.",
+            "In 1889, a Naples baker created my 'Margherita' style using red tomatoes, white mozzarella, and green basil to match Italy's flag.",
+            "In 2010, a programmer famously paid 10,000 Bitcoins for two large deliveries of me.",
+            "I am baked in blazing-hot stone ovens and sliced into triangular wedges.",
+            "I am the world's favorite round dough dish topped with tomato sauce, melted cheese, and pepperoni."
+          ],
+          fact: "Americans eat approximately 350 slices of pizza every single second!"
+        }
+      ],
+
+      // CASE #14 (Day 14): Gaming Bosses, Space Wonders, Cool Bugs & Sports Icons
+      [
+        {
+          id: 1401,
+          category: "Gaming Villains",
+          badgeColor: "bg-orange-400/20 text-orange-200 border-orange-400/50",
+          answer: "Bowser",
+          accepted: ["bowser", "king koopa"],
+          clues: [
+            "In Japan, I am known as 'Daimaō Kuppa'—King Koopa.",
+            "My creator Shigeru Miyamoto originally sketched me as an ox before turning me into a fire-breathing turtle.",
+            "I command an army of Goombas, Koopas, and my seven Koopalings from lava-filled castles.",
+            "I have spiky red hair, horns, iron spiked cuffs, and a green spiked shell.",
+            "I am Mario's giant fire-breathing arch-nemesis who constantly kidnaps Princess Peach."
+          ],
+          fact: "In Super Mario 64, Mario swings Bowser by his tail to throw him into perimeter bombs!"
+        },
+        {
+          id: 1402,
+          category: "Cosmic Eclipses",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Solar Eclipse",
+          accepted: ["solar eclipse", "eclipse"],
+          clues: [
+            "I am possible only because of an amazing cosmic coincidence: the Sun is 400 times wider than the Moon, and also 400 times farther away.",
+            "During my brief 'totality', daytime turns to twilight, stars appear, and temperatures drop noticeably.",
+            "You must wear special ISO-certified protective glasses to look at my partial phases safely.",
+            "I happen when the Moon passes directly between Earth and the Sun.",
+            "I am the rare astronomical event where the Moon completely blocks out the Sun's bright face."
+          ],
+          fact: "Because the Moon is slowly drifting 1.5 inches farther from Earth each year, total solar eclipses will eventually stop happening in about 600 million years!"
+        },
+        {
+          id: 1403,
+          category: "Mighty Insects",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Honeybee",
+          accepted: ["honeybee", "honey bee", "bee", "bees"],
+          clues: [
+            "I perform a figure-eight 'waggle dance' inside my hive to tell sisters the exact angle and distance to good flowers.",
+            "I have five eyes—two large compound eyes and three tiny simple eyes on top of my head.",
+            "I flap my wings roughly 200 times per second, creating my signature buzz.",
+            "I pollinate roughly one-third of all the food crops humans eat.",
+            "I am the fuzzy black-and-yellow striped insect that lives in hives and makes honey."
+          ],
+          fact: "Honeybees can recognize individual human faces and even understand the mathematical concept of zero!"
+        },
+        {
+          id: 1404,
+          category: "Music Tech",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Headphones",
+          accepted: ["headphones", "earbuds", "airpods"],
+          clues: [
+            "Engineer Nathaniel Baldwin hand-built the first modern pair of me at his kitchen table in 1910 for the U.S. Navy.",
+            "Active noise-canceling versions of me use tiny microphones to create 'anti-noise' sound waves that erase background hum.",
+            "Inside each earcup sits a miniature speaker driver that vibrates air directly into your ear canal.",
+            "Wireless Bluetooth models like AirPods freed me from tangled cords.",
+            "I am the wearable audio device worn over or inside your ears to listen privately."
+          ],
+          fact: "Before 1910, early telephone operators wore heavy 10-pound shoulder-mounted earpieces!"
+        },
+        {
+          id: 1405,
+          category: "Prehistoric Flyers",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Pterodactyl",
+          accepted: ["pterodactyl", "pteranodon", "pterosaur"],
+          clues: [
+            "Scientifically, I wasn't actually a dinosaur—I belonged to a separate group of flying reptiles called pterosaurs.",
+            "My leathery wings were formed by a membrane stretching from my ankles to an extra-long fourth finger.",
+            "My largest giant cousin, Quetzalcoatlus, had a 36-foot wingspan—as wide as a small fighter jet.",
+            "I had a long pointed beak and a sweeping backward crest on my head.",
+            "I am the famous prehistoric winged reptile that soared above the dinosaurs."
+          ],
+          fact: "Pterosaurs were the very first backboned animals on Earth to evolve powered flight—millions of years before birds or bats!"
+        },
+        {
+          id: 1406,
+          category: "World Football",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Soccer",
+          accepted: ["soccer", "football"],
+          clues: [
+            "Outside the United States and Canada, almost the entire rest of the planet calls me 'football'.",
+            "My biggest tournament, the FIFA World Cup, is watched by over 5 billion people every four years.",
+            "Players run up to 7 miles during a 90-minute match without using their hands or arms.",
+            "A referee flashes a yellow card as a warning and a red card to eject a player.",
+            "I am the world's most popular team sport played with a black-and-white checkered ball and two nets."
+          ],
+          fact: "The classic 32-panel black-and-white soccer ball design was invented in 1970 so it would show up clearly on black-and-white TV screens!"
+        },
+        {
+          id: 1407,
+          category: "Cold Treats",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Popsicle",
+          accepted: ["popsicle", "popsicles", "ice pop"],
+          clues: [
+            "I was invented completely by accident in 1905 by an 11-year-old boy named Frank Epperson.",
+            "Frank left a cup of sugary soda powder and water with a wooden stirring stick outside on a freezing San Francisco night.",
+            "He originally called me the 'Epsicle' until his own kids begged for 'Pop's sicle'.",
+            "My wooden sticks often feature corny jokes printed along the flat wood.",
+            "I am the fruity frozen ice-on-a-stick treat."
+          ],
+          fact: "Over 2 billion Popsicles are sold every year—with Cherry still ranking as the #1 most popular flavor!"
         }
       ]
     ];
 
     /**
-     * 2. SCORING SYSTEM (1,000 -> 800 -> 600 -> 400 -> 200 | Miss All 5 = -200)
+     * 2. DAILY CASE NUMBER & SCORING SYSTEM
      */
     const ROUNDS_PER_CASE = 7;
     const MAX_CLUES = 5;
     const CLUE_POINT_VALUES = [1000, 800, 600, 400, 200];
+    const CLUE_RANK_LABELS = ["Genius", "Sharp", "Clever", "Solid", "Clutch"];
     const FAIL_PENALTY = 200;
     const BLITZ_SECONDS_PER_CLUE = 25;
     const ALL_PUZZLES = CASE_SETS.flat();
 
-    function getTodayDateKey() {
+    function getDayIndexSinceLaunch() {
       const now = new Date();
-      const y = now.getFullYear();
-      const m = String(now.getMonth() + 1).padStart(2, '0');
-      const d = String(now.getDate()).padStart(2, '0');
-      return `${y}-${m}-${d}`;
+      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const launchMidnight = new Date(LAUNCH_DATE.getFullYear(), LAUNCH_DATE.getMonth(), LAUNCH_DATE.getDate());
+      const diffDays = Math.floor((todayMidnight - launchMidnight) / (1000 * 60 * 60 * 24));
+      return Math.max(0, diffDays);
     }
 
-    function getStorageKey(mode) {
-      return `archivist_daily_${mode}_${getTodayDateKey()}`;
+    function getTodaysCaseNumber() {
+      return getDayIndexSinceLaunch() + 1;
+    }
+
+    function getTodayKey() {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    }
+
+    function getPuzzleForModeRound(mode, roundIdx) {
+      const dayIdx = getDayIndexSinceLaunch();
+      const setIdx = mode === 'blitz'
+        ? (dayIdx + 1) % CASE_SETS.length
+        : dayIdx % CASE_SETS.length;
+      return CASE_SETS[setIdx][roundIdx];
+    }
+
+    /**
+     * 3. DAILY STORAGE & MODE STATE (1 Play Per Mode Per Day)
+     */
+    const STORAGE_KEY = 'archivist_daily_vault_v3';
+
+    function createEmptyModeState() {
+      return {
+        rounds: Array.from({ length: ROUNDS_PER_CASE }, () => ({
+          guesses: [],
+          won: false,
+          completed: false
+        }))
+      };
+    }
+
+    function loadDailyData() {
+      const today = getTodayKey();
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.date === today && parsed.classic && parsed.blitz) {
+            return parsed;
+          }
+        }
+      } catch (e) {
+        // Ignore storage read errors
+      }
+      return {
+        date: today,
+        classic: createEmptyModeState(),
+        blitz: createEmptyModeState()
+      };
+    }
+
+    let dailyData = loadDailyData();
+    let activeMode = 'classic';
+    let currentRoundIndex = 0;
+
+    function saveDailyData() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(dailyData));
+      } catch (e) {
+        // Ignore storage write errors
+      }
+    }
+
+    function getModeState(mode) {
+      if (dailyData.date !== getTodayKey()) {
+        dailyData = loadDailyData();
+      }
+      return dailyData[mode];
     }
 
     function getRoundPoints(round) {
-      if (!round.completed) return 0;
+      if (!round || !round.completed) return 0;
       if (round.won) {
-        const clueIndex = Math.min(Math.max(round.guesses.length - 1, 0), MAX_CLUES - 1);
-        return CLUE_POINT_VALUES[clueIndex];
+        const idx = Math.min(Math.max(round.guesses.length - 1, 0), MAX_CLUES - 1);
+        return CLUE_POINT_VALUES[idx];
       }
       return -FAIL_PENALTY;
     }
 
-    function calculateTotalScore(roundsArr) {
-      let score = 0;
-      for (const r of roundsArr) {
-        if (r.completed) {
-          score += getRoundPoints(r);
-        }
-      }
-      return score;
+    function calculateTotalScore(rounds) {
+      return rounds.reduce((sum, r) => sum + getRoundPoints(r), 0);
     }
 
-    function getArchivistRank(totalScore, solvedCount) {
-      if (totalScore >= 6400 && solvedCount === 7) return "MYTHIC ARCHIVIST 👑";
-      if (totalScore >= 4800) return "MASTER DETECTIVE 🔥";
-      if (totalScore >= 3000) return "CYBER SLEUTH ⚡";
-      if (totalScore >= 1000) return "FIELD ROOKIE 🕵️";
-      return "VAULT TRAINEE 🌱";
-    }
-
-    /**
-     * 3. AUTOCORRECT & FUZZY MATCHING ENGINE
-     */
-    function normalizeText(str) {
-      return (str || '')
-        .toLowerCase()
-        .replace(/^(the|a|an)\s+/i, '')
-        .replace(/[^a-z0-9\s]/g, '')
-        .replace(/\s+/g, ' ')
-        .trim();
-    }
-
-    function damerauLevenshtein(a, b) {
-      const m = a.length;
-      const n = b.length;
-      if (m === 0) return n;
-      if (n === 0) return m;
-      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
-      for (let i = 0; i <= m; i++) dp[i][0] = i;
-      for (let j = 0; j <= n; j++) dp[0][j] = j;
-
-      for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= n; j++) {
-          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-          dp[i][j] = Math.min(
-            dp[i - 1][j] + 1,
-            dp[i][j - 1] + 1,
-            dp[i - 1][j - 1] + cost
-          );
-          if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
-            dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + 1);
+    function getRoundEmojiGrid(round) {
+      const cells = [];
+      for (let i = 0; i < MAX_CLUES; i++) {
+        if (i < round.guesses.length) {
+          if (round.guesses[i].correct) {
+            cells.push('🟩');
+          } else if (round.guesses[i].timedOut) {
+            cells.push('⏰');
+          } else {
+            cells.push('🟥');
           }
+        } else {
+          cells.push('⬜');
         }
       }
-      return dp[m][n];
-    }
-
-    function getLiveSuggestions(rawInput) {
-      const clean = normalizeText(rawInput);
-      if (clean.length < 3) return [];
-      const matches = [];
-      for (const p of ALL_PUZZLES) {
-        const cleanAns = normalizeText(p.answer);
-        if (cleanAns === clean) continue;
-        const dist = damerauLevenshtein(clean, cleanAns);
-        if (cleanAns.startsWith(clean) || (dist <= 2 && clean.length >= 4)) {
-          matches.push({ answer: p.answer, dist });
-        }
-      }
-      matches.sort((a, b) => a.dist - b.dist);
-      return [...new Set(matches.map(m => m.answer))].slice(0, 3);
-    }
-
-    function autoCorrectInput(rawInput, puzzle) {
-      const clean = normalizeText(rawInput);
-      if (!clean || clean.length < 3) return { corrected: rawInput, wasCorrected: false };
-
-      for (const acc of puzzle.accepted) {
-        const cleanAcc = normalizeText(acc);
-        if (clean === cleanAcc) return { corrected: rawInput, wasCorrected: false };
-        const maxTypos = cleanAcc.length >= 8 ? 2 : (cleanAcc.length >= 4 ? 1 : 0);
-        if (maxTypos > 0 && damerauLevenshtein(clean, cleanAcc) <= maxTypos) {
-          return { corrected: puzzle.answer, wasCorrected: true };
-        }
-      }
-
-      for (const p of ALL_PUZZLES) {
-        const cleanAns = normalizeText(p.answer);
-        const maxTypos = cleanAns.length >= 8 ? 2 : (cleanAns.length >= 5 ? 1 : 0);
-        if (maxTypos > 0 && damerauLevenshtein(clean, cleanAns) <= maxTypos && clean !== cleanAns) {
-          return { corrected: p.answer, wasCorrected: true };
-        }
-      }
-      return { corrected: rawInput, wasCorrected: false };
+      return cells.join('');
     }
 
     /**
-     * 4. CELEBRATORY CONFETTI BURST
+     * 4. DOM REFERENCES & TIMERS (Midnight Reset + 25s Blitz Timer)
      */
-    function launchConfetti() {
-      const canvas = document.getElementById('confetti-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const colors = ['#00f5d4', '#ff3b9a', '#ffd166', '#9b5de5', '#34d399'];
-      const particles = Array.from({ length: 75 }, () => ({
-        x: canvas.width * (0.25 + Math.random() * 0.5),
-        y: canvas.height * 0.55,
-        vx: (Math.random() - 0.5) * 12,
-        vy: -Math.random() * 11 - 4,
-        size: Math.random() * 7 + 4,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rot: Math.random() * Math.PI * 2,
-        vRot: (Math.random() - 0.5) * 0.25
-      }));
-
-      let frame = 0;
-      function tick() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (const p of particles) {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vy += 0.35;
-          p.rot += p.vRot;
-          ctx.save();
-          ctx.translate(p.x, p.y);
-          ctx.rotate(p.rot);
-          ctx.fillStyle = p.color;
-          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
-          ctx.restore();
-        }
-        frame++;
-        if (frame < 75) requestAnimationFrame(tick);
-        else ctx.clearRect(0, 0, canvas.width, canvas.height);
-      }
-      requestAnimationFrame(tick);
-    }
-
-    /**
-     * 5. GAME STATE, DAILY LOCKS & 25-SECOND BLITZ TIMER
-     */
-    let currentScreen = 'home'; // 'home' | 'game' | 'recap'
-    let activeMode = 'classic'; // 'classic' | 'blitz'
-    let rounds = [];
-    let currentRoundIndex = 0;
-
-    // Blitz Timer State
-    let blitzIntervalId = null;
-    let blitzTimeRemaining = BLITZ_SECONDS_PER_CLUE;
-
-    // DOM References
     const elHomeScreen = document.getElementById('home-screen');
     const elGameScreen = document.getElementById('game-screen');
     const elRecapScreen = document.getElementById('recap-screen');
 
-    const elHeaderCasePill = document.getElementById('header-case-pill');
-    const elHeaderSubBadge = document.getElementById('header-sub-badge');
     const elHeaderScoreBox = document.getElementById('header-score-box');
     const elHeaderTotalScore = document.getElementById('header-total-score');
+    const elHeaderCasePill = document.getElementById('header-case-pill');
+    const elHeaderSubBadge = document.getElementById('header-sub-badge');
 
     const elRoundIndicators = document.getElementById('round-indicators');
     const elRoundScoreLabel = document.getElementById('round-score-label');
@@ -949,244 +2187,191 @@
     const elStepIndicators = document.getElementById('step-indicators');
     const elCurrentClueWorth = document.getElementById('current-clue-worth');
 
-    const elBlitzTimerContainer = document.getElementById('blitz-timer-bar-container');
+    const elBlitzBarContainer = document.getElementById('blitz-timer-bar-container');
     const elBlitzTimerText = document.getElementById('blitz-timer-text');
     const elBlitzTimerFill = document.getElementById('blitz-timer-fill');
 
-    const elAutocorrectBanner = document.getElementById('autocorrect-banner');
-    const elAutocorrectBannerText = document.getElementById('autocorrect-banner-text');
     const elCluesContainer = document.getElementById('clues-container');
     const elHistorySection = document.getElementById('history-section');
-    const elHistoryList = document.getElementById('guess-history-list');
+    const elGuessHistoryList = document.getElementById('guess-history-list');
+
     const elInputSection = document.getElementById('input-section');
-    const elGuessForm = document.getElementById('guess-form');
     const elGuessInput = document.getElementById('guess-input');
     const elSuggestionBar = document.getElementById('suggestion-bar');
     const elSuggestionChips = document.getElementById('suggestion-chips');
-    const elBtnSkip = document.getElementById('btn-skip');
     const elResultCard = document.getElementById('result-card');
-    const elToast = document.getElementById('toast');
+    const elAutocorrectBanner = document.getElementById('autocorrect-banner');
+    const elAutocorrectText = document.getElementById('autocorrect-banner-text');
 
-    function createRoundsFromSet(puzzleList) {
-      return puzzleList.map(p => ({
-        puzzleId: p.id,
-        guesses: [],
-        revealedCluesCount: 1,
-        completed: false,
-        won: false
-      }));
-    }
+    let blitzInterval = null;
+    let blitzRemaining = BLITZ_SECONDS_PER_CLUE;
 
-    function saveModeProgress(mode, roundIdx, roundsData) {
-      try {
-        localStorage.setItem(getStorageKey(mode), JSON.stringify({
-          currentRoundIndex: roundIdx,
-          rounds: roundsData
-        }));
-      } catch (e) {}
-    }
-
-    function loadModeData(mode) {
-      const defaultSet = mode === 'blitz' ? CASE_SETS[1] : CASE_SETS[0];
-      try {
-        const raw = localStorage.getItem(getStorageKey(mode));
-        if (raw) {
-          const parsed = JSON.parse(raw);
-          if (Array.isArray(parsed.rounds) && parsed.rounds.length === ROUNDS_PER_CASE) {
-            return {
-              rounds: parsed.rounds,
-              currentRoundIndex: Math.min(parsed.currentRoundIndex || 0, ROUNDS_PER_CASE - 1)
-            };
-          }
-        }
-      } catch (e) {}
-
-      return {
-        rounds: createRoundsFromSet(defaultSet),
-        currentRoundIndex: 0
-      };
-    }
-
-    function getPuzzleById(id) {
-      return ALL_PUZZLES.find(p => p.id === id) || ALL_PUZZLES[0];
-    }
-
-    // Blitz 25s Timer Control
     function stopBlitzTimer() {
-      if (blitzIntervalId) {
-        clearInterval(blitzIntervalId);
-        blitzIntervalId = null;
+      if (blitzInterval) {
+        clearInterval(blitzInterval);
+        blitzInterval = null;
       }
+      elBlitzBarContainer.classList.add('hidden');
     }
 
-    function startBlitzTimerForCurrentClue() {
+    function startBlitzTimer() {
       stopBlitzTimer();
-      const round = rounds[currentRoundIndex];
-      if (activeMode !== 'blitz' || currentScreen !== 'game' || !round || round.completed) {
-        elBlitzTimerContainer.classList.add('hidden');
-        return;
-      }
+      if (activeMode !== 'blitz') return;
 
-      elBlitzTimerContainer.classList.remove('hidden');
-      blitzTimeRemaining = BLITZ_SECONDS_PER_CLUE;
+      const round = getModeState('blitz').rounds[currentRoundIndex];
+      if (!round || round.completed) return;
+
+      blitzRemaining = BLITZ_SECONDS_PER_CLUE;
+      elBlitzBarContainer.classList.remove('hidden');
       updateBlitzTimerUI();
 
-      blitzIntervalId = setInterval(() => {
-        blitzTimeRemaining = Math.max(0, +(blitzTimeRemaining - 0.1).toFixed(1));
+      blitzInterval = setInterval(() => {
+        blitzRemaining = Math.max(0, +(blitzRemaining - 0.1).toFixed(1));
         updateBlitzTimerUI();
-
-        if (blitzTimeRemaining <= 0) {
+        if (blitzRemaining <= 0) {
           stopBlitzTimer();
-          handleTurn('⏱️ Time Up!', false, true);
+          handleBlitzClueTimeout();
         }
       }, 100);
     }
 
     function updateBlitzTimerUI() {
-      const pct = (blitzTimeRemaining / BLITZ_SECONDS_PER_CLUE) * 100;
-      elBlitzTimerText.textContent = `${blitzTimeRemaining.toFixed(1)}s`;
+      elBlitzTimerText.textContent = `${blitzRemaining.toFixed(1)}s`;
+      const pct = Math.max(0, Math.min(100, (blitzRemaining / BLITZ_SECONDS_PER_CLUE) * 100));
       elBlitzTimerFill.style.width = `${pct}%`;
 
-      if (blitzTimeRemaining <= 6) {
+      if (blitzRemaining <= 5) {
         elBlitzTimerText.className = 'text-rose-400 text-sm animate-pulse';
         elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-rose-500 to-pink-500 transition-all duration-100';
-      } else if (blitzTimeRemaining <= 13) {
+      } else if (blitzRemaining <= 10) {
         elBlitzTimerText.className = 'text-cosmic-gold text-sm';
-        elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-100';
+        elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-amber-400 to-orange-400 transition-all duration-100';
       } else {
         elBlitzTimerText.className = 'text-cosmic-cyan text-sm';
         elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-cosmic-cyan to-emerald-400 transition-all duration-100';
       }
     }
 
-    // Daily Midnight Countdown Timer
-    function updateDailyResetTimers() {
-      const now = new Date();
-      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
-      const diffMs = Math.max(0, tomorrow - now);
+    function handleBlitzClueTimeout() {
+      const state = getModeState('blitz');
+      const round = state.rounds[currentRoundIndex];
+      if (!round || round.completed) return;
 
-      const hrs = String(Math.floor(diffMs / (1000 * 60 * 60))).padStart(2, '0');
-      const mins = String(Math.floor((diffMs / (1000 * 60)) % 60)).padStart(2, '0');
-      const secs = String(Math.floor((diffMs / 1000) % 60)).padStart(2, '0');
-      const formatted = `${hrs}:${mins}:${secs}`;
+      hideAutocorrectNotice();
+      round.guesses.push({ text: '⏰ Time Expired', correct: false, timedOut: true });
 
-      const homeTimer = document.getElementById('home-reset-timer');
-      const recapTimer = document.getElementById('recap-reset-timer');
-      if (homeTimer) homeTimer.textContent = formatted;
-      if (recapTimer) recapTimer.textContent = formatted;
+      if (round.guesses.length >= MAX_CLUES) {
+        round.won = false;
+        round.completed = true;
+      }
+
+      saveDailyData();
+      renderGameplay(true);
+      elGuessInput.value = '';
+      elSuggestionBar.classList.add('hidden');
     }
 
-    function showScreen(screenName) {
+    function startMidnightCountdown() {
+      function updateCountdown() {
+        const now = new Date();
+        const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const diff = Math.max(0, tomorrow - now);
+        const hrs = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
+        const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+        const secs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+        const formatted = `${hrs}:${mins}:${secs}`;
+
+        const homeTimer = document.getElementById('home-reset-timer');
+        const recapTimer = document.getElementById('recap-reset-timer');
+        if (homeTimer) homeTimer.textContent = formatted;
+        if (recapTimer) recapTimer.textContent = formatted;
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    }
+
+    /**
+     * 5. SCREEN NAVIGATION & RENDERING
+     */
+    function switchScreen(screenName) {
       stopBlitzTimer();
-      currentScreen = screenName;
       elHomeScreen.classList.add('hidden');
       elGameScreen.classList.add('hidden');
       elRecapScreen.classList.add('hidden');
+
+      const caseNum = getTodaysCaseNumber();
 
       if (screenName === 'home') {
         elHomeScreen.classList.remove('hidden');
         elHeaderScoreBox.classList.add('hidden');
         elHeaderScoreBox.classList.remove('flex');
-        elHeaderCasePill.textContent = 'CASE #1';
-        elHeaderSubBadge.textContent = 'Daily Edition • Mystery Vault';
+        elHeaderCasePill.textContent = `CASE #${caseNum}`;
+        elHeaderSubBadge.textContent = 'Daily Brain Game';
         renderHomeScreen();
       } else if (screenName === 'game') {
         elGameScreen.classList.remove('hidden');
         elHeaderScoreBox.classList.remove('hidden');
         elHeaderScoreBox.classList.add('flex');
-        elHeaderCasePill.textContent = activeMode === 'blitz' ? '⚡ 25s BLITZ' : '🧭 CLASSIC DAILY';
+        elHeaderCasePill.textContent = activeMode === 'blitz' ? `⚡ 25s BLITZ #${caseNum}` : `🧭 CASE #${caseNum}`;
         renderGameplay(true);
       } else if (screenName === 'recap') {
-        elRecapScreen.classList.remove('hidden');
-        elHeaderScoreBox.classList.remove('hidden');
-        elHeaderScoreBox.classList.add('flex');
-        renderRecapScreen();
+        showRecapScreen();
       }
     }
 
-    /**
-     * 6. HOME SCREEN LOGIC (Once-Per-Day Mode Status)
-     */
     function renderHomeScreen() {
-      ['classic', 'blitz'].forEach(mode => {
-        const state = loadModeData(mode);
-        const completedCount = state.rounds.filter(r => r.completed).length;
-        const isFinishedToday = completedCount === ROUNDS_PER_CASE;
-        const isInProgress = !isFinishedToday && (completedCount > 0 || state.rounds[0].guesses.length > 0);
-        const totalPts = calculateTotalScore(state.rounds);
+      const caseNum = getTodaysCaseNumber();
+      const homeCaseBadge = document.getElementById('home-case-badge');
+      if (homeCaseBadge) {
+        homeCaseBadge.innerHTML = `<span>🔮</span> CASE #${caseNum} • DAILY BRAIN GAME`;
+      }
 
+      ['classic', 'blitz'].forEach(mode => {
+        const state = getModeState(mode);
+        const allDone = state.rounds.every(r => r.completed);
+        const anyStarted = state.rounds.some(r => r.guesses.length > 0 || r.completed);
         const badgeEl = document.getElementById(`badge-${mode}-status`);
-        const scoreEl = document.getElementById(`${mode}-saved-score`);
+        const savedEl = document.getElementById(`${mode}-saved-score`);
         const btnEl = document.getElementById(`btn-play-${mode}`);
 
-        if (isFinishedToday) {
-          badgeEl.textContent = 'COMPLETED TODAY ✓';
+        if (allDone) {
+          const pts = calculateTotalScore(state.rounds);
+          badgeEl.textContent = 'COMPLETED TODAY';
           badgeEl.className = 'text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-400/50';
-          scoreEl.classList.remove('hidden');
-          scoreEl.textContent = `Today's Score: ${totalPts.toLocaleString()} / 7,000 PTS`;
-          btnEl.textContent = 'VIEW TODAY\'S SCORECARD →';
-          btnEl.className = 'w-full py-3 px-4 rounded-xl bg-cosmic-panel hover:bg-cosmic-hover border border-emerald-400/50 text-emerald-200 font-display font-bold text-sm tracking-wide transition active:scale-[0.98]';
-        } else if (isInProgress) {
-          badgeEl.textContent = `IN PROGRESS (${state.currentRoundIndex + 1}/7)`;
+          savedEl.textContent = `Today's Score: ${pts.toLocaleString()} / 7,000 PTS`;
+          savedEl.classList.remove('hidden');
+          btnEl.textContent = 'VIEW TODAY’S SCORECARD →';
+        } else if (anyStarted) {
+          const nextRound = state.rounds.findIndex(r => !r.completed) + 1;
+          badgeEl.textContent = `IN PROGRESS (${nextRound}/7)`;
           badgeEl.className = 'text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-cosmic-gold/20 text-amber-200 border border-cosmic-gold/50';
-          scoreEl.classList.remove('hidden');
-          scoreEl.textContent = `Current Score: ${totalPts.toLocaleString()} PTS`;
-          btnEl.textContent = `RESUME (${state.currentRoundIndex + 1}/7) →`;
+          savedEl.classList.add('hidden');
+          btnEl.textContent = mode === 'blitz' ? 'RESUME 25s BLITZ →' : 'RESUME CLASSIC DAILY →';
         } else {
           badgeEl.textContent = mode === 'blitz' ? '25s / CLUE' : 'READY TODAY';
-          scoreEl.classList.add('hidden');
-          if (mode === 'classic') {
-            btnEl.textContent = 'PLAY CLASSIC DAILY →';
-            btnEl.className = 'w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-cyan via-teal-300 to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-cyan-400/20 active:scale-[0.98]';
-          } else {
-            btnEl.textContent = 'PLAY 25s BLITZ →';
-            btnEl.className = 'w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-pink via-rose-400 to-amber-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-pink-500/25 active:scale-[0.98]';
-          }
+          savedEl.classList.add('hidden');
+          btnEl.textContent = mode === 'blitz' ? 'PLAY 25s BLITZ →' : 'PLAY CLASSIC DAILY →';
         }
       });
     }
 
-    function launchDailyMode(mode) {
-      activeMode = mode;
-      const loaded = loadModeData(mode);
-      rounds = loaded.rounds;
-      currentRoundIndex = loaded.currentRoundIndex;
-      hideAutocorrectBanner();
-
-      if (rounds.every(r => r.completed)) {
-        showScreen('recap');
-      } else {
-        showScreen('game');
-      }
-    }
-
-    /**
-     * 7. GAMEPLAY RENDERING (Zero-Scroll + Tiered Clue Worth + Blitz Timer)
-     */
-    function checkGuess(userGuess, puzzle) {
-      const cleanGuess = normalizeText(userGuess);
-      if (!cleanGuess) return false;
-
-      return puzzle.accepted.some(acceptedRaw => {
-        const cleanAccepted = normalizeText(acceptedRaw);
-        if (cleanGuess === cleanAccepted) return true;
-        const maxTypos = cleanAccepted.length >= 8 ? 2 : (cleanAccepted.length >= 4 ? 1 : 0);
-        return maxTypos > 0 && damerauLevenshtein(cleanGuess, cleanAccepted) <= maxTypos;
-      });
-    }
-
-    function renderGameplay(resetBlitzClock = false) {
+    function renderGameplay(resetBlitz = false) {
+      const state = getModeState(activeMode);
+      const rounds = state.rounds;
       const round = rounds[currentRoundIndex];
-      const puzzle = getPuzzleById(round.puzzleId);
+      const puzzle = getPuzzleForModeRound(activeMode, currentRoundIndex);
+
       const totalPts = calculateTotalScore(rounds);
       const solvedCount = rounds.filter(r => r.won).length;
       const currentClueIdx = Math.min(round.guesses.length, MAX_CLUES - 1);
       const activeWorth = CLUE_POINT_VALUES[currentClueIdx];
+      const activeRankWord = CLUE_RANK_LABELS[currentClueIdx];
+      const caseNum = getTodaysCaseNumber();
 
       elHeaderTotalScore.textContent = totalPts.toLocaleString();
       elHeaderSubBadge.textContent = activeMode === 'blitz'
-        ? `Case #1 • 25s Blitz Daily (${currentRoundIndex + 1}/7)`
-        : `Case #1 • Classic Daily (${currentRoundIndex + 1}/7)`;
+        ? `Case #${caseNum} • 25s Blitz (${currentRoundIndex + 1}/7)`
+        : `Case #${caseNum} • Daily Brain Game (${currentRoundIndex + 1}/7)`;
 
       if (elRoundScoreLabel) elRoundScoreLabel.textContent = `${solvedCount}/7 Solved`;
       elCurrentRoundNum.textContent = currentRoundIndex + 1;
@@ -1198,85 +2383,71 @@
         elCurrentClueWorth.textContent = pts >= 0 ? `+${pts.toLocaleString()} PTS` : `${pts} PTS`;
         elCurrentClueWorth.className = `mt-0.5 font-mono text-xs sm:text-sm font-extrabold ${pts >= 0 ? 'text-emerald-300' : 'text-rose-400'}`;
       } else {
-        elCurrentClueWorth.textContent = `+${activeWorth.toLocaleString()} PTS`;
+        elCurrentClueWorth.textContent = `${activeRankWord}: +${activeWorth.toLocaleString()} PTS`;
         elCurrentClueWorth.className = 'mt-0.5 font-mono text-xs sm:text-sm font-extrabold text-cosmic-gold';
       }
 
       renderRoundIndicators();
-      renderClueStepIndicators(round);
-      renderClues(round, puzzle);
-      renderHistory(round);
+      renderStepIndicators();
+      renderCluesList();
+      renderGuessHistory();
 
       if (round.completed) {
         stopBlitzTimer();
-        elBlitzTimerContainer.classList.add('hidden');
-        renderInPlaceResultCard(round, puzzle);
+        showResultCard();
       } else {
-        elInputSection.classList.remove('hidden');
         elResultCard.classList.add('hidden');
-        elBtnSkip.textContent = round.revealedCluesCount >= MAX_CLUES ? 'Give Up' : 'Next Clue';
-        elGuessInput.value = '';
-        elSuggestionBar.classList.add('hidden');
-        elGuessInput.focus();
-
-        if (activeMode === 'blitz') {
-          if (resetBlitzClock) startBlitzTimerForCurrentClue();
-        } else {
-          elBlitzTimerContainer.classList.add('hidden');
+        elInputSection.classList.remove('hidden');
+        if (resetBlitz) {
+          startBlitzTimer();
+        } else if (activeMode !== 'blitz') {
+          stopBlitzTimer();
         }
       }
     }
 
     function renderRoundIndicators() {
-      if (!elRoundIndicators) return;
+      const rounds = getModeState(activeMode).rounds;
       elRoundIndicators.innerHTML = '';
       rounds.forEach((r, idx) => {
         const pill = document.createElement('div');
-        pill.className = 'flex-1 h-7 rounded-xl flex items-center justify-center text-xs font-mono font-extrabold transition-all ';
-
+        let bgClass = 'bg-cosmic-bg border-cosmic-border';
         if (r.completed) {
-          if (r.won) {
-            pill.className += 'bg-emerald-400/25 border border-emerald-400 text-emerald-200';
-            pill.textContent = '✓';
-          } else {
-            pill.className += 'bg-pink-500/25 border border-pink-400 text-pink-200';
-            pill.textContent = '✕';
-          }
+          bgClass = r.won ? 'bg-emerald-400 border-emerald-300 shadow-sm shadow-emerald-400/40' : 'bg-rose-500 border-rose-400';
         } else if (idx === currentRoundIndex) {
-          pill.className += 'bg-gradient-to-r from-cosmic-cyan to-emerald-300 text-indigo-950 shadow-md shadow-cyan-400/30 scale-105';
-          pill.textContent = `${idx + 1}`;
-        } else {
-          pill.className += 'bg-cosmic-bg border border-cosmic-border text-indigo-300';
-          pill.textContent = `${idx + 1}`;
+          bgClass = 'bg-cosmic-cyan border-white animate-pulse';
         }
+        pill.className = `h-2.5 flex-1 rounded-full border transition-all ${bgClass}`;
         elRoundIndicators.appendChild(pill);
       });
     }
 
-    function renderClueStepIndicators(round) {
+    function renderStepIndicators() {
+      const round = getModeState(activeMode).rounds[currentRoundIndex];
       elStepIndicators.innerHTML = '';
       for (let i = 0; i < MAX_CLUES; i++) {
         const dot = document.createElement('div');
-        dot.className = 'h-2 w-6 rounded-full transition-all ';
+        let color = 'bg-cosmic-bg border-cosmic-border';
         if (i < round.guesses.length) {
-          const g = round.guesses[i];
-          dot.className += g.status === 'win' ? 'bg-emerald-400' : (g.status === 'skip' ? 'bg-cosmic-gold' : 'bg-cosmic-pink');
+          color = round.guesses[i].correct ? 'bg-emerald-400 border-emerald-300' : 'bg-rose-500 border-rose-400';
         } else if (i === round.guesses.length && !round.completed) {
-          dot.className += 'bg-cosmic-cyan';
-        } else {
-          dot.className += 'bg-cosmic-border';
+          color = 'bg-cosmic-gold border-amber-200';
         }
+        dot.className = `w-5 h-1.5 rounded-full border ${color}`;
         elStepIndicators.appendChild(dot);
       }
     }
 
-    function renderClues(round, puzzle) {
-      elCluesContainer.innerHTML = '';
-      const countToShow = round.completed ? MAX_CLUES : round.revealedCluesCount;
+    function renderCluesList() {
+      const round = getModeState(activeMode).rounds[currentRoundIndex];
+      const puzzle = getPuzzleForModeRound(activeMode, currentRoundIndex);
+      const countToShow = round.completed ? MAX_CLUES : Math.min(round.guesses.length + 1, MAX_CLUES);
 
+      elCluesContainer.innerHTML = '';
       for (let i = 0; i < countToShow; i++) {
         const isLatest = (i === countToShow - 1) && !round.completed;
         const clueWorth = CLUE_POINT_VALUES[i];
+        const clueRankWord = CLUE_RANK_LABELS[i];
         const card = document.createElement('div');
         card.className = `animate-pop rounded-2xl px-3.5 py-2.5 border-2 transition-all ${
           isLatest 
@@ -1289,7 +2460,7 @@
             <span class="text-[11px] font-mono font-extrabold uppercase tracking-wider ${isLatest ? 'text-cosmic-cyan' : 'text-indigo-300'}">
               Clue #${i + 1} of ${MAX_CLUES}
             </span>
-            <span class="text-[10px] font-mono font-bold ${isLatest ? 'text-cosmic-gold' : 'text-indigo-300'}">WORTH +${clueWorth.toLocaleString()} PTS</span>
+            <span class="text-[10px] font-mono font-bold ${isLatest ? 'text-cosmic-gold' : 'text-indigo-300'}">${clueRankWord.toUpperCase()} • +${clueWorth.toLocaleString()} PTS</span>
           </div>
           <p class="text-xs sm:text-sm text-white leading-snug font-medium">
             ${puzzle.clues[i]}
@@ -1299,333 +2470,472 @@
       }
     }
 
-    function renderHistory(round) {
-      const nonWinGuesses = round.guesses.filter(g => g.status !== 'win');
-      if (nonWinGuesses.length === 0) {
+    function renderGuessHistory() {
+      const round = getModeState(activeMode).rounds[currentRoundIndex];
+      const wrongGuesses = round.guesses.filter(g => !g.correct);
+      if (wrongGuesses.length === 0) {
         elHistorySection.classList.add('hidden');
-        elHistoryList.innerHTML = '';
         return;
       }
-
       elHistorySection.classList.remove('hidden');
-      elHistoryList.innerHTML = '';
-
-      round.guesses.forEach((g, index) => {
-        if (g.status === 'win') return;
-        const pill = document.createElement('span');
-        if (g.status === 'skip') {
-          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-cosmic-gold/15 border border-cosmic-gold/40 text-amber-200';
-          pill.textContent = `Clue #${index + 1} Skipped`;
-        } else if (g.status === 'timeout') {
-          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-rose-500/25 border border-rose-400/50 text-rose-200';
-          pill.textContent = `⏱️ Clue #${index + 1} Time Up`;
-        } else {
-          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-cosmic-pink/20 border border-cosmic-pink/50 text-pink-200';
-          pill.textContent = `✕ ${g.text}`;
-        }
-        elHistoryList.appendChild(pill);
+      elGuessHistoryList.innerHTML = '';
+      wrongGuesses.forEach(g => {
+        const tag = document.createElement('span');
+        tag.className = 'text-[11px] font-mono px-2.5 py-0.5 rounded-lg bg-rose-500/20 text-rose-200 border border-rose-500/40 line-through';
+        tag.textContent = g.text;
+        elGuessHistoryList.appendChild(tag);
       });
     }
 
-    function escapeHTML(str) {
-      const div = document.createElement('div');
-      div.textContent = str;
-      return div.innerHTML;
-    }
-
-    function showAutocorrectBanner(original, fixed) {
-      elAutocorrectBannerText.innerHTML = `✨ Auto-fixed spelling: <strong>"${escapeHTML(original)}"</strong> → <strong>"${escapeHTML(fixed)}"</strong>`;
-      elAutocorrectBanner.classList.remove('hidden');
-    }
-
-    function hideAutocorrectBanner() {
-      elAutocorrectBanner.classList.add('hidden');
-    }
-
-    document.getElementById('btn-dismiss-autocorrect').addEventListener('click', hideAutocorrectBanner);
-
-    /**
-     * 8. LIVE AUTOCORRECT CHIPS & TURN SUBMISSION
-     */
-    elGuessInput.addEventListener('input', () => {
-      const suggestions = getLiveSuggestions(elGuessInput.value);
-      if (suggestions.length === 0) {
-        elSuggestionBar.classList.add('hidden');
-        elSuggestionBar.classList.remove('flex');
-        return;
-      }
-
-      elSuggestionBar.classList.remove('hidden');
-      elSuggestionBar.classList.add('flex');
-      elSuggestionChips.innerHTML = '';
-
-      suggestions.forEach(sug => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'px-2.5 py-0.5 rounded-lg bg-cosmic-cyan/20 hover:bg-cosmic-cyan/35 border border-cosmic-cyan/50 text-cyan-200 text-xs font-mono font-bold transition';
-        chip.textContent = sug;
-        chip.addEventListener('click', () => {
-          elGuessInput.value = sug;
-          elSuggestionBar.classList.add('hidden');
-          elGuessInput.focus();
-        });
-        elSuggestionChips.appendChild(chip);
-      });
-    });
-
-    function handleTurn(rawText, isSkip = false, isTimeout = false) {
-      const round = rounds[currentRoundIndex];
-      if (round.completed) return;
-
-      const puzzle = getPuzzleById(round.puzzleId);
-      elSuggestionBar.classList.add('hidden');
-
-      let finalGuess = rawText;
-
-      if (!isSkip && !isTimeout) {
-        const autoResult = autoCorrectInput(rawText, puzzle);
-        finalGuess = autoResult.corrected;
-
-        if (autoResult.wasCorrected) {
-          showAutocorrectBanner(rawText, finalGuess);
-        } else {
-          hideAutocorrectBanner();
-        }
-
-        if (checkGuess(finalGuess, puzzle)) {
-          stopBlitzTimer();
-          round.guesses.push({ text: finalGuess, status: 'win' });
-          round.completed = true;
-          round.won = true;
-          saveModeProgress(activeMode, currentRoundIndex, rounds);
-          launchConfetti();
-          renderGameplay(false);
-          return;
-        }
-      } else {
-        hideAutocorrectBanner();
-      }
-
-      const status = isTimeout ? 'timeout' : (isSkip ? 'skip' : 'wrong');
-      round.guesses.push({
-        text: isTimeout ? 'Time Up' : (isSkip ? 'Skipped' : finalGuess),
-        status
-      });
-
-      if (!isSkip && !isTimeout) {
-        elGuessInput.classList.remove('animate-shake');
-        void elGuessInput.offsetWidth;
-        elGuessInput.classList.add('animate-shake');
-      }
-
-      if (round.guesses.length >= MAX_CLUES) {
-        stopBlitzTimer();
-        round.completed = true;
-        round.won = false;
-      } else {
-        round.revealedCluesCount++;
-      }
-
-      saveModeProgress(activeMode, currentRoundIndex, rounds);
-      renderGameplay(true);
-    }
-
-    elGuessForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const val = elGuessInput.value.trim();
-      if (!val) return;
-      handleTurn(val, false, false);
-    });
-
-    elBtnSkip.addEventListener('click', () => {
-      handleTurn('', true, false);
-    });
-
-    /**
-     * 9. IN-PLACE CONTINUE BAR & ENTER KEY SHORTCUT
-     */
-    function generateRoundEmojiRow(round) {
-      let row = '';
-      for (let i = 0; i < MAX_CLUES; i++) {
-        if (i < round.guesses.length) {
-          const status = round.guesses[i].status;
-          if (status === 'win') row += '🟩';
-          else if (status === 'skip') row += '🟨';
-          else if (status === 'timeout') row += '⏱️';
-          else row += '🟥';
-        } else {
-          row += '⬜';
-        }
-      }
-      return row;
-    }
-
-    function renderInPlaceResultCard(round, puzzle) {
-      elInputSection.classList.add('hidden');
-      elResultCard.classList.remove('hidden');
-
+    function showResultCard() {
+      const round = getModeState(activeMode).rounds[currentRoundIndex];
+      const puzzle = getPuzzleForModeRound(activeMode, currentRoundIndex);
       const pillEl = document.getElementById('result-status-pill');
       const btnNext = document.getElementById('btn-next-round');
       const earnedPts = getRoundPoints(round);
 
       if (round.won) {
+        const winIdx = Math.min(Math.max(round.guesses.length - 1, 0), MAX_CLUES - 1);
+        const winWord = CLUE_RANK_LABELS[winIdx].toUpperCase();
         elResultCard.className = 'animate-pop bg-cosmic-surface border-2 border-emerald-400 rounded-2xl p-3.5 shadow-2xl';
         pillEl.className = 'text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-emerald-400/25 text-emerald-200 border border-emerald-400/50';
-        pillEl.textContent = `🎉 +${earnedPts.toLocaleString()} PTS! • SOLVED ON CLUE #${round.guesses.length}`;
+        pillEl.textContent = `🎉 ${winWord}! +${earnedPts.toLocaleString()} PTS • CLUE #${round.guesses.length}`;
       } else {
         elResultCard.className = 'animate-pop bg-cosmic-surface border-2 border-cosmic-pink rounded-2xl p-3.5 shadow-2xl';
-        pillEl.className = 'text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50';
-        pillEl.textContent = `💥 -200 PTS • MISSED ALL 5 TRIES`;
+        pillEl.className = 'text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-rose-500/25 text-rose-200 border border-rose-500/50';
+        pillEl.textContent = `❌ MISSED • -${FAIL_PENALTY} PTS`;
       }
 
-      document.getElementById('emoji-grid-preview').textContent = generateRoundEmojiRow(round);
+      document.getElementById('emoji-grid-preview').textContent = getRoundEmojiGrid(round);
       document.getElementById('result-answer').textContent = puzzle.answer;
       document.getElementById('result-fact').textContent = puzzle.fact;
 
-      if (currentRoundIndex < ROUNDS_PER_CASE - 1) {
-        btnNext.textContent = `CONTINUE TO NEXT MYSTERY (${currentRoundIndex + 2}/7) →`;
-      } else {
-        btnNext.textContent = `VIEW FINAL CASE SCORE →`;
-      }
+      btnNext.textContent = currentRoundIndex >= ROUNDS_PER_CASE - 1
+        ? '🏆 VIEW FINAL SCORECARD →'
+        : 'CONTINUE TO NEXT MYSTERY →';
 
-      setTimeout(() => btnNext.focus(), 40);
+      elInputSection.classList.add('hidden');
+      elResultCard.classList.remove('hidden');
     }
 
-    function advanceToNextMystery() {
-      hideAutocorrectBanner();
-      if (currentRoundIndex < ROUNDS_PER_CASE - 1) {
-        currentRoundIndex++;
-        saveModeProgress(activeMode, currentRoundIndex, rounds);
-        renderGameplay(true);
-      } else {
-        if (rounds.filter(r => r.won).length >= 4) launchConfetti();
-        showScreen('recap');
-      }
-    }
+    function showRecapScreen() {
+      stopBlitzTimer();
+      elHomeScreen.classList.add('hidden');
+      elGameScreen.classList.add('hidden');
+      elRecapScreen.classList.remove('hidden');
 
-    document.getElementById('btn-next-round').addEventListener('click', advanceToNextMystery);
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && currentScreen === 'game' && rounds[currentRoundIndex]?.completed) {
-        if (document.activeElement !== document.getElementById('btn-next-round')) {
-          e.preventDefault();
-          advanceToNextMystery();
-        }
-      }
-    });
-
-    /**
-     * 10. FINAL CASE SCORECARD & EMOJI COPY
-     */
-    function renderRecapScreen() {
+      const caseNum = getTodaysCaseNumber();
+      const modeTitle = activeMode === 'blitz' ? '25s BLITZ' : 'DAILY BRAIN GAME';
+      const state = getModeState(activeMode);
+      const rounds = state.rounds;
       const totalPts = calculateTotalScore(rounds);
       const solvedCount = rounds.filter(r => r.won).length;
-      const missedCount = ROUNDS_PER_CASE - solvedCount;
-      const rank = getArchivistRank(totalPts, solvedCount);
+      const missedCount = rounds.filter(r => r.completed && !r.won).length;
 
+      elHeaderScoreBox.classList.remove('hidden');
+      elHeaderScoreBox.classList.add('flex');
       elHeaderTotalScore.textContent = totalPts.toLocaleString();
+      elHeaderCasePill.textContent = `CASE #${caseNum}`;
+      elHeaderSubBadge.textContent = `${modeTitle} • Complete`;
+
+      let rank = 'ROOKIE SLEUTH';
+      if (totalPts >= 6200) rank = 'GRAND ARCHIVIST';
+      else if (totalPts >= 4800) rank = 'MASTER DETECTIVE';
+      else if (totalPts >= 3200) rank = 'SHARP INVESTIGATOR';
+      else if (totalPts >= 1500) rank = 'CLUE HUNTER';
+
       document.getElementById('recap-rank-badge').textContent = `RANK: ${rank}`;
-      document.getElementById('recap-title').textContent = activeMode === 'blitz'
-        ? `25s BLITZ DAILY COMPLETE!`
-        : `CLASSIC DAILY COMPLETE!`;
+      document.getElementById('recap-title').textContent = `CASE #${caseNum} • ${modeTitle} COMPLETE!`;
       document.getElementById('recap-final-score').textContent = totalPts.toLocaleString();
-      document.getElementById('recap-subtitle').textContent = 
-        `${solvedCount} Solved • ${missedCount} Missed (-200 each)`;
+      document.getElementById('recap-subtitle').textContent = `${solvedCount}/7 Solved • ${missedCount} Missed (-${FAIL_PENALTY} each)`;
 
       const listEl = document.getElementById('recap-rows-list');
       listEl.innerHTML = '';
 
       rounds.forEach((r, idx) => {
-        const p = getPuzzleById(r.puzzleId);
+        const puzzle = getPuzzleForModeRound(activeMode, idx);
         const pts = getRoundPoints(r);
-        const rowDiv = document.createElement('div');
-        rowDiv.className = 'flex items-center justify-between bg-cosmic-bg/90 border border-cosmic-border rounded-xl px-3 py-2 gap-2';
-
-        rowDiv.innerHTML = `
-          <div class="flex items-center gap-2.5 min-w-0">
-            <span class="w-6 h-6 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-mono font-extrabold ${
-              r.won ? 'bg-emerald-400/25 text-emerald-200 border border-emerald-400/50' : 'bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50'
-            }">${idx + 1}</span>
-            <div class="truncate">
-              <div class="font-bold text-xs sm:text-sm text-white truncate">${p.answer}</div>
-              <div class="text-[11px] font-mono font-bold ${r.won ? 'text-emerald-300' : 'text-pink-400'}">
-                ${pts >= 0 ? `+${pts.toLocaleString()} PTS` : `${pts} PTS`}
-              </div>
+        const winIdx = Math.min(Math.max(r.guesses.length - 1, 0), MAX_CLUES - 1);
+        const rankLabel = r.won ? CLUE_RANK_LABELS[winIdx] : 'Missed';
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between gap-2 bg-cosmic-bg/85 border border-cosmic-border rounded-2xl px-3.5 py-2.5 text-xs';
+        row.innerHTML = `
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-indigo-300">#${idx + 1}</span>
+              <span class="font-bold text-white truncate">${puzzle.answer}</span>
             </div>
+            <span class="font-mono text-[11px] tracking-wider">${getRoundEmojiGrid(r)} <span class="text-indigo-300 ml-1">(${rankLabel})</span></span>
           </div>
-          <div class="font-mono text-xs sm:text-sm tracking-wider flex-shrink-0">
-            ${generateRoundEmojiRow(r)}
-          </div>
+          <span class="font-mono font-extrabold whitespace-nowrap ${pts >= 0 ? 'text-emerald-300' : 'text-rose-400'}">
+            ${pts >= 0 ? '+' + pts.toLocaleString() : pts} PTS
+          </span>
         `;
-        listEl.appendChild(rowDiv);
+        listEl.appendChild(row);
       });
+
+      if (solvedCount >= 5) launchConfetti();
+    }
+
+    /**
+     * 6. GUESS SUBMISSION, SKIP CLUE & TYPO AUTOCORRECT
+     */
+    function handleGuessSubmission(rawInput) {
+      const state = getModeState(activeMode);
+      const round = state.rounds[currentRoundIndex];
+      if (!round || round.completed) return;
+
+      const puzzle = getPuzzleForModeRound(activeMode, currentRoundIndex);
+      const cleanGuess = rawInput.trim();
+      if (!cleanGuess) return;
+
+      let matchedAnswer = null;
+      let autoFixedFrom = null;
+
+      if (isExactMatch(cleanGuess, puzzle)) {
+        matchedAnswer = puzzle.answer;
+      } else {
+        const fuzzy = findFuzzyMatch(cleanGuess, puzzle);
+        if (fuzzy) {
+          matchedAnswer = puzzle.answer;
+          autoFixedFrom = cleanGuess;
+        }
+      }
+
+      if (matchedAnswer) {
+        round.guesses.push({ text: matchedAnswer, correct: true, timedOut: false });
+        round.won = true;
+        round.completed = true;
+        stopBlitzTimer();
+        saveDailyData();
+        launchConfetti();
+
+        if (autoFixedFrom) {
+          showAutocorrectNotice(`Auto-fixed "${autoFixedFrom}" → "${matchedAnswer}"!`);
+        } else {
+          hideAutocorrectNotice();
+        }
+
+        renderGameplay(false);
+      } else {
+        const correctedDisplay = autoCorrectWordSpelling(cleanGuess);
+        if (correctedDisplay.toLowerCase() !== cleanGuess.toLowerCase()) {
+          showAutocorrectNotice(`Checked as "${correctedDisplay}" — not quite!`);
+        } else {
+          hideAutocorrectNotice();
+        }
+
+        round.guesses.push({ text: correctedDisplay, correct: false, timedOut: false });
+
+        if (round.guesses.length >= MAX_CLUES) {
+          round.won = false;
+          round.completed = true;
+          stopBlitzTimer();
+        }
+
+        saveDailyData();
+        renderGameplay(true);
+
+        if (!round.completed) {
+          elInputSection.classList.remove('animate-shake');
+          void elInputSection.offsetWidth;
+          elInputSection.classList.add('animate-shake');
+        }
+      }
+
+      elGuessInput.value = '';
+      elSuggestionBar.classList.add('hidden');
+      if (!round.completed) elGuessInput.focus();
+    }
+
+    function handleSkipClue() {
+      const state = getModeState(activeMode);
+      const round = state.rounds[currentRoundIndex];
+      if (!round || round.completed) return;
+
+      hideAutocorrectNotice();
+      round.guesses.push({ text: 'Skipped Clue', correct: false, timedOut: false });
+
+      if (round.guesses.length >= MAX_CLUES) {
+        round.won = false;
+        round.completed = true;
+        stopBlitzTimer();
+      }
+
+      saveDailyData();
+      renderGameplay(true);
+      elGuessInput.value = '';
+      elSuggestionBar.classList.add('hidden');
+      if (!round.completed) elGuessInput.focus();
+    }
+
+    function normalizeText(str) {
+      return str.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    function isExactMatch(guess, puzzle) {
+      const norm = normalizeText(guess);
+      if (!norm) return false;
+      if (normalizeText(puzzle.answer) === norm) return true;
+      return puzzle.accepted.some(acc => normalizeText(acc) === norm);
+    }
+
+    function levenshteinDistance(a, b) {
+      const m = a.length, n = b.length;
+      if (m === 0) return n;
+      if (n === 0) return m;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+        }
+      }
+      return dp[m][n];
+    }
+
+    function findFuzzyMatch(guess, puzzle) {
+      const normGuess = normalizeText(guess);
+      if (normGuess.length < 3) return null;
+      const candidates = [puzzle.answer, ...puzzle.accepted];
+      for (const cand of candidates) {
+        const normCand = normalizeText(cand);
+        const maxAllowed = normCand.length <= 5 ? 1 : normCand.length <= 10 ? 2 : 3;
+        if (levenshteinDistance(normGuess, normCand) <= maxAllowed) return cand;
+      }
+      return null;
+    }
+
+    function autoCorrectWordSpelling(input) {
+      const norm = normalizeText(input);
+      if (norm.length < 4) return input;
+      let bestMatch = null;
+      let bestDist = Infinity;
+      for (const p of ALL_PUZZLES) {
+        for (const cand of [p.answer, ...p.accepted]) {
+          const normCand = normalizeText(cand);
+          const dist = levenshteinDistance(norm, normCand);
+          const threshold = normCand.length <= 6 ? 1 : 2;
+          if (dist > 0 && dist <= threshold && dist < bestDist) {
+            bestDist = dist;
+            bestMatch = cand;
+          }
+        }
+      }
+      return bestMatch || input;
+    }
+
+    function showAutocorrectNotice(msg) {
+      elAutocorrectText.textContent = msg;
+      elAutocorrectBanner.classList.remove('hidden');
+    }
+
+    function hideAutocorrectNotice() {
+      elAutocorrectBanner.classList.add('hidden');
+    }
+
+    /**
+     * 7. LIVE AUTOCOMPLETE SUGGESTIONS & SCORECARD SHARE
+     */
+    elGuessInput.addEventListener('input', () => {
+      const val = normalizeText(elGuessInput.value);
+      if (val.length < 2) {
+        elSuggestionBar.classList.add('hidden');
+        elSuggestionBar.classList.remove('flex');
+        return;
+      }
+
+      const matches = [];
+      const seen = new Set();
+
+      for (const p of ALL_PUZZLES) {
+        const normAns = normalizeText(p.answer);
+        if (!seen.has(normAns) && (normAns.startsWith(val) || levenshteinDistance(val, normAns) <= 2)) {
+          seen.add(normAns);
+          matches.push(p.answer);
+        }
+        if (matches.length >= 4) break;
+      }
+
+      if (matches.length === 0) {
+        elSuggestionBar.classList.add('hidden');
+        elSuggestionBar.classList.remove('flex');
+        return;
+      }
+
+      elSuggestionChips.innerHTML = '';
+      matches.forEach(label => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'text-xs font-mono font-bold px-2.5 py-1 rounded-lg bg-cosmic-panel hover:bg-cosmic-cyan hover:text-indigo-950 text-cyan-200 border border-cosmic-border transition';
+        chip.textContent = label;
+        chip.addEventListener('click', () => {
+          elGuessInput.value = label;
+          elSuggestionBar.classList.add('hidden');
+          elSuggestionBar.classList.remove('flex');
+          elGuessInput.focus();
+        });
+        elSuggestionChips.appendChild(chip);
+      });
+
+      elSuggestionBar.classList.remove('hidden');
+      elSuggestionBar.classList.add('flex');
+    });
+
+    function copyScorecardToClipboard() {
+      const caseNum = getTodaysCaseNumber();
+      const modeLabel = activeMode === 'blitz' ? '⚡ 25s Blitz Daily' : '🧭 Daily Brain Game';
+      const state = getModeState(activeMode);
+      const rounds = state.rounds;
+      const totalPts = calculateTotalScore(rounds);
+      const solvedCount = rounds.filter(r => r.won).length;
+
+      const lines = [
+        `🔮 ARCHIVIST — Case #${caseNum} (${modeLabel})`,
+        `Score: ${totalPts.toLocaleString()} / 7,000 PTS (${solvedCount}/7 Solved)`,
+        ''
+      ];
+
+      rounds.forEach((r, idx) => {
+        const pts = getRoundPoints(r);
+        const ptsText = pts >= 0 ? `+${pts}` : `${pts}`;
+        lines.push(`#${idx + 1} ${getRoundEmojiGrid(r)} (${ptsText})`);
+      });
+
+      lines.push('', 'Play free: https://adamtgazmez.github.io/Archivist/');
+      const shareText = lines.join('\n');
+
+      const tempArea = document.createElement('textarea');
+      tempArea.value = shareText;
+      document.body.appendChild(tempArea);
+      tempArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Scorecard copied to clipboard!');
+      } catch (e) {
+        showToast('Could not copy scorecard.');
+      }
+      document.body.removeChild(tempArea);
     }
 
     function showToast(message) {
-      elToast.textContent = message;
-      elToast.classList.remove('opacity-0');
-      setTimeout(() => elToast.classList.add('opacity-0'), 2400);
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.remove('opacity-0');
+      setTimeout(() => toast.classList.add('opacity-0'), 2400);
     }
 
-    document.getElementById('btn-share-all').addEventListener('click', () => {
-      const totalPts = calculateTotalScore(rounds);
-      const solvedCount = rounds.filter(r => r.won).length;
-      const rank = getArchivistRank(totalPts, solvedCount);
-      const modeLabel = activeMode === 'blitz' ? '25s Blitz Daily' : 'Classic Daily';
-
-      const header = `🔮 ARCHIVIST Case #1 (${modeLabel}) — ${totalPts.toLocaleString()}/7,000 PTS (${solvedCount}/7)`;
-
-      const emojiRows = rounds.map((r, idx) => {
-        const pts = getRoundPoints(r);
-        const ptsTag = pts >= 0 ? `+${pts.toLocaleString()}` : `${pts}`;
-        return `${idx + 1}. ${generateRoundEmojiRow(r)} (${ptsTag})`;
-      }).join('\n');
-
-      const sharePayload = `${header}\nRank: ${rank}\n\n${emojiRows}`;
-
-      const textArea = document.createElement('textarea');
-      textArea.value = sharePayload;
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-9999px';
-      document.body.appendChild(textArea);
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        showToast('Case Scorecard copied!');
-      } catch (err) {
-        showToast('Could not copy scorecard');
-      }
-      document.body.removeChild(textArea);
-    });
-
     /**
-     * 11. EVENT LISTENERS & BOOT
+     * 8. CONFETTI & EVENT WIRING
      */
-    document.getElementById('btn-home').addEventListener('click', () => showScreen('home'));
-    document.getElementById('btn-play-classic').addEventListener('click', () => launchDailyMode('classic'));
-    document.getElementById('btn-play-blitz').addEventListener('click', () => launchDailyMode('blitz'));
-    document.getElementById('btn-recap-home').addEventListener('click', () => showScreen('home'));
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-    const elHelpModal = document.getElementById('help-modal');
+      const colors = ['#00f5d4', '#ff3b9a', '#ffd166', '#9b5de5', '#34d399'];
+      const particles = Array.from({ length: 75 }, () => ({
+        x: Math.random() * canvas.width,
+        y: -20 - Math.random() * 120,
+        size: 6 + Math.random() * 6,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 5,
+        vy: 3 + Math.random() * 5,
+        rot: Math.random() * 360,
+        vRot: (Math.random() - 0.5) * 12
+      }));
+
+      let frames = 0;
+      function tick() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vRot;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rot * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+        });
+        frames++;
+        if (frames < 95) {
+          requestAnimationFrame(tick);
+        } else {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    document.getElementById('btn-home').addEventListener('click', () => switchScreen('home'));
+    document.getElementById('btn-recap-home').addEventListener('click', () => switchScreen('home'));
+
+    document.getElementById('btn-play-classic').addEventListener('click', () => {
+      activeMode = 'classic';
+      const state = getModeState('classic');
+      if (state.rounds.every(r => r.completed)) {
+        switchScreen('recap');
+      } else {
+        const nextIdx = state.rounds.findIndex(r => !r.completed);
+        currentRoundIndex = nextIdx >= 0 ? nextIdx : 0;
+        switchScreen('game');
+      }
+    });
+
+    document.getElementById('btn-play-blitz').addEventListener('click', () => {
+      activeMode = 'blitz';
+      const state = getModeState('blitz');
+      if (state.rounds.every(r => r.completed)) {
+        switchScreen('recap');
+      } else {
+        const nextIdx = state.rounds.findIndex(r => !r.completed);
+        currentRoundIndex = nextIdx >= 0 ? nextIdx : 0;
+        switchScreen('game');
+      }
+    });
+
+    document.getElementById('guess-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleGuessSubmission(elGuessInput.value);
+    });
+
+    document.getElementById('btn-skip').addEventListener('click', handleSkipClue);
+    document.getElementById('btn-dismiss-autocorrect').addEventListener('click', hideAutocorrectNotice);
+
+    document.getElementById('btn-next-round').addEventListener('click', () => {
+      if (currentRoundIndex >= ROUNDS_PER_CASE - 1) {
+        switchScreen('recap');
+      } else {
+        currentRoundIndex++;
+        renderGameplay(true);
+      }
+    });
+
+    document.getElementById('btn-share-all').addEventListener('click', copyScorecardToClipboard);
+
+    const helpModal = document.getElementById('help-modal');
     document.getElementById('btn-help').addEventListener('click', () => {
-      elHelpModal.classList.remove('hidden');
-      elHelpModal.classList.add('flex');
+      helpModal.classList.remove('hidden');
+      helpModal.classList.add('flex');
     });
-    const closeHelp = () => {
-      elHelpModal.classList.add('hidden');
-      elHelpModal.classList.remove('flex');
-    };
-    document.getElementById('btn-close-help').addEventListener('click', closeHelp);
-    document.getElementById('btn-got-it').addEventListener('click', closeHelp);
-    elHelpModal.addEventListener('click', (e) => {
-      if (e.target === elHelpModal) closeHelp();
+    document.getElementById('btn-close-help').addEventListener('click', () => {
+      helpModal.classList.add('hidden');
+      helpModal.classList.remove('flex');
+    });
+    document.getElementById('btn-got-it').addEventListener('click', () => {
+      helpModal.classList.add('hidden');
+      helpModal.classList.remove('flex');
     });
 
-    window.addEventListener('DOMContentLoaded', () => {
-      updateDailyResetTimers();
-      setInterval(updateDailyResetTimers, 1000);
-      showScreen('home');
-    });
+    // Boot App
+    startMidnightCountdown();
+    switchScreen('home');
   </script>
 </body>
 </html>
