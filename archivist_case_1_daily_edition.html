@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARCHIVIST — Case #1: Daily Edition</title>
+  <!-- Load Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Load Google Fonts:Fredoka (Playful Arcade Display), Inter (Crisp UI), JetBrains Mono (Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Fredoka', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            cosmic: {
+              bg: '#141136',
+              surface: '#1f1b52',
+              panel: '#2a246b',
+              hover: '#362f85',
+              border: '#493fa8',
+              cyan: '#00f5d4',
+              pink: '#ff3b9a',
+              gold: '#ffd166',
+              violet: '#9b5de5',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Vibrant Cosmic-Indigo & Neon-Arcade Backdrop */
+    body {
+      background-color: #141136;
+      background-image: 
+        radial-gradient(circle at 15% 12%, rgba(255, 59, 154, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 85% 18%, rgba(0, 245, 212, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 95%, rgba(255, 209, 102, 0.16) 0%, transparent 50%),
+        linear-gradient(to right, rgba(155, 93, 229, 0.12) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(155, 93, 229, 0.12) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+    }
+
+    @keyframes popSlideIn {
+      0% { opacity: 0; transform: translateY(10px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    @keyframes neonPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.45); }
+      50% { box-shadow: 0 0 24px 4px rgba(0, 245, 212, 0.35); }
+    }
+
+    .animate-pop {
+      animation: popSlideIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-shake {
+      animation: shake 0.36s ease-in-out;
+    }
+
+    .glow-cyan {
+      animation: neonPulse 2.2s infinite;
+    }
+
+    /* Confetti Canvas Overlay */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 60;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #141136; }
+    ::-webkit-scrollbar-thumb { background: #493fa8; border-radius: 9999px; }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col justify-between selection:bg-cosmic-cyan selection:text-indigo-950">
+
+  <!-- Celebratory Confetti Overlay -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- ==================== TOP NEON ARCADE HEADER ==================== -->
+  <header class="border-b border-cosmic-border/80 bg-cosmic-surface/85 backdrop-blur-md sticky top-0 z-30">
+    <div class="max-w-2xl mx-auto px-3 sm:px-5 py-2.5 flex items-center justify-between gap-2">
+      <!-- Brand / Return Home Button -->
+      <button id="btn-home" title="Return to Home Screen" class="flex items-center gap-2.5 text-left group focus:outline-none">
+        <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-cosmic-pink via-cosmic-violet to-cosmic-cyan p-[2px] shadow-lg shadow-pink-500/25 group-hover:scale-105 transition">
+          <div class="w-full h-full bg-cosmic-bg rounded-[14px] flex items-center justify-center">
+            <span class="text-xl" role="img" aria-label="Crystal Orb">🔮</span>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-bold text-lg sm:text-xl tracking-wide bg-gradient-to-r from-cosmic-cyan via-white to-cosmic-gold bg-clip-text text-transparent leading-none">
+              ARCHIVIST
+            </span>
+            <span id="header-case-pill" class="text-[10px] sm:text-xs font-mono font-extrabold uppercase px-2 py-0.5 rounded-full bg-cosmic-pink/20 text-pink-200 border border-cosmic-pink/50">
+              CASE #1
+            </span>
+          </div>
+          <span id="header-sub-badge" class="text-[11px] font-mono text-indigo-200 block mt-0.5">Daily Edition • Mystery Vault</span>
+        </div>
+      </button>
+
+      <!-- Live Score & Rules Controls -->
+      <div class="flex items-center gap-2">
+        <!-- Live Score Pill (Visible during Active Play & Finale) -->
+        <div id="header-score-box" class="hidden items-center gap-2 bg-cosmic-bg/90 border border-cosmic-cyan/40 px-3 py-1.5 rounded-2xl shadow-inner">
+          <div class="text-right">
+            <span class="text-[10px] font-mono uppercase text-cyan-300 block leading-none">Score</span>
+            <span id="header-total-score" class="font-mono font-extrabold text-sm sm:text-base text-cosmic-gold leading-tight">0</span>
+            <span class="text-[10px] font-mono text-indigo-300">/ 7,000</span>
+          </div>
+        </div>
+
+        <button 
+          id="btn-help" 
+          aria-label="How to Play"
+          class="px-3 py-2 rounded-2xl bg-cosmic-panel border border-cosmic-border hover:bg-cosmic-hover text-cyan-200 hover:text-white transition text-xs font-mono font-bold shadow-sm">
+          ? Rules
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== VIEW 1: VIBRANT HOME SCREEN ==================== -->
+  <main id="home-screen" class="flex-grow max-w-2xl w-full mx-auto px-4 py-4 flex flex-col justify-center">
+    <div class="bg-cosmic-surface/95 border-2 border-cosmic-border rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+      <!-- Top Rainbow Neon Accent Strip -->
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cosmic-pink via-cosmic-gold to-cosmic-cyan"></div>
+
+      <!-- Case #1 Daily Edition Badge Row -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pb-3.5 mb-4 border-b border-cosmic-border/70">
+        <span class="inline-flex items-center gap-1.5 font-mono text-xs font-extrabold uppercase tracking-wider text-indigo-950 bg-gradient-to-r from-cosmic-gold to-amber-300 px-3.5 py-1 rounded-full shadow-md shadow-amber-400/20">
+          <span>🔮</span> CASE #1 • DAILY EDITION
+        </span>
+        <span class="font-mono text-xs font-semibold text-cyan-300 bg-cosmic-bg/80 border border-cosmic-border px-3 py-1 rounded-full">
+          1 Play Per Mode Daily
+        </span>
+      </div>
+
+      <!-- Hero Title -->
+      <div class="text-center mb-5">
+        <h1 class="font-display text-2xl sm:text-4xl font-bold tracking-tight text-white">
+          CHOOSE YOUR DAILY CHALLENGE
+        </h1>
+        <p class="text-indigo-100 text-xs sm:text-sm max-w-md mx-auto mt-1.5 leading-relaxed">
+          Guess earlier to score bigger: <span class="text-emerald-300 font-mono font-bold">1,000</span> → <span class="text-cyan-300 font-mono font-bold">800</span> → <span class="text-amber-300 font-mono font-bold">600</span> → <span class="text-orange-300 font-mono font-bold">400</span> → <span class="text-pink-300 font-mono font-bold">200</span> pts (<span class="text-rose-400 font-mono font-bold">-200</span> if missed).
+        </p>
+      </div>
+
+      <!-- Two Daily Mode Cards (Classic Daily vs 25s Blitz Daily) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-5">
+        <!-- MODE 1: CLASSIC DAILY -->
+        <div id="card-mode-classic" class="bg-cosmic-bg/90 border-2 border-cosmic-cyan/50 rounded-2xl p-4 flex flex-col justify-between gap-3 relative overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="text-2xl">🧭</span>
+              <span id="badge-classic-status" class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-cosmic-cyan/20 text-cyan-200 border border-cosmic-cyan/50">
+                READY TODAY
+              </span>
+            </div>
+            <h2 class="font-display text-xl font-bold text-white">Classic Daily</h2>
+            <p class="text-xs text-indigo-200 mt-1 leading-relaxed">
+              7 mysteries • 5 clues each. No clock—think carefully and solve in as few clues as possible!
+            </p>
+          </div>
+
+          <div class="pt-1">
+            <div id="classic-saved-score" class="hidden text-xs font-mono font-bold text-cosmic-gold mb-2">
+              Today's Score: 0 / 7,000 PTS
+            </div>
+            <button 
+              id="btn-play-classic" 
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-cyan via-teal-300 to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-cyan-400/20 active:scale-[0.98]">
+              PLAY CLASSIC DAILY →
+            </button>
+          </div>
+        </div>
+
+        <!-- MODE 2: 25s BLITZ DAILY -->
+        <div id="card-mode-blitz" class="bg-cosmic-bg/90 border-2 border-cosmic-pink/50 rounded-2xl p-4 flex flex-col justify-between gap-3 relative overflow-hidden">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <span class="text-2xl">⚡</span>
+              <span id="badge-blitz-status" class="text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-cosmic-pink/20 text-pink-200 border border-cosmic-pink/50">
+                25s / CLUE
+              </span>
+            </div>
+            <h2 class="font-display text-xl font-bold text-white">25s Blitz Daily</h2>
+            <p class="text-xs text-indigo-200 mt-1 leading-relaxed">
+              7 fresh mysteries! Every clue gives you <strong class="text-pink-300">25 seconds</strong> to guess before time runs out!
+            </p>
+          </div>
+
+          <div class="pt-1">
+            <div id="blitz-saved-score" class="hidden text-xs font-mono font-bold text-cosmic-gold mb-2">
+              Today's Score: 0 / 7,000 PTS
+            </div>
+            <button 
+              id="btn-play-blitz" 
+              class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-pink via-rose-400 to-amber-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-pink-500/25 active:scale-[0.98]">
+              PLAY 25s BLITZ →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact Point Breakdown Bar -->
+      <div class="bg-cosmic-bg/75 border border-cosmic-border rounded-2xl px-3.5 py-2.5 mb-4 flex flex-wrap items-center justify-between gap-2 text-[11px] font-mono">
+        <span class="text-indigo-300 font-bold uppercase">Clue Values:</span>
+        <div class="flex flex-wrap items-center gap-1.5 font-extrabold">
+          <span class="px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-300">C1: 1,000</span>
+          <span class="px-2 py-0.5 rounded bg-cyan-400/20 text-cyan-300">C2: 800</span>
+          <span class="px-2 py-0.5 rounded bg-amber-400/20 text-amber-300">C3: 600</span>
+          <span class="px-2 py-0.5 rounded bg-orange-400/20 text-orange-300">C4: 400</span>
+          <span class="px-2 py-0.5 rounded bg-pink-400/20 text-pink-300">C5: 200</span>
+          <span class="px-2 py-0.5 rounded bg-rose-500/25 text-rose-300">Miss: -200</span>
+        </div>
+      </div>
+
+      <!-- Bottom Next Daily Reset Countdown Timer -->
+      <div class="bg-cosmic-bg/95 border border-cosmic-border/90 rounded-2xl px-4 py-2.5 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-base">⏳</span>
+          <span class="text-xs font-mono font-bold text-indigo-200 uppercase tracking-wide">Next Daily Vault Unlocks In</span>
+        </div>
+        <span id="home-reset-timer" class="font-mono text-sm sm:text-base font-extrabold text-cosmic-gold tracking-wider">
+          00:00:00
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== VIEW 2: ZERO-SCROLL ACTIVE GAMEPLAY ==================== -->
+  <main id="game-screen" class="hidden flex-grow max-w-2xl w-full mx-auto px-3 sm:px-5 py-3 flex flex-col justify-between gap-2.5">
+    <!-- Top Progress & Category Header -->
+    <div class="flex flex-col gap-2">
+      <!-- 7-Mystery Progress Strip & Solved Counter -->
+      <div class="flex items-center justify-between gap-2">
+        <div id="round-indicators" class="flex-grow flex items-center gap-1.5"></div>
+        <span id="round-score-label" class="text-xs font-mono font-extrabold text-cyan-200 bg-cosmic-surface/90 border border-cosmic-border px-2.5 py-1 rounded-xl whitespace-nowrap">
+          0/7 Solved
+        </span>
+      </div>
+
+      <!-- Category Pill & Current Clue Point Value Banner -->
+      <div class="bg-cosmic-surface/95 border border-cosmic-border rounded-2xl px-3.5 py-2.5 flex items-center justify-between gap-2 shadow-sm">
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold text-indigo-200">Mystery <span id="current-round-num" class="text-white">1</span>/7</span>
+            <span id="category-badge" class="inline-block font-bold text-xs px-2.5 py-0.5 rounded-full bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50 truncate">
+              Gaming
+            </span>
+          </div>
+          <!-- 5 Clue Step Dots -->
+          <div class="flex items-center gap-1.5 mt-1.5" id="step-indicators"></div>
+        </div>
+
+        <!-- Live Clue Worth Pill (+1,000 down to +200) -->
+        <div class="flex-shrink-0 bg-cosmic-bg/90 border border-cosmic-gold/50 rounded-xl px-3 py-1.5 text-right">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-indigo-300 block leading-none">Current Clue Worth</span>
+          <div id="current-clue-worth" class="mt-0.5 font-mono text-xs sm:text-sm font-extrabold text-cosmic-gold">
+            +1,000 PTS
+          </div>
+        </div>
+      </div>
+
+      <!-- 25-Second Blitz Countdown Bar (Visible ONLY in Blitz Mode during active clue) -->
+      <div id="blitz-timer-bar-container" class="hidden bg-cosmic-surface/95 border border-cosmic-pink/60 rounded-2xl px-3.5 py-2 shadow-md">
+        <div class="flex items-center justify-between text-xs font-mono font-extrabold mb-1">
+          <span class="text-pink-200 flex items-center gap-1.5">
+            <span>⚡</span> BLITZ CLUE TIMER
+          </span>
+          <span id="blitz-timer-text" class="text-cosmic-cyan text-sm">25.0s</span>
+        </div>
+        <div class="w-full h-2.5 bg-cosmic-bg rounded-full overflow-hidden border border-cosmic-border">
+          <div id="blitz-timer-fill" class="h-full bg-gradient-to-r from-cosmic-cyan to-emerald-400 transition-all duration-100" style="width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Clues Feed -->
+    <div class="flex-grow flex flex-col gap-2 overflow-y-auto pr-0.5" id="clues-scroll-area">
+      <!-- Autocorrect Notification Pill -->
+      <div id="autocorrect-banner" class="hidden animate-pop bg-cosmic-gold/15 border border-cosmic-gold/50 text-amber-200 text-xs px-3 py-1.5 rounded-xl flex items-center justify-between">
+        <span id="autocorrect-banner-text">Auto-corrected typo</span>
+        <button type="button" id="btn-dismiss-autocorrect" class="text-cosmic-gold hover:text-white ml-2 font-bold">✕</button>
+      </div>
+
+      <!-- Progressive Clues List -->
+      <section aria-label="Clues list" class="flex flex-col gap-2" id="clues-container">
+        <!-- Clue cards injected dynamically -->
+      </section>
+
+      <!-- Compact Wrong Guesses Strip -->
+      <section id="history-section" class="hidden pt-0.5">
+        <div id="guess-history-list" class="flex flex-wrap items-center gap-1.5">
+          <!-- Wrong guess pills -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Bottom Zero-Scroll Action Bar (Input Form morphs in-place into CONTINUE TO NEXT MYSTERY) -->
+    <div class="sticky bottom-2 z-20 pt-1">
+      
+      <!-- STATE A: Active Guess Input Form -->
+      <section id="input-section" class="bg-cosmic-surface/95 backdrop-blur-md border-2 border-cosmic-border rounded-2xl p-2.5 shadow-2xl">
+        <form id="guess-form" class="flex flex-col gap-2" autocomplete="off">
+          <!-- Live Autocorrect Suggestion Chips -->
+          <div id="suggestion-bar" class="hidden flex-wrap items-center gap-1.5 px-1">
+            <span class="text-[11px] font-mono text-cyan-300">Did you mean:</span>
+            <div id="suggestion-chips" class="flex flex-wrap gap-1.5"></div>
+          </div>
+
+          <div class="flex gap-2">
+            <input 
+              type="text" 
+              id="guess-input" 
+              spellcheck="true"
+              autocorrect="on"
+              placeholder="Type your guess (typos auto-fix)..." 
+              class="flex-grow min-w-0 bg-cosmic-bg border-2 border-cosmic-border focus:border-cosmic-cyan rounded-xl px-3.5 py-2.5 text-sm sm:text-base text-white placeholder-indigo-400 outline-none transition"
+              required
+            />
+            <button 
+              type="button" 
+              id="btn-skip" 
+              title="Reveal next free clue"
+              class="px-3 sm:px-4 py-2.5 rounded-xl bg-cosmic-panel hover:bg-cosmic-hover border border-cosmic-border text-cyan-200 font-bold text-xs sm:text-sm whitespace-nowrap transition active:scale-[0.98]">
+              Next Clue
+            </button>
+            <button 
+              type="submit" 
+              id="btn-submit" 
+              class="px-4 sm:px-5 py-2.5 rounded-xl bg-gradient-to-r from-cosmic-pink to-rose-500 hover:brightness-110 text-white font-display font-bold text-sm sm:text-base whitespace-nowrap transition shadow-lg shadow-pink-500/25 active:scale-[0.98]">
+              Guess
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- STATE B: In-Place Result Feedback & Glowing Continue Button (Zero Scrolling!) -->
+      <section id="result-card" class="hidden animate-pop bg-cosmic-surface border-2 border-cosmic-cyan rounded-2xl p-3.5 shadow-2xl">
+        <div class="flex flex-col gap-2.5">
+          <!-- Answer & Points Earned Header -->
+          <div class="flex items-start justify-between gap-2">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span id="result-status-pill" class="text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-emerald-400/20 text-emerald-300 border border-emerald-400/50">
+                  +1,000 PTS!
+                </span>
+                <span id="emoji-grid-preview" class="font-mono text-xs tracking-wider">🟩⬜⬜⬜⬜</span>
+              </div>
+              <h3 id="result-answer" class="font-display text-lg sm:text-xl font-bold text-cosmic-gold truncate">
+                Minecraft Creeper
+              </h3>
+            </div>
+          </div>
+
+          <p id="result-fact" class="text-xs text-indigo-100 leading-snug">
+            Fun fact goes here.
+          </p>
+
+          <!-- Big Glowing Continue Button in the exact same spot -->
+          <button 
+            id="btn-next-round" 
+            class="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-cosmic-cyan via-teal-300 to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-base tracking-wide transition shadow-lg shadow-cyan-400/30 glow-cyan active:scale-[0.98]">
+            CONTINUE TO NEXT MYSTERY →
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ==================== VIEW 3: CASE FINALE & EMOJI SCORECARD ==================== -->
+  <main id="recap-screen" class="hidden flex-grow max-w-2xl w-full mx-auto px-4 py-5 flex flex-col justify-center">
+    <div class="animate-pop bg-cosmic-surface/95 border-2 border-cosmic-border rounded-3xl p-5 sm:p-7 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cosmic-cyan via-cosmic-pink to-cosmic-gold"></div>
+
+      <!-- Rank & Final Score Header -->
+      <div class="text-center border-b border-cosmic-border pb-4 mb-4">
+        <span id="recap-rank-badge" class="inline-block font-mono text-xs font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50 mb-2">
+          RANK: LEGENDARY DETECTIVE
+        </span>
+        <h2 id="recap-title" class="font-display text-2xl sm:text-3xl font-bold text-white">
+          CASE #1 COMPLETE!
+        </h2>
+        <div class="mt-2 flex items-baseline justify-center gap-2">
+          <span id="recap-final-score" class="font-mono text-3xl sm:text-4xl font-extrabold text-cosmic-gold">6,000</span>
+          <span class="font-mono text-sm text-indigo-300">/ 7,000 PTS</span>
+        </div>
+        <p id="recap-subtitle" class="text-xs sm:text-sm font-mono text-indigo-200 mt-1">
+          0 Solved • 0 Missed (-200 each)
+        </p>
+      </div>
+
+      <!-- 7-Mystery Recap Breakdown List -->
+      <div id="recap-rows-list" class="space-y-2 max-h-64 overflow-y-auto pr-1 mb-4">
+        <!-- Recap rows injected dynamically -->
+      </div>
+
+      <!-- Share & Back Home Actions -->
+      <div class="flex flex-col sm:flex-row gap-3 mb-4">
+        <button 
+          id="btn-share-all" 
+          class="flex-[2] py-3.5 px-5 rounded-2xl bg-gradient-to-r from-cosmic-cyan to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-base transition shadow-lg shadow-cyan-400/25 flex items-center justify-center gap-2 active:scale-[0.98]">
+          <span>📋 Copy Case Scorecard</span>
+        </button>
+
+        <button 
+          id="btn-recap-home" 
+          class="flex-1 py-3.5 px-4 rounded-2xl bg-cosmic-panel hover:bg-cosmic-hover border-2 border-cosmic-violet/60 text-white font-bold text-sm transition active:scale-[0.98]">
+          🏠 Back to Vault
+        </button>
+      </div>
+
+      <!-- Next Daily Reset Countdown Timer at Bottom of Recap -->
+      <div class="bg-cosmic-bg/95 border border-cosmic-border rounded-2xl px-4 py-2.5 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="text-base">⏳</span>
+          <span class="text-xs font-mono font-bold text-indigo-200 uppercase tracking-wide">Next Daily Vault Unlocks In</span>
+        </div>
+        <span id="recap-reset-timer" class="font-mono text-sm sm:text-base font-extrabold text-cosmic-gold tracking-wider">
+          00:00:00
+        </span>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== HOW TO PLAY MODAL ==================== -->
+  <div id="help-modal" class="fixed inset-0 bg-indigo-950/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="bg-cosmic-surface border-2 border-cosmic-cyan/50 rounded-3xl max-w-md w-full p-6 shadow-2xl animate-pop">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-display text-xl font-bold text-cosmic-cyan">HOW TO PLAY ARCHIVIST</h3>
+        <button id="btn-close-help" class="p-1.5 rounded-xl hover:bg-cosmic-hover text-indigo-300 hover:text-white">✕</button>
+      </div>
+      <ul class="space-y-3 text-sm text-indigo-100 leading-relaxed mb-5">
+        <li class="flex gap-2.5">
+          <span class="font-mono text-cosmic-gold font-extrabold">01</span>
+          <span><strong>Two Daily Modes (1 Play Each/Day):</strong> Play <em>Classic Daily</em> (untimed) and <em>25s Blitz Daily</em> (25 seconds per clue) once every day!</span>
+        </li>
+        <li class="flex gap-2.5">
+          <span class="font-mono text-emerald-300 font-extrabold">02</span>
+          <span><strong>Speed & Clue Scoring:</strong> Clue 1 = <strong>1,000 pts</strong> • Clue 2 = <strong>800 pts</strong> • Clue 3 = <strong>600 pts</strong> • Clue 4 = <strong>400 pts</strong> • Clue 5 = <strong>200 pts</strong>.</span>
+        </li>
+        <li class="flex gap-2.5">
+          <span class="font-mono text-pink-400 font-extrabold">03</span>
+          <span><strong>-200 PTS Miss Penalty:</strong> Missing all 5 clues deducts <strong>200 points</strong>. In Blitz Mode, running out of time on a clue counts as a missed guess!</span>
+        </li>
+        <li class="flex gap-2.5">
+          <span class="font-mono text-cosmic-cyan font-extrabold">04</span>
+          <span><strong>Smart Typo Autocorrect:</strong> Minor misspellings automatically fix when you submit.</span>
+        </li>
+      </ul>
+      <button id="btn-got-it" class="w-full py-3 rounded-2xl bg-gradient-to-r from-cosmic-cyan to-emerald-300 text-indigo-950 font-display font-bold text-base transition">
+        Let's Go!
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST NOTIFICATION ==================== -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-cosmic-gold text-indigo-950 font-mono font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 z-50">
+    Scorecard copied to clipboard!
+  </div>
+
+  <!-- ==================== JAVASCRIPT GAME ENGINE ==================== -->
+  <script>
+    /**
+     * 1. TEEN-FRIENDLY MYSTERY CASES (Case #1 Launch Edition + Practice Cases)
+     */
+    const CASE_SETS = [
+      // CASE #1: LAUNCH EDITION (7 Fun Pop-Culture, Gaming, Space & Weird Animal Mysteries)
+      [
+        {
+          id: 101,
+          category: "Gaming Legends",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Minecraft Creeper",
+          accepted: ["creeper", "minecraft creeper", "creepers"],
+          clues: [
+            "I was created completely by accident in 2009 when a developer messed up the height and length code for a pig.",
+            "I am famous for sneaking up behind players completely silently before making a terrifying hissing sound.",
+            "If I get struck by lightning, I become 'Charged' and my explosion radius doubles.",
+            "I am green, pixelated, have four short legs, and zero arms.",
+            "I am Minecraft's iconic exploding mascot monster."
+          ],
+          fact: "Notch accidentally swapped the X and Y dimensions when modeling a pig—creating the vertical body of the Creeper!"
+        },
+        {
+          id: 102,
+          category: "Weird Animals",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Axolotl",
+          accepted: ["axolotl", "axolotls", "mexican walking fish"],
+          clues: [
+            "Unlike other salamanders, I stay in my aquatic larval form my entire life—a trait called neoteny.",
+            "I can regenerate lost limbs, parts of my heart, and even sections of my brain without scarring.",
+            "My wild population is native to just one lake complex near Mexico City.",
+            "I became a massive internet and Minecraft sensation thanks to my permanent smile and feathery pink gills.",
+            "I am a cute, smiling aquatic salamander often called the 'Mexican walking fish'."
+          ],
+          fact: "Axolotls are over 1,000 times more resistant to cancer than mammals, making them heavily studied by scientists!"
+        },
+        {
+          id: 103,
+          category: "Handheld Tech",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Nintendo Switch",
+          accepted: ["nintendo switch", "switch"],
+          clues: [
+            "My 2017 launch title, Breath of the Wild, actually sold more copies than I did during my first month.",
+            "My detachable controllers feature 'HD Rumble' and an infrared motion camera.",
+            "I can transform instantly from a home TV console into a portable handheld.",
+            "My signature neon red and neon blue Joy-Con controllers slide onto my sides with a crisp click.",
+            "I am Nintendo's wildly popular hybrid console that powers Mario Kart 8 Deluxe and Animal Crossing."
+          ],
+          fact: "The Nintendo Switch has sold over 146 million units worldwide, making it one of the top 3 best-selling consoles ever!"
+        },
+        {
+          id: 104,
+          category: "Cosmic Wonders",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Saturn",
+          accepted: ["saturn"],
+          clues: [
+            "My average density is lower than water—if you had a giant ocean, I would actually float.",
+            "A giant, mysterious six-sided hexagon storm swirls continuously over my north pole.",
+            "I have over 140 moons, including Titan, which has lakes of liquid methane.",
+            "My famous rings are made of billions of chunks of ice and rock—some as tiny as dust, others as big as houses.",
+            "I am the sixth planet from the Sun, famous for my huge, dazzling ring system."
+          ],
+          fact: "Even though Saturn's rings stretch 175,000 miles wide, they are amazingly thin—averaging only about 30 feet thick!"
+        },
+        {
+          id: 105,
+          category: "Superheroes",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "Spider-Man",
+          accepted: ["spiderman", "spider-man", "spider man", "peter parker", "miles morales"],
+          clues: [
+            "My comic debut in Amazing Fantasy #15 (1962) almost didn't happen because editors thought teens hated bugs.",
+            "I can lift roughly 10 tons and cling to solid walls using electrostatic attraction.",
+            "An internal buzzing alarm warns me seconds before danger strikes.",
+            "I swing across New York City skyscrapers using wrist-mounted web-shooters.",
+            "I am the friendly neighborhood Marvel hero alter-ego of Peter Parker and Miles Morales."
+          ],
+          fact: "Stan Lee wanted a teenage hero who wasn't just a sidekick—and had everyday problems like homework and rent!"
+        },
+        {
+          id: 106,
+          category: "Viral Drinks",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Bubble Tea",
+          accepted: ["bubble tea", "boba", "boba tea", "pearl milk tea"],
+          clues: [
+            "I was invented in Taiwan in the 1980s when a tea shop owner dumped sweet tapioca pudding into iced tea.",
+            "I am always served with an extra-wide straw so you can slurp up my toppings.",
+            "My chewy black pearls are made from cassava root starch and brown sugar.",
+            "Popular flavors of me include taro, matcha, brown sugar tiger, and Thai milk.",
+            "I am the sweet iced tea drink packed with chewy 'boba' tapioca pearls."
+          ],
+          fact: "The 'bubbles' in bubble tea originally referred to the frothy foam created by shaking the tea—not the tapioca pearls!"
+        },
+        {
+          id: 107,
+          category: "Extreme Micro-Animals",
+          badgeColor: "bg-teal-400/20 text-teal-200 border-teal-400/50",
+          answer: "Tardigrade",
+          accepted: ["tardigrade", "tardigrades", "water bear", "water bears", "moss piglet"],
+          clues: [
+            "I am less than 1 millimeter long, yet I have eight chubby legs with tiny claws.",
+            "I can survive temperatures from -328°F up to 300°F, plus crushing deep-ocean pressures.",
+            "In 2007, I became the first animal known to survive exposure to the vacuum of outer space.",
+            "When dried out, I curl into a 'tun' state and pause my metabolism for decades.",
+            "I am a microscopic, virtually indestructible eight-legged creature nicknamed the 'water bear'."
+          ],
+          fact: "Tardigrades produce a special glass-like protein shield that protects their DNA when they dry out!"
+        }
+      ],
+
+      // CASE #2: PRACTICE VAULT (7 More Fun Mysteries)
+      [
+        {
+          id: 201,
+          category: "Anime & Gaming",
+          badgeColor: "bg-amber-400/20 text-amber-200 border-amber-400/50",
+          answer: "Pikachu",
+          accepted: ["pikachu"],
+          clues: [
+            "My designer originally based my chubby cheeks on squirrels storing nuts rather than mice.",
+            "In Japan, my name combines the sound of electric sparks ('pika') and a mouse squeak ('chu').",
+            "I refuse to evolve with a Thunder Stone because I want to prove my own strength.",
+            "I have a lightning-bolt-shaped tail and bright red electric cheek pouches.",
+            "I am Ash Ketchum's iconic yellow Electric-type Pokémon partner."
+          ],
+          fact: "Pikachu's original 1996 design was much rounder—artists slimmed it down over time so it was easier to animate!"
+        },
+        {
+          id: 202,
+          category: "Toy Engineering",
+          badgeColor: "bg-red-400/20 text-red-200 border-red-400/50",
+          answer: "LEGO Brick",
+          accepted: ["lego", "legos", "lego brick", "lego bricks"],
+          clues: [
+            "My company name comes from the Danish words 'leg godt', meaning 'play well'.",
+            "Six of my standard 2x4 pieces can be combined in over 915 million different ways.",
+            "My plastic molds are accurate to within 0.002 millimeters so pieces from 1958 still fit today.",
+            "Stepping on me barefoot in the dark is universally recognized as maximum pain.",
+            "I am the world-famous interlocking plastic building brick from Denmark."
+          ],
+          fact: "LEGO is technically the world's largest tire manufacturer by unit count—producing over 300 million tiny tires a year!"
+        },
+        {
+          id: 203,
+          category: "Deep Space",
+          badgeColor: "bg-purple-400/20 text-purple-200 border-purple-400/50",
+          answer: "Black Hole",
+          accepted: ["black hole", "black holes"],
+          clues: [
+            "If you fell near me, my gravity would stretch you into a long thin strand—scientists literally call this 'spaghettification'.",
+            "My outer boundary is called the Event Horizon—the point of no return.",
+            "Albert Einstein's theory of general relativity predicted me decades before astronomers proved I existed.",
+            "My gravitational pull is so extreme that not even light can escape.",
+            "I am a super-dense region of spacetime formed when a massive star collapses."
+          ],
+          fact: "In 2019, the Event Horizon Telescope captured the very first image of a black hole's glowing shadow!"
+        },
+        {
+          id: 204,
+          category: "Rainforest Wildlife",
+          badgeColor: "bg-emerald-400/20 text-emerald-200 border-emerald-400/50",
+          answer: "Sloth",
+          accepted: ["sloth", "sloths"],
+          clues: [
+            "My metabolism is so slow that it takes me up to a full month to digest a single leaf.",
+            "Algae grows right in my fur, giving me a greenish camouflage tint in rainforest trees.",
+            "I only climb down from the canopy once a week to go to the bathroom.",
+            "Despite moving at 0.15 mph on land, I am actually a surprisingly good swimmer.",
+            "I am the world's slowest mammal, famous for hanging upside down by long curved claws."
+          ],
+          fact: "Sloths have extra neck vertebrae that allow them to turn their heads nearly 270 degrees!"
+        },
+        {
+          id: 205,
+          category: "Retro Arcade",
+          badgeColor: "bg-cyan-400/20 text-cyan-200 border-cyan-400/50",
+          answer: "Pac-Man",
+          accepted: ["pacman", "pac-man", "pac man"],
+          clues: [
+            "My creator got the idea for my shape while looking at a pizza with one slice missing.",
+            "My four colorful enemies—Blinky, Pinky, Inky, and Clyde—each have unique chase AI.",
+            "Eating a flashing Power Pellet turns my enemies dark blue so I can chomp them.",
+            "I travel through a neon maze eating 240 glowing dots and bonus cherries.",
+            "I am the iconic yellow, pizza-shaped 1980 arcade hero who goes 'waka-waka-waka'."
+          ],
+          fact: "Pac-Man was originally called 'Puck-Man' in Japan—until arcades worried vandals would scratch the 'P' into an 'F'!"
+        },
+        {
+          id: 206,
+          category: "Island Predators",
+          badgeColor: "bg-pink-400/20 text-pink-200 border-pink-400/50",
+          answer: "Komodo Dragon",
+          accepted: ["komodo dragon", "komodo"],
+          clues: [
+            "I can smell carrion from up to 6 miles away using my forked yellow tongue.",
+            "I live exclusively on a handful of volcanic islands in Indonesia.",
+            "I deliver a venomous bite that prevents blood clotting and sends prey into shock.",
+            "Growing up to 10 feet long and 200 pounds, I am the heavyweight champion of reptiles.",
+            "I am the largest living species of lizard on Earth."
+          ],
+          fact: "Young Komodo dragons roll in mud and climb trees to avoid being eaten by giant adult Komodo dragons!"
+        },
+        {
+          id: 207,
+          category: "Sci-Fi Gadgets",
+          badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-400/50",
+          answer: "Hoverboard",
+          accepted: ["hoverboard", "hoverboards", "hover board"],
+          clues: [
+            "I was popularized in the 1989 movie Back to the Future Part II, set in the year 2015.",
+            "In the movie, Marty McFly rides a hot-pink Mattel version of me across a town square.",
+            "Real-world versions with two wheels were actually self-balancing scooters that touched the ground.",
+            "In sci-fi, I float inches above pavement using magnetic levitation.",
+            "I am a futuristic levitating skateboard with no wheels."
+          ],
+          fact: "Lexus actually built a real liquid-nitrogen-cooled magnetic hoverboard in 2015—though it only worked over a hidden copper track!"
+        }
+      ]
+    ];
+
+    /**
+     * 2. SCORING SYSTEM (1,000 -> 800 -> 600 -> 400 -> 200 | Miss All 5 = -200)
+     */
+    const ROUNDS_PER_CASE = 7;
+    const MAX_CLUES = 5;
+    const CLUE_POINT_VALUES = [1000, 800, 600, 400, 200];
+    const FAIL_PENALTY = 200;
+    const BLITZ_SECONDS_PER_CLUE = 25;
+    const ALL_PUZZLES = CASE_SETS.flat();
+
+    function getTodayDateKey() {
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth() + 1).padStart(2, '0');
+      const d = String(now.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function getStorageKey(mode) {
+      return `archivist_daily_${mode}_${getTodayDateKey()}`;
+    }
+
+    function getRoundPoints(round) {
+      if (!round.completed) return 0;
+      if (round.won) {
+        const clueIndex = Math.min(Math.max(round.guesses.length - 1, 0), MAX_CLUES - 1);
+        return CLUE_POINT_VALUES[clueIndex];
+      }
+      return -FAIL_PENALTY;
+    }
+
+    function calculateTotalScore(roundsArr) {
+      let score = 0;
+      for (const r of roundsArr) {
+        if (r.completed) {
+          score += getRoundPoints(r);
+        }
+      }
+      return score;
+    }
+
+    function getArchivistRank(totalScore, solvedCount) {
+      if (totalScore >= 6400 && solvedCount === 7) return "MYTHIC ARCHIVIST 👑";
+      if (totalScore >= 4800) return "MASTER DETECTIVE 🔥";
+      if (totalScore >= 3000) return "CYBER SLEUTH ⚡";
+      if (totalScore >= 1000) return "FIELD ROOKIE 🕵️";
+      return "VAULT TRAINEE 🌱";
+    }
+
+    /**
+     * 3. AUTOCORRECT & FUZZY MATCHING ENGINE
+     */
+    function normalizeText(str) {
+      return (str || '')
+        .toLowerCase()
+        .replace(/^(the|a|an)\s+/i, '')
+        .replace(/[^a-z0-9\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function damerauLevenshtein(a, b) {
+      const m = a.length;
+      const n = b.length;
+      if (m === 0) return n;
+      if (n === 0) return m;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          dp[i][j] = Math.min(
+            dp[i - 1][j] + 1,
+            dp[i][j - 1] + 1,
+            dp[i - 1][j - 1] + cost
+          );
+          if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+            dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + 1);
+          }
+        }
+      }
+      return dp[m][n];
+    }
+
+    function getLiveSuggestions(rawInput) {
+      const clean = normalizeText(rawInput);
+      if (clean.length < 3) return [];
+      const matches = [];
+      for (const p of ALL_PUZZLES) {
+        const cleanAns = normalizeText(p.answer);
+        if (cleanAns === clean) continue;
+        const dist = damerauLevenshtein(clean, cleanAns);
+        if (cleanAns.startsWith(clean) || (dist <= 2 && clean.length >= 4)) {
+          matches.push({ answer: p.answer, dist });
+        }
+      }
+      matches.sort((a, b) => a.dist - b.dist);
+      return [...new Set(matches.map(m => m.answer))].slice(0, 3);
+    }
+
+    function autoCorrectInput(rawInput, puzzle) {
+      const clean = normalizeText(rawInput);
+      if (!clean || clean.length < 3) return { corrected: rawInput, wasCorrected: false };
+
+      for (const acc of puzzle.accepted) {
+        const cleanAcc = normalizeText(acc);
+        if (clean === cleanAcc) return { corrected: rawInput, wasCorrected: false };
+        const maxTypos = cleanAcc.length >= 8 ? 2 : (cleanAcc.length >= 4 ? 1 : 0);
+        if (maxTypos > 0 && damerauLevenshtein(clean, cleanAcc) <= maxTypos) {
+          return { corrected: puzzle.answer, wasCorrected: true };
+        }
+      }
+
+      for (const p of ALL_PUZZLES) {
+        const cleanAns = normalizeText(p.answer);
+        const maxTypos = cleanAns.length >= 8 ? 2 : (cleanAns.length >= 5 ? 1 : 0);
+        if (maxTypos > 0 && damerauLevenshtein(clean, cleanAns) <= maxTypos && clean !== cleanAns) {
+          return { corrected: p.answer, wasCorrected: true };
+        }
+      }
+      return { corrected: rawInput, wasCorrected: false };
+    }
+
+    /**
+     * 4. CELEBRATORY CONFETTI BURST
+     */
+    function launchConfetti() {
+      const canvas = document.getElementById('confetti-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const colors = ['#00f5d4', '#ff3b9a', '#ffd166', '#9b5de5', '#34d399'];
+      const particles = Array.from({ length: 75 }, () => ({
+        x: canvas.width * (0.25 + Math.random() * 0.5),
+        y: canvas.height * 0.55,
+        vx: (Math.random() - 0.5) * 12,
+        vy: -Math.random() * 11 - 4,
+        size: Math.random() * 7 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * Math.PI * 2,
+        vRot: (Math.random() - 0.5) * 0.25
+      }));
+
+      let frame = 0;
+      function tick() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.35;
+          p.rot += p.vRot;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+          ctx.restore();
+        }
+        frame++;
+        if (frame < 75) requestAnimationFrame(tick);
+        else ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /**
+     * 5. GAME STATE, DAILY LOCKS & 25-SECOND BLITZ TIMER
+     */
+    let currentScreen = 'home'; // 'home' | 'game' | 'recap'
+    let activeMode = 'classic'; // 'classic' | 'blitz'
+    let rounds = [];
+    let currentRoundIndex = 0;
+
+    // Blitz Timer State
+    let blitzIntervalId = null;
+    let blitzTimeRemaining = BLITZ_SECONDS_PER_CLUE;
+
+    // DOM References
+    const elHomeScreen = document.getElementById('home-screen');
+    const elGameScreen = document.getElementById('game-screen');
+    const elRecapScreen = document.getElementById('recap-screen');
+
+    const elHeaderCasePill = document.getElementById('header-case-pill');
+    const elHeaderSubBadge = document.getElementById('header-sub-badge');
+    const elHeaderScoreBox = document.getElementById('header-score-box');
+    const elHeaderTotalScore = document.getElementById('header-total-score');
+
+    const elRoundIndicators = document.getElementById('round-indicators');
+    const elRoundScoreLabel = document.getElementById('round-score-label');
+    const elCurrentRoundNum = document.getElementById('current-round-num');
+    const elCategoryBadge = document.getElementById('category-badge');
+    const elStepIndicators = document.getElementById('step-indicators');
+    const elCurrentClueWorth = document.getElementById('current-clue-worth');
+
+    const elBlitzTimerContainer = document.getElementById('blitz-timer-bar-container');
+    const elBlitzTimerText = document.getElementById('blitz-timer-text');
+    const elBlitzTimerFill = document.getElementById('blitz-timer-fill');
+
+    const elAutocorrectBanner = document.getElementById('autocorrect-banner');
+    const elAutocorrectBannerText = document.getElementById('autocorrect-banner-text');
+    const elCluesContainer = document.getElementById('clues-container');
+    const elHistorySection = document.getElementById('history-section');
+    const elHistoryList = document.getElementById('guess-history-list');
+    const elInputSection = document.getElementById('input-section');
+    const elGuessForm = document.getElementById('guess-form');
+    const elGuessInput = document.getElementById('guess-input');
+    const elSuggestionBar = document.getElementById('suggestion-bar');
+    const elSuggestionChips = document.getElementById('suggestion-chips');
+    const elBtnSkip = document.getElementById('btn-skip');
+    const elResultCard = document.getElementById('result-card');
+    const elToast = document.getElementById('toast');
+
+    function createRoundsFromSet(puzzleList) {
+      return puzzleList.map(p => ({
+        puzzleId: p.id,
+        guesses: [],
+        revealedCluesCount: 1,
+        completed: false,
+        won: false
+      }));
+    }
+
+    function saveModeProgress(mode, roundIdx, roundsData) {
+      try {
+        localStorage.setItem(getStorageKey(mode), JSON.stringify({
+          currentRoundIndex: roundIdx,
+          rounds: roundsData
+        }));
+      } catch (e) {}
+    }
+
+    function loadModeData(mode) {
+      const defaultSet = mode === 'blitz' ? CASE_SETS[1] : CASE_SETS[0];
+      try {
+        const raw = localStorage.getItem(getStorageKey(mode));
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed.rounds) && parsed.rounds.length === ROUNDS_PER_CASE) {
+            return {
+              rounds: parsed.rounds,
+              currentRoundIndex: Math.min(parsed.currentRoundIndex || 0, ROUNDS_PER_CASE - 1)
+            };
+          }
+        }
+      } catch (e) {}
+
+      return {
+        rounds: createRoundsFromSet(defaultSet),
+        currentRoundIndex: 0
+      };
+    }
+
+    function getPuzzleById(id) {
+      return ALL_PUZZLES.find(p => p.id === id) || ALL_PUZZLES[0];
+    }
+
+    // Blitz 25s Timer Control
+    function stopBlitzTimer() {
+      if (blitzIntervalId) {
+        clearInterval(blitzIntervalId);
+        blitzIntervalId = null;
+      }
+    }
+
+    function startBlitzTimerForCurrentClue() {
+      stopBlitzTimer();
+      const round = rounds[currentRoundIndex];
+      if (activeMode !== 'blitz' || currentScreen !== 'game' || !round || round.completed) {
+        elBlitzTimerContainer.classList.add('hidden');
+        return;
+      }
+
+      elBlitzTimerContainer.classList.remove('hidden');
+      blitzTimeRemaining = BLITZ_SECONDS_PER_CLUE;
+      updateBlitzTimerUI();
+
+      blitzIntervalId = setInterval(() => {
+        blitzTimeRemaining = Math.max(0, +(blitzTimeRemaining - 0.1).toFixed(1));
+        updateBlitzTimerUI();
+
+        if (blitzTimeRemaining <= 0) {
+          stopBlitzTimer();
+          handleTurn('⏱️ Time Up!', false, true);
+        }
+      }, 100);
+    }
+
+    function updateBlitzTimerUI() {
+      const pct = (blitzTimeRemaining / BLITZ_SECONDS_PER_CLUE) * 100;
+      elBlitzTimerText.textContent = `${blitzTimeRemaining.toFixed(1)}s`;
+      elBlitzTimerFill.style.width = `${pct}%`;
+
+      if (blitzTimeRemaining <= 6) {
+        elBlitzTimerText.className = 'text-rose-400 text-sm animate-pulse';
+        elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-rose-500 to-pink-500 transition-all duration-100';
+      } else if (blitzTimeRemaining <= 13) {
+        elBlitzTimerText.className = 'text-cosmic-gold text-sm';
+        elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-amber-400 to-yellow-300 transition-all duration-100';
+      } else {
+        elBlitzTimerText.className = 'text-cosmic-cyan text-sm';
+        elBlitzTimerFill.className = 'h-full bg-gradient-to-r from-cosmic-cyan to-emerald-400 transition-all duration-100';
+      }
+    }
+
+    // Daily Midnight Countdown Timer
+    function updateDailyResetTimers() {
+      const now = new Date();
+      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0);
+      const diffMs = Math.max(0, tomorrow - now);
+
+      const hrs = String(Math.floor(diffMs / (1000 * 60 * 60))).padStart(2, '0');
+      const mins = String(Math.floor((diffMs / (1000 * 60)) % 60)).padStart(2, '0');
+      const secs = String(Math.floor((diffMs / 1000) % 60)).padStart(2, '0');
+      const formatted = `${hrs}:${mins}:${secs}`;
+
+      const homeTimer = document.getElementById('home-reset-timer');
+      const recapTimer = document.getElementById('recap-reset-timer');
+      if (homeTimer) homeTimer.textContent = formatted;
+      if (recapTimer) recapTimer.textContent = formatted;
+    }
+
+    function showScreen(screenName) {
+      stopBlitzTimer();
+      currentScreen = screenName;
+      elHomeScreen.classList.add('hidden');
+      elGameScreen.classList.add('hidden');
+      elRecapScreen.classList.add('hidden');
+
+      if (screenName === 'home') {
+        elHomeScreen.classList.remove('hidden');
+        elHeaderScoreBox.classList.add('hidden');
+        elHeaderScoreBox.classList.remove('flex');
+        elHeaderCasePill.textContent = 'CASE #1';
+        elHeaderSubBadge.textContent = 'Daily Edition • Mystery Vault';
+        renderHomeScreen();
+      } else if (screenName === 'game') {
+        elGameScreen.classList.remove('hidden');
+        elHeaderScoreBox.classList.remove('hidden');
+        elHeaderScoreBox.classList.add('flex');
+        elHeaderCasePill.textContent = activeMode === 'blitz' ? '⚡ 25s BLITZ' : '🧭 CLASSIC DAILY';
+        renderGameplay(true);
+      } else if (screenName === 'recap') {
+        elRecapScreen.classList.remove('hidden');
+        elHeaderScoreBox.classList.remove('hidden');
+        elHeaderScoreBox.classList.add('flex');
+        renderRecapScreen();
+      }
+    }
+
+    /**
+     * 6. HOME SCREEN LOGIC (Once-Per-Day Mode Status)
+     */
+    function renderHomeScreen() {
+      ['classic', 'blitz'].forEach(mode => {
+        const state = loadModeData(mode);
+        const completedCount = state.rounds.filter(r => r.completed).length;
+        const isFinishedToday = completedCount === ROUNDS_PER_CASE;
+        const isInProgress = !isFinishedToday && (completedCount > 0 || state.rounds[0].guesses.length > 0);
+        const totalPts = calculateTotalScore(state.rounds);
+
+        const badgeEl = document.getElementById(`badge-${mode}-status`);
+        const scoreEl = document.getElementById(`${mode}-saved-score`);
+        const btnEl = document.getElementById(`btn-play-${mode}`);
+
+        if (isFinishedToday) {
+          badgeEl.textContent = 'COMPLETED TODAY ✓';
+          badgeEl.className = 'text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-200 border border-emerald-400/50';
+          scoreEl.classList.remove('hidden');
+          scoreEl.textContent = `Today's Score: ${totalPts.toLocaleString()} / 7,000 PTS`;
+          btnEl.textContent = 'VIEW TODAY\'S SCORECARD →';
+          btnEl.className = 'w-full py-3 px-4 rounded-xl bg-cosmic-panel hover:bg-cosmic-hover border border-emerald-400/50 text-emerald-200 font-display font-bold text-sm tracking-wide transition active:scale-[0.98]';
+        } else if (isInProgress) {
+          badgeEl.textContent = `IN PROGRESS (${state.currentRoundIndex + 1}/7)`;
+          badgeEl.className = 'text-[10px] font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-full bg-cosmic-gold/20 text-amber-200 border border-cosmic-gold/50';
+          scoreEl.classList.remove('hidden');
+          scoreEl.textContent = `Current Score: ${totalPts.toLocaleString()} PTS`;
+          btnEl.textContent = `RESUME (${state.currentRoundIndex + 1}/7) →`;
+        } else {
+          badgeEl.textContent = mode === 'blitz' ? '25s / CLUE' : 'READY TODAY';
+          scoreEl.classList.add('hidden');
+          if (mode === 'classic') {
+            btnEl.textContent = 'PLAY CLASSIC DAILY →';
+            btnEl.className = 'w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-cyan via-teal-300 to-emerald-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-cyan-400/20 active:scale-[0.98]';
+          } else {
+            btnEl.textContent = 'PLAY 25s BLITZ →';
+            btnEl.className = 'w-full py-3 px-4 rounded-xl bg-gradient-to-r from-cosmic-pink via-rose-400 to-amber-300 hover:brightness-110 text-indigo-950 font-display font-bold text-sm sm:text-base tracking-wide transition shadow-lg shadow-pink-500/25 active:scale-[0.98]';
+          }
+        }
+      });
+    }
+
+    function launchDailyMode(mode) {
+      activeMode = mode;
+      const loaded = loadModeData(mode);
+      rounds = loaded.rounds;
+      currentRoundIndex = loaded.currentRoundIndex;
+      hideAutocorrectBanner();
+
+      if (rounds.every(r => r.completed)) {
+        showScreen('recap');
+      } else {
+        showScreen('game');
+      }
+    }
+
+    /**
+     * 7. GAMEPLAY RENDERING (Zero-Scroll + Tiered Clue Worth + Blitz Timer)
+     */
+    function checkGuess(userGuess, puzzle) {
+      const cleanGuess = normalizeText(userGuess);
+      if (!cleanGuess) return false;
+
+      return puzzle.accepted.some(acceptedRaw => {
+        const cleanAccepted = normalizeText(acceptedRaw);
+        if (cleanGuess === cleanAccepted) return true;
+        const maxTypos = cleanAccepted.length >= 8 ? 2 : (cleanAccepted.length >= 4 ? 1 : 0);
+        return maxTypos > 0 && damerauLevenshtein(cleanGuess, cleanAccepted) <= maxTypos;
+      });
+    }
+
+    function renderGameplay(resetBlitzClock = false) {
+      const round = rounds[currentRoundIndex];
+      const puzzle = getPuzzleById(round.puzzleId);
+      const totalPts = calculateTotalScore(rounds);
+      const solvedCount = rounds.filter(r => r.won).length;
+      const currentClueIdx = Math.min(round.guesses.length, MAX_CLUES - 1);
+      const activeWorth = CLUE_POINT_VALUES[currentClueIdx];
+
+      elHeaderTotalScore.textContent = totalPts.toLocaleString();
+      elHeaderSubBadge.textContent = activeMode === 'blitz'
+        ? `Case #1 • 25s Blitz Daily (${currentRoundIndex + 1}/7)`
+        : `Case #1 • Classic Daily (${currentRoundIndex + 1}/7)`;
+
+      if (elRoundScoreLabel) elRoundScoreLabel.textContent = `${solvedCount}/7 Solved`;
+      elCurrentRoundNum.textContent = currentRoundIndex + 1;
+      elCategoryBadge.textContent = puzzle.category;
+      elCategoryBadge.className = `inline-block font-bold text-xs px-2.5 py-0.5 rounded-full border truncate ${puzzle.badgeColor}`;
+
+      if (round.completed) {
+        const pts = getRoundPoints(round);
+        elCurrentClueWorth.textContent = pts >= 0 ? `+${pts.toLocaleString()} PTS` : `${pts} PTS`;
+        elCurrentClueWorth.className = `mt-0.5 font-mono text-xs sm:text-sm font-extrabold ${pts >= 0 ? 'text-emerald-300' : 'text-rose-400'}`;
+      } else {
+        elCurrentClueWorth.textContent = `+${activeWorth.toLocaleString()} PTS`;
+        elCurrentClueWorth.className = 'mt-0.5 font-mono text-xs sm:text-sm font-extrabold text-cosmic-gold';
+      }
+
+      renderRoundIndicators();
+      renderClueStepIndicators(round);
+      renderClues(round, puzzle);
+      renderHistory(round);
+
+      if (round.completed) {
+        stopBlitzTimer();
+        elBlitzTimerContainer.classList.add('hidden');
+        renderInPlaceResultCard(round, puzzle);
+      } else {
+        elInputSection.classList.remove('hidden');
+        elResultCard.classList.add('hidden');
+        elBtnSkip.textContent = round.revealedCluesCount >= MAX_CLUES ? 'Give Up' : 'Next Clue';
+        elGuessInput.value = '';
+        elSuggestionBar.classList.add('hidden');
+        elGuessInput.focus();
+
+        if (activeMode === 'blitz') {
+          if (resetBlitzClock) startBlitzTimerForCurrentClue();
+        } else {
+          elBlitzTimerContainer.classList.add('hidden');
+        }
+      }
+    }
+
+    function renderRoundIndicators() {
+      if (!elRoundIndicators) return;
+      elRoundIndicators.innerHTML = '';
+      rounds.forEach((r, idx) => {
+        const pill = document.createElement('div');
+        pill.className = 'flex-1 h-7 rounded-xl flex items-center justify-center text-xs font-mono font-extrabold transition-all ';
+
+        if (r.completed) {
+          if (r.won) {
+            pill.className += 'bg-emerald-400/25 border border-emerald-400 text-emerald-200';
+            pill.textContent = '✓';
+          } else {
+            pill.className += 'bg-pink-500/25 border border-pink-400 text-pink-200';
+            pill.textContent = '✕';
+          }
+        } else if (idx === currentRoundIndex) {
+          pill.className += 'bg-gradient-to-r from-cosmic-cyan to-emerald-300 text-indigo-950 shadow-md shadow-cyan-400/30 scale-105';
+          pill.textContent = `${idx + 1}`;
+        } else {
+          pill.className += 'bg-cosmic-bg border border-cosmic-border text-indigo-300';
+          pill.textContent = `${idx + 1}`;
+        }
+        elRoundIndicators.appendChild(pill);
+      });
+    }
+
+    function renderClueStepIndicators(round) {
+      elStepIndicators.innerHTML = '';
+      for (let i = 0; i < MAX_CLUES; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'h-2 w-6 rounded-full transition-all ';
+        if (i < round.guesses.length) {
+          const g = round.guesses[i];
+          dot.className += g.status === 'win' ? 'bg-emerald-400' : (g.status === 'skip' ? 'bg-cosmic-gold' : 'bg-cosmic-pink');
+        } else if (i === round.guesses.length && !round.completed) {
+          dot.className += 'bg-cosmic-cyan';
+        } else {
+          dot.className += 'bg-cosmic-border';
+        }
+        elStepIndicators.appendChild(dot);
+      }
+    }
+
+    function renderClues(round, puzzle) {
+      elCluesContainer.innerHTML = '';
+      const countToShow = round.completed ? MAX_CLUES : round.revealedCluesCount;
+
+      for (let i = 0; i < countToShow; i++) {
+        const isLatest = (i === countToShow - 1) && !round.completed;
+        const clueWorth = CLUE_POINT_VALUES[i];
+        const card = document.createElement('div');
+        card.className = `animate-pop rounded-2xl px-3.5 py-2.5 border-2 transition-all ${
+          isLatest 
+            ? 'bg-cosmic-surface border-cosmic-cyan shadow-lg shadow-cyan-500/15' 
+            : 'bg-cosmic-surface/65 border-cosmic-border/80 opacity-90'
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-0.5">
+            <span class="text-[11px] font-mono font-extrabold uppercase tracking-wider ${isLatest ? 'text-cosmic-cyan' : 'text-indigo-300'}">
+              Clue #${i + 1} of ${MAX_CLUES}
+            </span>
+            <span class="text-[10px] font-mono font-bold ${isLatest ? 'text-cosmic-gold' : 'text-indigo-300'}">WORTH +${clueWorth.toLocaleString()} PTS</span>
+          </div>
+          <p class="text-xs sm:text-sm text-white leading-snug font-medium">
+            ${puzzle.clues[i]}
+          </p>
+        `;
+        elCluesContainer.appendChild(card);
+      }
+    }
+
+    function renderHistory(round) {
+      const nonWinGuesses = round.guesses.filter(g => g.status !== 'win');
+      if (nonWinGuesses.length === 0) {
+        elHistorySection.classList.add('hidden');
+        elHistoryList.innerHTML = '';
+        return;
+      }
+
+      elHistorySection.classList.remove('hidden');
+      elHistoryList.innerHTML = '';
+
+      round.guesses.forEach((g, index) => {
+        if (g.status === 'win') return;
+        const pill = document.createElement('span');
+        if (g.status === 'skip') {
+          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-cosmic-gold/15 border border-cosmic-gold/40 text-amber-200';
+          pill.textContent = `Clue #${index + 1} Skipped`;
+        } else if (g.status === 'timeout') {
+          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-rose-500/25 border border-rose-400/50 text-rose-200';
+          pill.textContent = `⏱️ Clue #${index + 1} Time Up`;
+        } else {
+          pill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-lg text-[11px] font-mono font-bold bg-cosmic-pink/20 border border-cosmic-pink/50 text-pink-200';
+          pill.textContent = `✕ ${g.text}`;
+        }
+        elHistoryList.appendChild(pill);
+      });
+    }
+
+    function escapeHTML(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function showAutocorrectBanner(original, fixed) {
+      elAutocorrectBannerText.innerHTML = `✨ Auto-fixed spelling: <strong>"${escapeHTML(original)}"</strong> → <strong>"${escapeHTML(fixed)}"</strong>`;
+      elAutocorrectBanner.classList.remove('hidden');
+    }
+
+    function hideAutocorrectBanner() {
+      elAutocorrectBanner.classList.add('hidden');
+    }
+
+    document.getElementById('btn-dismiss-autocorrect').addEventListener('click', hideAutocorrectBanner);
+
+    /**
+     * 8. LIVE AUTOCORRECT CHIPS & TURN SUBMISSION
+     */
+    elGuessInput.addEventListener('input', () => {
+      const suggestions = getLiveSuggestions(elGuessInput.value);
+      if (suggestions.length === 0) {
+        elSuggestionBar.classList.add('hidden');
+        elSuggestionBar.classList.remove('flex');
+        return;
+      }
+
+      elSuggestionBar.classList.remove('hidden');
+      elSuggestionBar.classList.add('flex');
+      elSuggestionChips.innerHTML = '';
+
+      suggestions.forEach(sug => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'px-2.5 py-0.5 rounded-lg bg-cosmic-cyan/20 hover:bg-cosmic-cyan/35 border border-cosmic-cyan/50 text-cyan-200 text-xs font-mono font-bold transition';
+        chip.textContent = sug;
+        chip.addEventListener('click', () => {
+          elGuessInput.value = sug;
+          elSuggestionBar.classList.add('hidden');
+          elGuessInput.focus();
+        });
+        elSuggestionChips.appendChild(chip);
+      });
+    });
+
+    function handleTurn(rawText, isSkip = false, isTimeout = false) {
+      const round = rounds[currentRoundIndex];
+      if (round.completed) return;
+
+      const puzzle = getPuzzleById(round.puzzleId);
+      elSuggestionBar.classList.add('hidden');
+
+      let finalGuess = rawText;
+
+      if (!isSkip && !isTimeout) {
+        const autoResult = autoCorrectInput(rawText, puzzle);
+        finalGuess = autoResult.corrected;
+
+        if (autoResult.wasCorrected) {
+          showAutocorrectBanner(rawText, finalGuess);
+        } else {
+          hideAutocorrectBanner();
+        }
+
+        if (checkGuess(finalGuess, puzzle)) {
+          stopBlitzTimer();
+          round.guesses.push({ text: finalGuess, status: 'win' });
+          round.completed = true;
+          round.won = true;
+          saveModeProgress(activeMode, currentRoundIndex, rounds);
+          launchConfetti();
+          renderGameplay(false);
+          return;
+        }
+      } else {
+        hideAutocorrectBanner();
+      }
+
+      const status = isTimeout ? 'timeout' : (isSkip ? 'skip' : 'wrong');
+      round.guesses.push({
+        text: isTimeout ? 'Time Up' : (isSkip ? 'Skipped' : finalGuess),
+        status
+      });
+
+      if (!isSkip && !isTimeout) {
+        elGuessInput.classList.remove('animate-shake');
+        void elGuessInput.offsetWidth;
+        elGuessInput.classList.add('animate-shake');
+      }
+
+      if (round.guesses.length >= MAX_CLUES) {
+        stopBlitzTimer();
+        round.completed = true;
+        round.won = false;
+      } else {
+        round.revealedCluesCount++;
+      }
+
+      saveModeProgress(activeMode, currentRoundIndex, rounds);
+      renderGameplay(true);
+    }
+
+    elGuessForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = elGuessInput.value.trim();
+      if (!val) return;
+      handleTurn(val, false, false);
+    });
+
+    elBtnSkip.addEventListener('click', () => {
+      handleTurn('', true, false);
+    });
+
+    /**
+     * 9. IN-PLACE CONTINUE BAR & ENTER KEY SHORTCUT
+     */
+    function generateRoundEmojiRow(round) {
+      let row = '';
+      for (let i = 0; i < MAX_CLUES; i++) {
+        if (i < round.guesses.length) {
+          const status = round.guesses[i].status;
+          if (status === 'win') row += '🟩';
+          else if (status === 'skip') row += '🟨';
+          else if (status === 'timeout') row += '⏱️';
+          else row += '🟥';
+        } else {
+          row += '⬜';
+        }
+      }
+      return row;
+    }
+
+    function renderInPlaceResultCard(round, puzzle) {
+      elInputSection.classList.add('hidden');
+      elResultCard.classList.remove('hidden');
+
+      const pillEl = document.getElementById('result-status-pill');
+      const btnNext = document.getElementById('btn-next-round');
+      const earnedPts = getRoundPoints(round);
+
+      if (round.won) {
+        elResultCard.className = 'animate-pop bg-cosmic-surface border-2 border-emerald-400 rounded-2xl p-3.5 shadow-2xl';
+        pillEl.className = 'text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-emerald-400/25 text-emerald-200 border border-emerald-400/50';
+        pillEl.textContent = `🎉 +${earnedPts.toLocaleString()} PTS! • SOLVED ON CLUE #${round.guesses.length}`;
+      } else {
+        elResultCard.className = 'animate-pop bg-cosmic-surface border-2 border-cosmic-pink rounded-2xl p-3.5 shadow-2xl';
+        pillEl.className = 'text-xs font-mono font-extrabold uppercase px-2.5 py-0.5 rounded-lg bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50';
+        pillEl.textContent = `💥 -200 PTS • MISSED ALL 5 TRIES`;
+      }
+
+      document.getElementById('emoji-grid-preview').textContent = generateRoundEmojiRow(round);
+      document.getElementById('result-answer').textContent = puzzle.answer;
+      document.getElementById('result-fact').textContent = puzzle.fact;
+
+      if (currentRoundIndex < ROUNDS_PER_CASE - 1) {
+        btnNext.textContent = `CONTINUE TO NEXT MYSTERY (${currentRoundIndex + 2}/7) →`;
+      } else {
+        btnNext.textContent = `VIEW FINAL CASE SCORE →`;
+      }
+
+      setTimeout(() => btnNext.focus(), 40);
+    }
+
+    function advanceToNextMystery() {
+      hideAutocorrectBanner();
+      if (currentRoundIndex < ROUNDS_PER_CASE - 1) {
+        currentRoundIndex++;
+        saveModeProgress(activeMode, currentRoundIndex, rounds);
+        renderGameplay(true);
+      } else {
+        if (rounds.filter(r => r.won).length >= 4) launchConfetti();
+        showScreen('recap');
+      }
+    }
+
+    document.getElementById('btn-next-round').addEventListener('click', advanceToNextMystery);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && currentScreen === 'game' && rounds[currentRoundIndex]?.completed) {
+        if (document.activeElement !== document.getElementById('btn-next-round')) {
+          e.preventDefault();
+          advanceToNextMystery();
+        }
+      }
+    });
+
+    /**
+     * 10. FINAL CASE SCORECARD & EMOJI COPY
+     */
+    function renderRecapScreen() {
+      const totalPts = calculateTotalScore(rounds);
+      const solvedCount = rounds.filter(r => r.won).length;
+      const missedCount = ROUNDS_PER_CASE - solvedCount;
+      const rank = getArchivistRank(totalPts, solvedCount);
+
+      elHeaderTotalScore.textContent = totalPts.toLocaleString();
+      document.getElementById('recap-rank-badge').textContent = `RANK: ${rank}`;
+      document.getElementById('recap-title').textContent = activeMode === 'blitz'
+        ? `25s BLITZ DAILY COMPLETE!`
+        : `CLASSIC DAILY COMPLETE!`;
+      document.getElementById('recap-final-score').textContent = totalPts.toLocaleString();
+      document.getElementById('recap-subtitle').textContent = 
+        `${solvedCount} Solved • ${missedCount} Missed (-200 each)`;
+
+      const listEl = document.getElementById('recap-rows-list');
+      listEl.innerHTML = '';
+
+      rounds.forEach((r, idx) => {
+        const p = getPuzzleById(r.puzzleId);
+        const pts = getRoundPoints(r);
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'flex items-center justify-between bg-cosmic-bg/90 border border-cosmic-border rounded-xl px-3 py-2 gap-2';
+
+        rowDiv.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="w-6 h-6 rounded-lg flex-shrink-0 flex items-center justify-center text-xs font-mono font-extrabold ${
+              r.won ? 'bg-emerald-400/25 text-emerald-200 border border-emerald-400/50' : 'bg-cosmic-pink/25 text-pink-200 border border-cosmic-pink/50'
+            }">${idx + 1}</span>
+            <div class="truncate">
+              <div class="font-bold text-xs sm:text-sm text-white truncate">${p.answer}</div>
+              <div class="text-[11px] font-mono font-bold ${r.won ? 'text-emerald-300' : 'text-pink-400'}">
+                ${pts >= 0 ? `+${pts.toLocaleString()} PTS` : `${pts} PTS`}
+              </div>
+            </div>
+          </div>
+          <div class="font-mono text-xs sm:text-sm tracking-wider flex-shrink-0">
+            ${generateRoundEmojiRow(r)}
+          </div>
+        `;
+        listEl.appendChild(rowDiv);
+      });
+    }
+
+    function showToast(message) {
+      elToast.textContent = message;
+      elToast.classList.remove('opacity-0');
+      setTimeout(() => elToast.classList.add('opacity-0'), 2400);
+    }
+
+    document.getElementById('btn-share-all').addEventListener('click', () => {
+      const totalPts = calculateTotalScore(rounds);
+      const solvedCount = rounds.filter(r => r.won).length;
+      const rank = getArchivistRank(totalPts, solvedCount);
+      const modeLabel = activeMode === 'blitz' ? '25s Blitz Daily' : 'Classic Daily';
+
+      const header = `🔮 ARCHIVIST Case #1 (${modeLabel}) — ${totalPts.toLocaleString()}/7,000 PTS (${solvedCount}/7)`;
+
+      const emojiRows = rounds.map((r, idx) => {
+        const pts = getRoundPoints(r);
+        const ptsTag = pts >= 0 ? `+${pts.toLocaleString()}` : `${pts}`;
+        return `${idx + 1}. ${generateRoundEmojiRow(r)} (${ptsTag})`;
+      }).join('\n');
+
+      const sharePayload = `${header}\nRank: ${rank}\n\n${emojiRows}`;
+
+      const textArea = document.createElement('textarea');
+      textArea.value = sharePayload;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        showToast('Case Scorecard copied!');
+      } catch (err) {
+        showToast('Could not copy scorecard');
+      }
+      document.body.removeChild(textArea);
+    });
+
+    /**
+     * 11. EVENT LISTENERS & BOOT
+     */
+    document.getElementById('btn-home').addEventListener('click', () => showScreen('home'));
+    document.getElementById('btn-play-classic').addEventListener('click', () => launchDailyMode('classic'));
+    document.getElementById('btn-play-blitz').addEventListener('click', () => launchDailyMode('blitz'));
+    document.getElementById('btn-recap-home').addEventListener('click', () => showScreen('home'));
+
+    const elHelpModal = document.getElementById('help-modal');
+    document.getElementById('btn-help').addEventListener('click', () => {
+      elHelpModal.classList.remove('hidden');
+      elHelpModal.classList.add('flex');
+    });
+    const closeHelp = () => {
+      elHelpModal.classList.add('hidden');
+      elHelpModal.classList.remove('flex');
+    };
+    document.getElementById('btn-close-help').addEventListener('click', closeHelp);
+    document.getElementById('btn-got-it').addEventListener('click', closeHelp);
+    elHelpModal.addEventListener('click', (e) => {
+      if (e.target === elHelpModal) closeHelp();
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateDailyResetTimers();
+      setInterval(updateDailyResetTimers, 1000);
+      showScreen('home');
+    });
+  </script>
+</body>
+</html>
